@@ -1,0 +1,29 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <BitmapImage x:Key="MenuIcon" UriSource="../Assets/Images/Menu/menu.png" />
+    <BitmapImage x:Key="TeamIcon" UriSource="../Assets/Images/Menu/team.png" />
+    <BitmapImage x:Key="SettingsIcon" UriSource="../Assets/Images/Menu/settings.png" />
+
+    <BitmapImage x:Key="DefaultLogoNavIcon" UriSource="../Assets/Images/group-icon.png" />
+
+    <BitmapImage x:Key="AllRounderSkillIcon" UriSource="../Assets/Images/Skills/allrounder-bg.png" />
+    <BitmapImage x:Key="BatterSkillIcon" UriSource="../Assets/Images/Skills/batter-bg.png" />
+    <BitmapImage x:Key="BowlerSkillIcon" UriSource="../Assets/Images/Skills/bowler-bg.png" />
+    <BitmapImage x:Key="WicketKeeperSkillIcon" UriSource="../Assets/Images/Skills/wicket-keeper-bg.png" />
+
+    <BitmapImage x:Key="DefaultUserIcon" UriSource="../Assets/Images/default-player.png" />
+
+    <BitmapImage x:Key="TableExpandIcon" UriSource="../Assets/Images/Icons/table-expand-icon.png" />
+    <BitmapImage x:Key="SqueezeIcon" UriSource="../Assets/Images/Icons/squeeze-icon.png" />
+    
+    <BitmapImage x:Key="GraphIcon" UriSource="../Assets/Images/Icons/graph-icon.png" />
+
+    <BitmapImage x:Key="ChangeComparisonIcon" UriSource="../Assets/Images/Icons/change-comparison-icon.png" />
+    <BitmapImage x:Key="CloseComparisonPopupIcon" UriSource="../Assets/Images/Icons/close-icon.png" />
+    
+    <BitmapImage x:Key="TabSelectedIcon" UriSource="../Assets/Images/Icons/tab-selected.png" />
+    <BitmapImage x:Key="TabDeselectedIcon" UriSource="../Assets/Images/Icons/tab-deselected.png" />
+
+</ResourceDictionary>

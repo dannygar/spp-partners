@@ -1,0 +1,22 @@
+.session-detail-page {
+    .player-assignment-container {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .session-data-picker {
+        input {
+            border-radius: 0;
+        }
+    }
+
+    .session-time-picker {
+        .time-picker[disabled] {
+            background: $input-select-color;
+        }
+
+        .time-postfix[disabled] {
+            background: $input-select-color;
+        }
+    }
+}

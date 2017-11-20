@@ -1,0 +1,80 @@
+<!-- Step 1 General Settings-->
+<!-- Left column -->
+<div class="col-md-6 children-row-margin-10">
+    <div class="row">
+        <div class="col-md-4">Session Type</div>
+        <div class="col-md-4">
+            <select ng-model="vm.session.sessionType" ng-disabled="vm.isSessionAlreadyStarted"
+                    ng-options="option.id as option.description for option in ::vm.step1.sessionTypeOptions"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Practice</div>
+        <div class="col-md-4">
+            <select ng-model="vm.session.typeId" ng-disabled="vm.isSessionAlreadyStarted"
+                    ng-options="option.id as option.name for option in ::vm.step1.practiceOptions" ng-change="updatePracticeId()">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Drills</div>
+        <div class="col-md-4">
+            <select ng-model="vm.session.subTypeId" ng-disabled="vm.isSessionAlreadyStarted"
+                    ng-options="drill.id as drill.name for drill in vm.getDrills()" ng-change="vm.displayValues()"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Location</div>
+        <div class="col-md-4">
+            <select ng-model="vm.session.location" ng-disabled="vm.isSessionAlreadyStarted"
+                    ng-options="option.id as option.name for option in ::vm.step1.sessionLocationOptions"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Date</div>
+        <date-picker class="col-md-6 session-data-picker" format="DD, dd M yy" show-icon="true"
+                     value="vm.session.date" disabled="vm.isSessionAlreadyStarted"></date-picker>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Time</div>
+        <time-picker class="col-md-4 session-time-picker" value="vm.session.time"
+                     disabled="vm.isSessionAlreadyStarted"></time-picker>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Timezone</div>
+        <div class="col-md-8">
+            <timezone-picker value="vm.step1.timezone" disabled="vm.isSessionAlreadyStarted"></timezone-picker>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Duration (mins)</div>
+        <div class="col-md-2">
+            <input type="number" min="0" max="1440" ng-model="vm.session.durationMinutes">
+        </div>
+    </div>
+</div>
+
+<!-- Right column 
+<div class="col-md-6 children-row-margin-10">
+    <div class="row">
+        <div class="col-md-4">Day type</div>
+        <div class="col-md-5">
+            <select ng-model="vm.session.dayTypeId" ng-disabled="vm.isSessionAlreadyStarted"
+                    ng-options="option.Id as option.Name for option in ::vm.step1.sessionDayTypeOptions">
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Alert after (mins)</div>
+        <div class="col-md-2">
+            <input type="number" min="0" max="1440" ng-model="vm.session.alertAfterMinutes"
+                   ng-disabled="vm.isSessionAlreadyStarted">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">Coaches Rating</div>
+        <div class="col-md-2">
+            <input type="number" min="0" max="10" step="0.1" ng-model="vm.session.coachRating">
+        </div>
+    </div>
+</div>-->

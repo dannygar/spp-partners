@@ -1,0 +1,6 @@
+﻿<select class="timezone-picker" ng-disabled="disabled">
+    <option ng-repeat="option in timezoneOptions" value="{{::option.name}}"
+            ng-selected="{{::option.selected}}">
+        {{::option.title}}
+    </option>
+</select>

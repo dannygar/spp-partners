@@ -1,0 +1,20 @@
+﻿<ul class="pagination col-md-12">
+    <li ng-click="openPreviousPage()">
+        <a aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+    </li>
+
+    <li ng-repeat="page in pages" ng-class="{active: page.isActive}" ng-click="openPage(page)">
+        <a>{{page.number}}</a>
+    </li>
+
+    <li ng-click="openNextPage()">
+        <a aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+    </li>
+</ul>
+
+<div ng-transclude class="pager-transclude"></div>
+

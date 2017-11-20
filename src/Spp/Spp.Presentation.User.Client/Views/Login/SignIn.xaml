@@ -1,0 +1,73 @@
+﻿<Page x:Name="SignInPage"
+      x:Class="MicrosoftSportsScience.SignIn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:MicrosoftSportsScience"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:converters="using:Converters"
+      xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
+      xmlns:viewModels="using:MicrosoftSportsScience.ViewModels"
+      mc:Ignorable="d"
+      SizeChanged="SignInPage_SizeChanged">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Images/SignIn_BG.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="230" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="200" />
+        </Grid.RowDefinitions>
+
+        <CommandBar x:Name="commandBar" VerticalAlignment="Stretch" HorizontalContentAlignment="Right" RequestedTheme="Dark" ClosedDisplayMode="Compact">
+            <AppBarButton Icon="Setting" Label="Settings" Click="OnGoToSettingsClick"/>
+        </CommandBar>
+
+
+        <Grid x:Name="testGrid">
+            <Image Source="ms-appx:///Assets/Logo_Large.png" Margin="0,60,0,30" Tapped="OnGoToSettingsClick" />
+        </Grid>
+        <Grid Grid.RowSpan="1" Grid.Row="3">
+            <TextBlock x:Name="SignInText" Text="Signing In..." Foreground="White" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{x:Bind SigningIn, Converter={StaticResource TrueToVisibleConverter}}">
+                <TextBlock.Resources>
+                    <Storyboard x:Name="BlinkStoryboard">
+                        <DoubleAnimation d:IsOptimized="True" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SignInText" From="1" To="0" AutoReverse="True" Duration="0:0:1.5" RepeatBehavior="Forever" />
+                    </Storyboard>
+                </TextBlock.Resources>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBlock x:Name="TeamMottoText" Text="I'M IN" Foreground="White" FontSize="60" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Visible">
+                <TextBlock.Resources>
+                    <Storyboard x:Name="TeamMottoStoryboard">
+                        <DoubleAnimation d:IsOptimized="True" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="TeamMottoText" From="1" To="0" AutoReverse="True" Duration="0:0:1.5" RepeatBehavior="Forever" />
+                    </Storyboard>
+                </TextBlock.Resources>
+            </TextBlock>
+        </Grid>
+
+        <GridView Grid.Row="2"
+                  x:Name="PlayerList"
+                  Style="{StaticResource SigninGridViewStyle}">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:UserViewModel">
+                    <UserControls:PlayerTileUserControl x:Name="PlayerTile"
+                                                        User="{x:Bind User}"
+                                                        Completed="{x:Bind CompletedQuestionnaire, Mode=OneWay}"
+                                                        PlayerFirstName="{x:Bind FirstName}"
+                                                        PlayerLastName="{x:Bind LastName }"
+                                                        PlayerProfileImage="{x:Bind PhotoUrl}"
+                                                        DisplayCompletenessInfo="{x:Bind IsPlayer}"
+                                                        IsLoading="{x:Bind IsLoading, Mode=OneWay}"
+                                                        Click="PlayerTileUserControl_Click"
+                                                        TileWidth="{Binding TileWidth, ElementName=SignInPage}" />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+       
+     </Grid>
+
+</Page>

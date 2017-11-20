@@ -1,0 +1,47 @@
+﻿<Application x:Class="MicrosoftSportsScience.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:MicrosoftSportsScience.Converters"
+             RequestedTheme="Light">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/CommonStyles.xaml" />
+                <ResourceDictionary Source="Styles/Settings.xaml" />
+                <ResourceDictionary Source="Styles/Typography.xaml" />
+                <ResourceDictionary Source="Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Styles/ItemsControlStyles.xaml" />
+                <ResourceDictionary Source="Styles/Controls/MenuButton.xaml" />
+                <ResourceDictionary Source="Styles/Icons.xaml" />
+                <ResourceDictionary Source="Styles/Pages/PlayerHubStyles.xaml" />
+                <ResourceDictionary Source="Styles/Controls/ToggleSwitch.xaml" />
+                <ResourceDictionary Source="Styles/PlayerMatchStatisticStyles.xaml" />
+                <ResourceDictionary Source="Styles/PlayerMatchStatisticTableDialogStyles.xaml" />
+                <ResourceDictionary Source="Styles/WellnessGraphStyles.xaml" />
+                <ResourceDictionary Source="Styles/ChangeComparisonStyles.xaml" />
+                <ResourceDictionary Source="Styles/PerformanceRadarStyles.xaml" />
+                <ResourceDictionary Source="Styles/Pages/Player360ViewStyles.xaml" />
+                <ResourceDictionary Source="Styles/TeamTrendingTileStyles.xaml" />
+                <ResourceDictionary Source="Styles/NextMatchControlStyles.xaml" />
+                <ResourceDictionary Source="Styles/ReadinessTileStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:BooleanToVisible x:Key="TrueToVisibleConverter" />
+            <converters:BooleanToVisible x:Key="FalseToVisibleConverter" IsReversed="True" />
+            <converters:BooleanToAlignment x:Key="TrueToAlignmentConverter" />
+            <converters:BooleanToAlignment x:Key="FalseTAlignmentConverter" IsReversed="True" />
+            <converters:PercentageConverter x:Key="PercentageConverter" />
+            <converters:PercentRateConverter x:Key="PercentRateConverter"/>
+            <converters:ReadinessMarginConverter x:Key="ReadinessMarginConverter"/>
+            <converters:UpDownIconPathConverter x:Key="UpDownIconPathConverter"/>
+            <converters:MatchResultToAlign x:Key="MatchResultToAlign"/>
+            <converters:MatchResultToColor x:Key="MatchResultToColor"/>
+            <converters:TableOddCellBackgroundConverter x:Key="TableOddCellBackgroundConverter" />
+            <converters:TotalLoadHeightConverter x:Key="TotalLoadHeightConverter" />
+            <converters:SkillToIconConverter x:Key="SkillToIconConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

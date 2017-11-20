@@ -1,0 +1,26 @@
+.squad-detail-page {
+    .players-container {
+        height: 250px;
+
+        .box {
+            height: 100%;
+            border: 1px solid black;
+            border-radius: 5px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .icon-middle {
+            height: 100%;
+            font-size: 35px;
+
+            .glyphicon-arrow-left {
+                color: red;
+            }
+
+            .glyphicon-arrow-right {
+                color: green;
+            }
+        }
+    }
+}

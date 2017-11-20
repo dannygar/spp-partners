@@ -1,0 +1,193 @@
+﻿<div class="col-md-12">
+
+    <!-- Left column -->
+    <div class="col-md-5">
+        <!--- Mesocycles -->
+        <div class="row margin-bottom-10">
+            <div class="row margin-bottom-5">
+                <div class="col-md-12 greed-container">
+                    <div class="row">
+                        <div class="col-md-9">Session Mesocycles</div>
+                        <div class="col-md-3">Actions</div>
+                    </div>
+                    <div class="row cursor-pointer" ng-repeat="item in vm.sessionMesocycles"
+                         data-toggle="modal"
+                         data-target="#editModal"
+                         ng-click="vm.onEditClick('SessionMesocycle', item, $index)">
+                        <div class="col-md-9">
+                            {{::item.name}}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-1 glyphicon glyphicon-edit cursor-pointer"></div>
+                                <div class="col-md-1 glyphicon glyphicon-remove cursor-pointer"
+                                     ng-click="vm.onDeleteClick('SessionMesocycle', item, $event)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-success text-uppercase margin-left-15"
+                        data-toggle="modal"
+                        data-target="#addModal"
+                        ng-click="vm.onAddClick('SessionMesocycle');">
+                    Create new
+                </button>
+            </div>
+        </div>
+
+        <!--- Microcycles -->
+        <div class="row margin-bottom-10">
+            <div class="row margin-bottom-5">
+                <div class="col-md-12 greed-container">
+                    <div class="row">
+                        <div class="col-md-9">Session Microcycles</div>
+                        <div class="col-md-3">Actions</div>
+                    </div>
+                    <div class="row cursor-pointer" ng-repeat="item in vm.sessionMicrocycles"
+                         data-toggle="modal"
+                         data-target="#editModal"
+                         ng-click="vm.onEditClick('SessionMicrocycle', item, $index)">
+                        <div class="col-md-9">
+                            {{::item.name}}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-1 glyphicon glyphicon-edit cursor-pointer"></div>
+                                <div class="col-md-1 glyphicon glyphicon-remove cursor-pointer"
+                                     ng-click="vm.onDeleteClick('SessionMicrocycle', item, $event)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-success text-uppercase margin-left-15"
+                        data-toggle="modal"
+                        data-target="#addModal"
+                        ng-click="vm.onAddClick('SessionMicrocycle');">
+                    Create new
+                </button>
+            </div>
+        </div>
+
+        <!--- Mesocycles -->
+        <div class="row margin-bottom-10">
+            <div class="row margin-bottom-5">
+                <div class="col-md-12 greed-container">
+                    <div class="row">
+                        <div class="col-md-12">Create Team</div>
+                    </div>
+                    <input type="text" ng-model="vm.teamName" name="team_name" required placeholder="Enter Team Name"/>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-success text-uppercase margin-left-15"
+                        ng-click="vm.createTeam()">
+                    Create new
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Right column -->
+    <div class="col-md-5 col-md-offset-2">
+
+        <!--- Player Positions -->
+        <div class="row margin-bottom-10">
+            <div class="row margin-bottom-5">
+                <div class="col-md-12 greed-container">
+                    <div class="row">
+                        <div class="col-md-9">Player Positions</div>
+                        <div class="col-md-3">Actions</div>
+                    </div>
+                    <div class="row cursor-pointer" ng-repeat="item in vm.playerPositions"
+                         data-toggle="modal"
+                         data-target="#editModal"
+                         ng-click="vm.onEditClick('PlayerPosition', item, $index)">
+                        <div class="col-md-9">
+                            {{::item.name}}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-1 glyphicon glyphicon-edit cursor-pointer"></div>
+                                <div class="col-md-1 glyphicon glyphicon-remove cursor-pointer"
+                                     ng-click="vm.onDeleteClick('PlayerPosition', item, $event)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-success text-uppercase margin-left-15"
+                        data-toggle="modal"
+                        data-target="#addModal"
+                        ng-click="vm.onAddClick('PlayerPosition');">
+                    Create new
+                </button>
+            </div>
+        </div>
+
+        <!--- Player Subpositions -->
+        <div class="row margin-bottom-10">
+            <div class="row margin-bottom-5">
+                <div class="col-md-12 greed-container">
+                    <div class="row">
+                        <div class="col-md-9">Player Subpositions</div>
+                        <div class="col-md-3">Actions</div>
+                    </div>
+                    <div class="row cursor-pointer" ng-repeat="item in vm.playerSubpositions"
+                         data-toggle="modal" data-target="#editModal"
+                         ng-click="vm.onEditClick('PlayerSubposition', item, $index)">
+                        <div class="col-md-9">
+                            {{::item.name}}
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-1 glyphicon glyphicon-edit cursor-pointer"></div>
+                                <div class="col-md-1 glyphicon glyphicon-remove cursor-pointer"
+                                     ng-click="vm.onDeleteClick('PlayerSubposition', item, $event)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-success text-uppercase margin-left-15"
+                        data-toggle="modal"
+                        data-target="#addModal"
+                        ng-click="vm.onAddClick('PlayerSubposition');">
+                    Create new
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Add modal -->
+<modal-view modal-id="addModal" submit-text="Add" on-submit="vm.executeCreateAction"
+            title="Add {{vm.context.itemTypeName}}"
+            spinner-show-event="showSpinnerInCreateModal" spinner-hide-event="hideSpinnerInCreateModal"
+            popover-show-event="showPopoverInCreateModal">
+    <ng-include src="'/Client/Views/settings-edited-fields.html'"></ng-include>
+</modal-view>
+
+<!-- Edit modal -->
+<modal-view modal-id="editModal" submit-text="Save changes" on-submit="vm.executeEditAction"
+            title="Edit {{vm.context.itemTypeName}}"
+            spinner-show-event="showSpinnerInEditModal" spinner-hide-event="hideSpinnerInEditModal"
+            popover-show-event="showPopoverInEditModal">
+    <ng-include src="'/Client/Views/settings-edited-fields.html'"></ng-include>
+</modal-view>
+
+<!-- Delete modal -->
+<modal-view modal-id="deleteModal" submit-text="Delete" on-submit="vm.executeDeleteAction"
+            title="Delete {{vm.context.itemTypeName}}"
+            spinner-show-event="showSpinnerInDeleteModal" spinner-hide-event="hideSpinnerInDeleteModal"
+            popover-show-event="showPopoverInDeleteModal">
+    <p>Are you sure you want to delete this item?</p>
+</modal-view>

@@ -1,0 +1,21 @@
+.settings-page {
+    .carousel-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .nav.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+        background-color: $light-green;
+        border-radius: 0px;
+    }
+
+    .nav.nav-pills>li {
+        text-transform: uppercase;
+    }
+
+    .tab-content {
+        border-top: 1px solid $light-gray;
+        border-left: 1px solid $light-gray;
+        padding: 7px;
+    }
+}

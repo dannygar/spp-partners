@@ -1,0 +1,45 @@
+<div class="row user-detail-page">
+    <div class="col-md-12">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="bold"><span ng-if="vm.roleId === 1">Coach -</span><span ng-if="vm.roleId === 2">Player -</span><span ng-if="vm.roleId === 3">Administrator -</span> {{::vm.user.name}} {{::vm.user.lastName}}</h3>
+            </div>
+        </div>
+
+        <!-- Player settings -->
+        <div class="row margin-top-50 dark-blue">
+            <div class="col-md-6 children-row-margin-10"
+                 ng-include="'/Client/Views/user-detail-left-column.html'"></div>
+            <div class="col-md-6 children-row-margin-10"
+                 ng-include="'/Client/Views/user-detail-right-column.html'"></div>
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div class="row margin-top-50">
+            <loading-spinner start-event="showUserPageSpinner" end-event="hideUserPageSpinner" save-height="true"></loading-spinner>
+            <div class="col-md-6 col-md-offset-5 text-right">
+                <div class="row">
+                    <button class="col-md-3 col-md-offset-1 btn btn-success btn-lg text-uppercase"
+                            ng-click="vm.cancel()">
+                        Cancel
+                    </button>
+                    <button class="col-md-3 col-md-offset-1 btn btn-success btn-lg text-uppercase" ng-click="vm.remove()"> 
+                        Remove
+                    </button>
+
+                    <button class="col-md-3 col-md-offset-1 btn btn-success btn-lg text-uppercase"
+                            ng-click="vm.saveChanges()">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<modal-view modal-id="deleteUserModal" submit-text="Remove" on-submit="vm.remove" title="Confirm Removal">
+    <div class="row margin-bottom-10">
+        <div class="col-md-12 text-center">Are you sure you want to remove this person from your team?</div>
+    </div>
+</modal-view>

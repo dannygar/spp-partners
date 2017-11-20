@@ -1,0 +1,29 @@
+﻿<div class="row margin-bottom-10">
+    <div class="col-md-4">Name</div>
+    <div class="col-md-5">
+        <input type="text" size="35" ng-model="vm.currentItem.name" />
+    </div>
+    <div ng-show="vm.showNameError" class="cold-md-3">
+        <div class="label label-danger">Required</div>
+    </div>
+</div>
+<div class="row margin-bottom-10">
+    <div class="col-md-4">Abbreviation</div>
+    <div class="col-md-5">
+        <textarea class="form-control" ng-model="vm.currentItem.abbreviation"></textarea>
+    </div>
+</div>
+<!--<div class="row" ng-if="vm.context.parentCollection.length > 0">
+    <div class="col-md-4">Select {{vm.context.parentItemTypeName}}</div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <select class="form-control"
+                    multiple redraw
+                    size="{{vm.context.parentCollection.length}}"
+                    ng-multiple="true"
+                    ng-options="item.Name for item in vm.context.parentCollection"
+                    ng-model="vm.context.selectedParents">
+            </select>
+        </div>
+    </div>
+</div>-->

@@ -1,0 +1,160 @@
+/* To include other scss files use following notation:
+    @import "test.scss";
+*/
+
+// Variables
+@import "common-variables.scss";
+// Common styles
+@import "master.scss";
+@import "footer.scss";
+// Elements
+@import "elements/common-for-all-controls.scss";
+@import "elements/buttons.scss";
+@import "elements/panels.scss";
+@import "elements/inputs-selects.scss";
+@import "elements/textarea.scss";
+@import "elements/greed-container.scss";
+// Pages
+@import "pages/login.scss";
+@import "pages/reports.scss";
+@import "pages/sessions-day.scss";
+@import "pages/sessions-week.scss";
+@import "pages/session-detail.scss";
+@import "pages/squad_detail.scss";
+@import "pages/settings.scss";
+@import "pages/users.scss";
+@import "pages/squads.scss";
+@import "pages/about.scss";
+// Directives
+@import "directives/loading-spinner.drv.scss";
+@import "directives/date-picker.drv.scss";
+@import "directives/time-picker.drv.scss";
+@import "directives/timezone-picker.drv.scss";
+@import "directives/on-off-slider.drv.scss";
+@import "directives/image-cropper.drv.scss";
+@import "directives/switcher.drv.scss";
+@import "directives/dynamic-content.drv.scss";
+@import "directives/context-menu.drv.scss";
+@import "directives/popover.drv.scss";
+@import "directives/wellness-popover.drv.scss";
+@import "directives/player-assignment.drv.scss";
+@import "directives/carousel.drv.scss";
+@import "directives/personal-image-gallery.drv.scss";
+@import "directives/pager.drv.scss";
+
+html, body {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+ui-view {
+    display: block;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.tight {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.children-row-margin-10 {
+    > .row {
+        margin-bottom: 10px;
+    }
+}
+
+.margin-left-15 {
+    margin-left: 15px;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom-60 {
+    margin-bottom: 60px;
+}
+
+.margin-top-5 {
+    margin-top: 5px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-50 {
+    margin-top: 50px;
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.v-center {
+    display: flex;
+    align-items: center;
+}
+
+.h-center {
+    display: flex;
+    justify-content: center;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.text-light {
+    font-weight: 300;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.text-large {
+    font-size: large;
+}
+
+.text-x-large {
+    font-size: x-large;
+}
+
+.text-medium {
+    font-size: medium;
+}
+
+.text-small {
+    font-size: small;
+}
+
+.text-smaller {
+    font-size: smaller;
+}
+
+.dark-blue {
+    color: $dark-blue;
+}
+
+.square {
+    border-radius: 0;
+}

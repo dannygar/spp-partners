@@ -1,0 +1,1045 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{B817B51F-D993-40E8-A9D5-10DEF5D0A33B}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MicrosoftSportsScience</RootNamespace>
+    <AssemblyName>MicrosoftSportsScience</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>MicrosoftSportsScience_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>BC80BDF04771FBB38D1E8991749D784E7BC9E0FE</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;AAD</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;AAD</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;AAD;_NODEBUG</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;AAD;CODE_ANALYSIS;</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="MicrosoftSportsScience_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Constants\DataConsts.cs" />
+    <Compile Include="Constants\PerformanceSubjectType.cs" />
+    <Compile Include="Constants\UiConsts.cs" />
+    <Compile Include="Constants\WellnessType.cs" />
+    <Compile Include="Converters\AlternateRowColorConverterBlue.cs" />
+    <Compile Include="Converters\BooleanToAlignment.cs" />
+    <Compile Include="Converters\ComboBoxItemConvert.cs" />
+    <Compile Include="Converters\DepthToTextConverter.cs" />
+    <Compile Include="Converters\MatchResultToAlign.cs" />
+    <Compile Include="Converters\MatchResultToColor.cs" />
+    <Compile Include="Converters\PercentageConverter.cs" />
+    <Compile Include="Converters\PercentRateConverter.cs" />
+    <Compile Include="Converters\PercentRateValueConverter.cs" />
+    <Compile Include="Converters\ReadinessMarginConverter.cs" />
+    <Compile Include="Converters\SkillToIconConverter.cs" />
+    <Compile Include="Converters\TableOddCellBackgroundConverter.cs" />
+    <Compile Include="Converters\TotalLoadHeightConverter.cs" />
+    <Compile Include="Converters\ToText\AgeToTextConverter.cs" />
+    <Compile Include="Converters\ToText\DepthToTextConverter.cs" />
+    <Compile Include="Converters\ToText\HeightToTextConverter.cs" />
+    <Compile Include="Converters\ToText\PlayerToFullNameConverter.cs" />
+    <Compile Include="Converters\UpDownIconPathConverter.cs" />
+    <Compile Include="Data\CarouselItemSource.cs" />
+    <Compile Include="Data\CognitiveServices.cs" />
+    <Compile Include="Data\ICarouselViewItemSource.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\Position.cs" />
+    <Compile Include="Data\ScoreRequest.cs" />
+    <Compile Include="Data\ScoreRequestResult.cs" />
+    <Compile Include="Data\TeamImage.cs" />
+    <Compile Include="Data\Location.cs" />
+    <Compile Include="Data\Drill.cs" />
+    <Compile Include="Data\Emotions.cs" />
+    <Compile Include="Data\PhotoDataItem.cs" />
+    <Compile Include="Data\PhotoDataItemWithDimension.cs" />
+    <Compile Include="Data\PhotoImage.cs" />
+    <Compile Include="Data\MetricSets.cs" />
+    <Compile Include="Data\Note.cs" />
+    <Compile Include="Data\PhotosDataSource.cs" />
+    <Compile Include="Data\PlayerResponse.cs" />
+    <Compile Include="Data\Practice.cs" />
+    <Compile Include="Data\PracticeDrill.cs" />
+    <Compile Include="Data\RoleTypes.cs" />
+    <Compile Include="Data\Team.cs" />
+    <Compile Include="Data\UserIdentity.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\ColorsHelper.cs" />
+    <Compile Include="Helpers\EnumerableExtensions.cs" />
+    <Compile Include="Helpers\Geometry.cs" />
+    <Compile Include="Helpers\Guard.cs" />
+    <Compile Include="Helpers\NumberHelper.cs" />
+    <Compile Include="Helpers\ObservableCollectionExtensions.cs" />
+    <Compile Include="Helpers\PlayerHelper.cs" />
+    <Compile Include="Helpers\ResourceHelper.cs" />
+    <Compile Include="Helpers\CSSettingsHelper.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Helpers\TaskHelper.cs" />
+    <Compile Include="Helpers\FaceRecognitionHelper.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfigurationSettings.cs" />
+    <Compile Include="Models\MotivationalImagesModel.cs" />
+    <Compile Include="Models\PropertyDescriptor\PropertyDescriptor.cs" />
+    <Compile Include="Models\PropertyDescriptor\PropertyKind.cs" />
+    <Compile Include="Models\PropertyDescriptor\PropertyOptions.cs" />
+    <Compile Include="Models\PropertyDescriptor\SliderPropertyOptions.cs" />
+    <Compile Include="Models\PropertyDescriptor\ValueHolder.cs" />
+    <Compile Include="Models\RecommendedLoadModel.cs" />
+    <Compile Include="Models\TeamModel.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Services\ApiClientService.cs" />
+    <Compile Include="Services\AzureADv2AuthService.cs" />
+    <Compile Include="Services\IApiAuthService.cs" />
+    <Compile Include="Services\ICacheService.cs" />
+    <Compile Include="Services\IHttpClientService.cs" />
+    <Compile Include="Services\ILogService.cs" />
+    <Compile Include="Services\IMetricsSettingsProvider.cs" />
+    <Compile Include="Services\InMemoryCacheService.cs" />
+    <Compile Include="Services\LocalLogService.cs" />
+    <Compile Include="Services\MSALErrorCodes.cs" />
+    <Compile Include="SuspensionManager.cs" />
+    <Compile Include="UserControls\AddDrillsUserControl.xaml.cs">
+      <DependentUpon>AddDrillsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CameraControl.xaml.cs">
+      <DependentUpon>CameraControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DurationPickerUserControl.xaml.cs">
+      <DependentUpon>DurationPickerUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditableTextBlockUserControl.xaml.cs">
+      <DependentUpon>EditableTextBlockUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditExerciseListItem.xaml.cs">
+      <DependentUpon>EditExerciseListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EmotionEmojiControl.xaml.cs">
+      <DependentUpon>EmotionEmojiControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EmotionMeterControl.xaml.cs">
+      <DependentUpon>EmotionMeterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FaceIdentificationBorder.xaml.cs">
+      <DependentUpon>FaceIdentificationBorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageWithFaceBorderUserControl.xaml.cs">
+      <DependentUpon>ImageWithFaceBorderUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LoadMeterUserControl.xaml.cs">
+      <DependentUpon>LoadMeterUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchPerformanceUserControl.xaml.cs">
+      <DependentUpon>MatchPerformanceUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\NextMatchTileUserControl.xaml.cs">
+      <DependentUpon>NextMatchTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PerformanceSnapshotUserControl.xaml.cs">
+      <DependentUpon>PerformanceSnapshotUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlayerFitnessTileUserControl.xaml.cs">
+      <DependentUpon>PlayerFitnessTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LargeWorkoutTileUserControl.xaml.cs">
+      <DependentUpon>LargeWorkoutTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlayerReadyTile.xaml.cs">
+      <DependentUpon>PlayerReadyTile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PointerButton.cs" />
+    <Compile Include="UserControls\PracticeTileUserControl.xaml.cs" />
+    <Compile Include="UserControls\RealTimeFaceIdentificationBorder.xaml.cs">
+      <DependentUpon>RealTimeFaceIdentificationBorder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelectPracticeTileUserControl.xaml.cs" />
+    <Compile Include="UserControls\SignInOptions.xaml.cs">
+      <DependentUpon>SignInOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TeamReadinessUserControl.xaml.cs">
+      <DependentUpon>TeamReadinessUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WellnessGraphUserControl.xaml.cs">
+      <DependentUpon>WellnessGraphUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ConfigurationSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Dashboard\TrainingDashboardViewModel.cs" />
+    <Compile Include="ViewModels\Login\MotivationalImagesViewModel.cs" />
+    <Compile Include="ViewModels\Practice\RecommendedLoadViewModel.cs" />
+    <Compile Include="ViewModels\Workout\WorkoutExercisesViewModel.cs" />
+    <Compile Include="ViewModels\Workout\WorkoutsViewModel.cs" />
+    <Compile Include="ViewModels\Practice\PracticeDrillsViewModel.cs" />
+    <Compile Include="ViewModels\MatchViewModel.cs" />
+    <Compile Include="ViewModels\PlayerFitnessViewModel.cs" />
+    <Compile Include="Views\ChoosePlayerGroups.xaml.cs" />
+    <Compile Include="Views\Generic\FunctionalityNotImplemented.xaml.cs">
+      <DependentUpon>FunctionalityNotImplemented.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Generic\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\AccessDenied.xaml.cs">
+      <DependentUpon>AccessDenied.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Questionnaire\EditQuestions.xaml.cs">
+      <DependentUpon>EditQuestions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\GreetingPage.xaml.cs">
+      <DependentUpon>GreetingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\Player360View.xaml.cs">
+      <DependentUpon>Player360View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Practice\PracticeSessionManager.xaml.cs" />
+    <Compile Include="Views\Practice\PracticeSessionPlannerAddDrills.xaml.cs">
+      <DependentUpon>PracticeSessionPlannerAddDrills.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CreateNewTileUserControl.xaml.cs">
+      <DependentUpon>CreateNewTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DeleteButtonListItem.xaml.cs">
+      <DependentUpon>DeleteButtonListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditSessionManagerTileUserControl.xaml.cs">
+      <DependentUpon>EditSessionManagerTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditWorkoutTileUserControl.xaml.cs" />
+    <Compile Include="UserControls\SelectWorkoutTileUserControl.xaml.cs">
+      <DependentUpon>SelectWorkoutTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Practice\PracticeSessionPlannerAddPlayerGroups.xaml.cs">
+      <DependentUpon>PracticeSessionPlannerAddPlayerGroups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Questionnaire\ThankYouPage.xaml.cs">
+      <DependentUpon>ThankYouPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TopicSubTopicUserControl.xaml.cs">
+      <DependentUpon>TopicSubTopicUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CalendarSectionViewModel.cs" />
+    <Compile Include="Views\Questionnaire\CreateQuestions.xaml.cs">
+      <DependentUpon>CreateQuestions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workout\SelectWorkout.xaml.cs">
+      <DependentUpon>SelectWorkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LargeExerciseTileUserControl.xaml.cs" />
+    <Compile Include="UserControls\PlayersAssignedUserControl.xaml.cs">
+      <DependentUpon>PlayersAssignedUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelectExerciseTileUserControl.xaml.cs" />
+    <Compile Include="UserControls\SelectGroupUserControl.xaml.cs">
+      <DependentUpon>SelectGroupUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SelectPlayerUserControl.xaml.cs">
+      <DependentUpon>SelectPlayerUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\AlternateRowColorConverter.cs" />
+    <Compile Include="Converters\AlternateRowColorConverterWorkouts.cs" />
+    <Compile Include="Converters\BooleanToVisible.cs" />
+    <Compile Include="Converters\IndexConverter.cs" />
+    <Compile Include="Converters\InitialsConverter.cs" />
+    <Compile Include="Converters\ObjectExistsToVisible .cs" />
+    <Compile Include="Data\Athlete.cs" />
+    <Compile Include="Data\AthleteDrill.cs" />
+    <Compile Include="Data\AthleteExercise.cs" />
+    <Compile Include="Data\AthleteExerciseSet.cs" />
+    <Compile Include="Data\AthleteMessage.cs" />
+    <Compile Include="Data\AthletePractice.cs" />
+    <Compile Include="Data\AthleteQuestionHistoryEntry.cs" />
+    <Compile Include="Data\AthleteQuestionHistory.cs" />
+    <Compile Include="Data\AthleteQuestionnaire.cs" />
+    <Compile Include="Data\Session.cs" />
+    <Compile Include="Data\AthleteWorkout.cs" />
+    <Compile Include="Data\Coach.cs" />
+    <Compile Include="Data\Message.cs" />
+    <Compile Include="Data\AthleteQuestion.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Defines.cs" />
+    <Compile Include="Helpers\FirstDataTemplateSelector.cs" />
+    <Compile Include="Helpers\HelperMethods.cs" />
+    <Compile Include="Helpers\VariableSizedGridView.cs" />
+    <Compile Include="Models\AthleteAnswerModel.cs" />
+    <Compile Include="Models\AthleteWorkoutModel.cs" />
+    <Compile Include="Models\CoachModel.cs" />
+    <Compile Include="Models\AthletePracticeModel.cs" />
+    <Compile Include="Models\AthleteQuestionHistoryModel.cs" />
+    <Compile Include="Models\AthleteMessageModel.cs" />
+    <Compile Include="Models\AthleteSessionModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\AppSessionModel.cs" />
+    <Compile Include="Models\CacheModel.cs" />
+    <Compile Include="UserControls\CalendarUserControl.xaml.cs">
+      <DependentUpon>CalendarUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CalendarTileUserControl.xaml.cs">
+      <DependentUpon>CalendarTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DrillTileUserControl.xaml.cs">
+      <DependentUpon>DrillTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ExerciseTileUserControl.xaml.cs">
+      <DependentUpon>ExerciseTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GraphUserControl.xaml.cs">
+      <DependentUpon>GraphUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MessageTileUserControl.xaml.cs">
+      <DependentUpon>MessageTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PlayerTileUserControl.xaml.cs">
+      <DependentUpon>PlayerTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\QuestionUserControl.xaml.cs">
+      <DependentUpon>QuestionUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WellnessTileUserControl.xaml.cs">
+      <DependentUpon>WellnessTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WorkoutTileUserControl.xaml.cs">
+      <DependentUpon>WorkoutTileUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Questionnaire\AthleteAnswerViewModel.cs" />
+    <Compile Include="ViewModels\Practice\AthleteDrillViewModel.cs" />
+    <Compile Include="ViewModels\Workout\AthleteExerciseSetViewModel.cs" />
+    <Compile Include="ViewModels\Workout\AthleteExerciseViewModel.cs" />
+    <Compile Include="ViewModels\Practice\PracticesViewModel.cs" />
+    <Compile Include="ViewModels\Practice\AthletePracticeViewModel.cs" />
+    <Compile Include="ViewModels\Questionnaire\AthleteQuestionHistoryItemViewModel.cs" />
+    <Compile Include="ViewModels\Questionnaire\AthleteQuestionHistoryViewModel.cs" />
+    <Compile Include="ViewModels\Workout\AthleteWorkoutViewModel.cs" />
+    <Compile Include="ViewModels\CalendarDayViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MessagesViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\Dashboard\UserViewModel.cs" />
+    <Compile Include="Views\Questionnaire\AnswerPostQuestions.xaml.cs" />
+    <Compile Include="Views\Dashboard\AthleteSummary.xaml.cs">
+      <DependentUpon>AthleteSummary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Calendar.xaml.cs">
+      <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workout\EditWorkoutDetails.xaml.cs" />
+    <Compile Include="Views\Workout\ExercisePlanManager.xaml.cs" />
+    <Compile Include="Views\Practice\SessionManager.xaml.cs">
+      <DependentUpon>SessionManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\TrainingDashboard.xaml.cs" />
+    <Compile Include="Views\Workout\WorkoutManager.xaml.cs">
+      <DependentUpon>WorkoutManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workout\WorkoutPlanManager.xaml.cs" />
+    <Compile Include="Views\Workout\WorkoutPlanManagerEditWorkout.xaml.cs" />
+    <Compile Include="Views\Workout\WorkoutPlayflow.xaml.cs">
+      <DependentUpon>WorkoutPlayflow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AthleteQuestionModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Practice\SessionPlanner.xaml.cs">
+      <DependentUpon>SessionPlanner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Questionnaire\AthleteQuestionsViewModel.cs" />
+    <Compile Include="ViewModels\Questionnaire\AthleteQuestionViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelHelpers.cs" />
+    <Compile Include="Views\Questionnaire\AnswerQuestions.xaml.cs">
+      <DependentUpon>AnswerQuestions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workout\CoachWorkout.xaml.cs">
+      <DependentUpon>CoachWorkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\SignIn.xaml.cs">
+      <DependentUpon>SignIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Workout\Workouts.xaml.cs">
+      <DependentUpon>Workouts.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
+    <Content Include="Assets\Images\back-arrow.png" />
+    <Content Include="Assets\Images\baldwin_doug.png" />
+    <Content Include="Assets\Images\Calendar\CheckMark.png" />
+    <Content Include="Assets\Images\Calendar\LeftArrow.png" />
+    <Content Include="Assets\Images\Calendar\MiddleDiamond.png" />
+    <Content Include="Assets\Images\Calendar\RightArrow.png" />
+    <Content Include="Assets\Images\checkmark.png" />
+    <Content Include="Assets\Images\color_bar.png" />
+    <Content Include="Assets\Images\Edit_BG.jpg" />
+    <Content Include="Assets\Images\FlamingBootsSplash.png" />
+    <Content Include="Assets\Images\FlamingBootsSplashx2480.png" />
+    <Content Include="Assets\Images\GrayMask.png" />
+    <Content Include="Assets\Images\group-bg-temp.jpg" />
+    <Content Include="Assets\Images\group-icon.png" />
+    <Content Include="Assets\Images\houston-texans-logo.png" />
+    <Content Include="Assets\Images\Icons\add-icon.png" />
+    <Content Include="Assets\Images\Icons\add-notes-icon-Small.png" />
+    <Content Include="Assets\Images\Icons\Add-Notes.png" />
+    <Content Include="Assets\Images\Icons\carrot.png" />
+    <Content Include="Assets\Images\Icons\check-icon.png" />
+    <Content Include="Assets\Images\Icons\close_x.png" />
+    <Content Include="Assets\Images\Icons\duration-icon.png" />
+    <Content Include="Assets\Images\Icons\edit-icon.png" />
+    <Content Include="Assets\Images\Icons\heart-rate-icon.png" />
+    <Content Include="Assets\Images\Icons\import-icon.png" />
+    <Content Include="Assets\Images\Icons\intensity-indicator-down.png" />
+    <Content Include="Assets\Images\Icons\intensity-indicator-up.png" />
+    <Content Include="Assets\Images\Icons\Minus_Circle.png" />
+    <Content Include="Assets\Images\Icons\modified-icon.png" />
+    <Content Include="Assets\Images\Icons\number-icon.png" />
+    <Content Include="Assets\Images\Icons\Plus_Circle.png" />
+    <Content Include="Assets\Images\Icons\recovery-time-icons.png" />
+    <Content Include="Assets\Images\Icons\remove-Icon.png" />
+    <Content Include="Assets\Images\Icons\reps-Icon-01.png" />
+    <Content Include="Assets\Images\Icons\save_icon.png" />
+    <Content Include="Assets\Images\Icons\SearchIcon.png" />
+    <Content Include="Assets\Images\Icons\share-icon.png" />
+    <Content Include="Assets\Images\Icons\space-icon.png" />
+    <Content Include="Assets\Images\Icons\training-load-icon.png" />
+    <Content Include="Assets\Images\indicator_dot.png" />
+    <Content Include="Assets\Images\lane_jeremy.png" />
+    <Content Include="Assets\Images\LeftArrow.png" />
+    <Content Include="Assets\Images\Menu\Calendar_Button.png" />
+    <Content Include="Assets\Images\Menu\Dialog_Button.png" />
+    <Content Include="Assets\Images\Menu\Graph_Button.png" />
+    <Content Include="Assets\Images\Menu\Hamburger_Button.png" />
+    <Content Include="Assets\Images\Menu\Heart_Button.png" />
+    <Content Include="Assets\Images\Menu\Profile_Button.png" />
+    <Content Include="Assets\Images\Menu\Profile_Example.jpg" />
+    <Content Include="Assets\Images\Menu\Settings_Button.png" />
+    <Content Include="Assets\Images\Menu\SportsPerformance-App-Logo.png" />
+    <Content Include="Assets\Images\Menu\Stopwatch_Button.png" />
+    <Content Include="Assets\Images\Menu\temp_coach.gif" />
+    <Content Include="Assets\Images\Menu\VS_Button.png" />
+    <Content Include="Assets\Images\MiddleDiamond.png" />
+    <Content Include="Assets\Images\NextButton.jpg" />
+    <Content Include="Assets\Images\orlando_logo.png" />
+    <Content Include="Assets\Images\PlayerCutoutExample.png" />
+    <Content Include="Assets\Images\QuestionnaireGradient.jpg" />
+    <Content Include="Assets\Images\rawls_thomas.png" />
+    <Content Include="Assets\Images\sheldon_richardson.png" />
+    <Content Include="Assets\Images\SignIn_BG.jpg" />
+    <Content Include="Assets\Images\speedometer.png" />
+    <Content Include="Assets\Images\spider-web.png" />
+    <Content Include="Assets\Images\SportsPerformance-App-Logo_Large.png" />
+    <Content Include="Assets\Images\TempImages\CarsonPicketProfile.jpg" />
+    <Content Include="Assets\Images\TempImages\Drill_Diagram_Placeholder.jpg" />
+    <Content Include="Assets\Images\TempImages\ExerciseImagePlaceholder.jpg" />
+    <Content Include="Assets\Images\TempImages\TempTileImage.png" />
+    <Content Include="Assets\Images\TempImages\Temp_Icon.png" />
+    <Content Include="Assets\Images\wilson_russell.png" />
+    <Content Include="Assets\indicator_dot.png" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\Microsoft.png" />
+    <Content Include="Assets\Logo_Large.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-BadgeLogo.scale-100.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-BadgeLogo.scale-125.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-BadgeLogo.scale-150.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-BadgeLogo.scale-200.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-BadgeLogo.scale-400.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_160x160.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_200x200.scale-100.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_200x200.scale-400.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_320x320.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_50x50.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_50x50.scale-100.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_640x640.png" />
+    <Content Include="Assets\SportPerf-App-Icon\SportsPerformance-App-Icon_96x96.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Square71x71Logo.scale-125.png" />
+    <Content Include="Assets\Square71x71Logo.scale-150.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\TPPSplashScreen-1240.scale-100.png" />
+    <Content Include="Assets\TPPSplashScreen-1240.scale-125.png" />
+    <Content Include="Assets\TPPSplashScreen-1240.scale-150.png" />
+    <Content Include="Assets\TPPSplashScreen-1240.scale-200.png" />
+    <Content Include="Assets\TPPSplashScreen-1240.scale-400.png" />
+    <Content Include="Assets\TPPSplashScreen-2480.png" />
+    <Content Include="Assets\TPPSplashScreen-620.png" />
+    <Content Include="Assets\TPPSplashScreen-775.png" />
+    <Content Include="Assets\TPPSplashScreen-930.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ChangeComparisonStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Controls\MenuButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Controls\ToggleSwitch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\NextMatchControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Pages\Player360ViewStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Pages\PlayerHubStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\PerformanceRadarStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\PlayerMatchStatisticStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\PlayerMatchStatisticTableDialogStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ReadinessTileStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TeamTrendingTileStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\WellnessGraphStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\AddDrillsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CameraControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\DurationPickerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EditableTextBlockUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EditExerciseListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EmotionEmojiControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\EmotionMeterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\FaceIdentificationBorder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ImageWithFaceBorderUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\LoadMeterUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MatchPerformanceUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\NextMatchTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PerformanceSnapshotUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlayerFitnessTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LargeWorkoutTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PlayerReadyTile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PracticeTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\RealTimeFaceIdentificationBorder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SelectPracticeTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SignInOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TeamReadinessUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\WellnessGraphUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ChoosePlayerGroups.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Generic\FunctionalityNotImplemented.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Generic\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\AccessDenied.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Questionnaire\EditQuestions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\GreetingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dashboard\Player360View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Practice\PracticeSessionManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Practice\PracticeSessionPlannerAddDrills.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CreateNewTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DeleteButtonListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EditSessionManagerTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\EditWorkoutTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SelectWorkoutTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Practice\PracticeSessionPlannerAddPlayerGroups.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Questionnaire\ThankYouPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TopicSubTopicUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Questionnaire\CreateQuestions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Workout\SelectWorkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\ItemsControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Styles\Typography.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="UserControls\LargeExerciseTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlayersAssignedUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelectExerciseTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SelectGroupUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SelectPlayerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CalendarUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CalendarTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DrillTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ExerciseTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\GraphUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MessageTileUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PlayerTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\QuestionUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WellnessTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WorkoutTileUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Questionnaire\AnswerPostQuestions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dashboard\AthleteSummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Calendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Workout\EditWorkoutDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Workout\ExercisePlanManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Practice\SessionManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dashboard\TrainingDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Workout\WorkoutManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Workout\WorkoutPlanManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Workout\WorkoutPlanManagerEditWorkout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Workout\WorkoutPlayflow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CommonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\Practice\SessionPlanner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Questionnaire\AnswerQuestions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Workout\CoachWorkout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Workout\Workouts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Images\Fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.15063.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsIoT, Version=10.0.15063.0">
+      <Name>Windows IoT Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.15063.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsTeam, Version=10.0.15063.0">
+      <Name>Windows Team Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Mobile.Client">
+      <Version>4.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Identity.Client">
+      <Version>1.1.0-preview</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ProjectOxford.Emotion">
+      <Version>1.0.336</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ProjectOxford.Face">
+      <Version>1.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLight">
+      <Version>5.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="WinRTXamlToolkit">
+      <Version>2.3.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spp.Presentation.User.Shared\Spp.Presentation.User.Shared.csproj">
+      <Project>{24a924c0-91ca-492f-97a0-3a1d1a57c17a}</Project>
+      <Name>Spp.Presentation.User.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,393 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sqlServerName": {
+            "type": "string",
+            "defaultValue": "spp-sqlserver",
+            "metadata": {
+                "description": "The name of the SQL server."
+            }
+        },
+        "sqlServerAdminLogin": {
+            "type": "string",
+            "metadata": {
+                "description": "The administrator username of the SQL server."
+            }
+        },
+        "sqlServerAdminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The administrator password of the SQL server."
+            }
+        },
+        "dbName": {
+            "type": "string",
+            "defaultValue": "spp-dbv2",
+            "metadata": {
+                "description": "The name of the database."
+            }
+        },
+        "dbCollation": {
+            "type": "string",
+            "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
+            "metadata": {
+                "description": "The database collation for governing the proper use of characters."
+            }
+        },
+        "dbPerfLevel": {
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "S0",
+                "S1",
+                "S2",
+                "S3",
+                "S4",
+                "S6",
+                "S7",
+                "S9",
+                "S12",
+                "P1",
+                "P2",
+                "P3",
+                "P4",
+                "P6",
+                "P11",
+                "P15",
+                "PRS1",
+                "PRS2",
+                "PRS4",
+                "PRS6"
+            ],
+            "metadata": {
+                "description": "The performance level for the database."
+            }
+        },
+        "dbMaxSizeBytes": {
+            "type": "string",
+            "defaultValue": "1073741824",
+            "metadata": {
+                "description": "The maximum size, in bytes, for the database."
+            }
+        },
+        "dbImportStorageUri": {
+            "type": "string",
+            "metadata": {
+                "description": "The uri of the database import storage account."
+            }
+        },
+        "dbImportStorageKey": {
+            "type": "securestring",
+            "metadata": {
+                "description": "The key of the database import storage account."
+            }
+        },
+        "appServicePlanSkuName": {
+            "type": "string",
+            "defaultValue": "S1",
+            "allowedValues": [
+                "S1",
+                "S2",
+                "S3",
+                "P1",
+                "P2",
+                "P3",
+                "P1V2",
+                "P2V2",
+                "P3V2"
+            ],
+            "metadata": {
+                "description": "The sku "
+            }
+        },
+        "coreApiName": {
+            "type": "string",
+            "defaultValue": "spp-api-core",
+            "metadata": {
+                "description": "The name of the SPP API app."
+            }
+        },
+        "adminAppName": {
+            "type": "string",
+            "defaultValue": "spp-app-admin",
+            "metadata": {
+                "description": "The name of the admin portal app."
+            }
+        },
+        "dataLoaderApiName": {
+            "type": "string",
+            "defaultValue": "spp-api-data",
+            "metadata": {
+                "description": "The name of the data loader api."
+            }
+        },
+        "dataloaderAppName": {
+            "type": "string",
+            "defaultValue": "spp-app-data",
+            "metadata": {
+                "description": "The name of the data loader app."
+            }
+        },
+        "dataloaderSbName": {
+            "type": "string",
+            "defaultValue": "spp-sb-data",
+            "metadata": {
+                "description": "The name of the data loader service bus."
+            }
+        },
+        "fileStorageName": {
+            "type": "string",
+            "defaultValue": "sppfiles",
+            "metadata": {
+                "description": "The name of the storage account for uploaded SPP files."
+            }
+        },
+        "userImgStorageName": {
+            "type": "string",
+            "defaultValue": "sppuserimgs",
+            "metadata": {
+                "description": "The name of the storage account for user images."
+            }
+        },
+        "schemaDocumentDbName": {
+            "type": "string",
+            "defaultValue": "sppschemas",
+            "metadata": {
+                "description": "The name of the Document DB for data schemas."
+            }
+        }
+    },
+    "variables": {
+        "uniqueNameSuffix": "[uniqueString(resourceGroup().id)]",
+        "sqlServerName": "[if(equals(parameters('sqlServerName'), 'spp-sqlserver'), concat('spp-sqlserver-', variables('uniqueNameSuffix')), parameters('sqlServerName'))]",
+        "coreApiName": "[if(equals(parameters('coreApiName'), 'spp-api-core'), concat('spp-api-core-', variables('uniqueNameSuffix')), parameters('coreApiName'))]",
+        "adminAppName": "[if(equals(parameters('adminAppName'), 'spp-app-admin'), concat('spp-app-admin-', variables('uniqueNameSuffix')), parameters('adminAppName'))]",
+        "dataloaderApiName": "[if(equals(parameters('dataloaderApiName'), 'spp-api-data'), concat('spp-api-data-', variables('uniqueNameSuffix')), parameters('dataLoaderApiName'))]",
+        "dataloaderAppName": "[if(equals(parameters('dataloaderAppName'), 'spp-app-data'), concat('spp-app-data-', variables('uniqueNameSuffix')), parameters('dataLoaderApiName'))]",
+        "dataloaderSbName": "[if(equals(parameters('dataloaderSbName'), 'spp-sb-data'), concat('spp-sb-data-', variables('uniqueNameSuffix')), parameters('dataloaderSbName'))]",
+        "fileStorageName": "[if(equals(parameters('fileStorageName'), 'sppfiles'), concat('sppfiles', variables('uniqueNameSuffix')), parameters('fileStorageName'))]",
+        "userImgStorageName": "[if(equals(parameters('userImgStorageName'), 'sppuserimgs'), concat('sppuserimgs', variables('uniqueNameSuffix')), parameters('userImgStorageName'))]",
+        "schemaDocumentDbName": "[if(equals(parameters('schemaDocumentDbName'), 'sppschemas'), concat('sppschemas', variables('uniqueNameSuffix')), parameters('schemaDocumentDbName'))]",
+        "dbEdition": "[variables('dbEditions')[variables('dbEditionKey')]]",
+        "dbEditionKey": "[if(equals(substring(parameters('dbPerfLevel'), 0, 2), 'PR'), 'PRS', substring(parameters('dbPerfLevel'), 0, 1))]",
+        "dbEditions": {
+            "B": "Basic",
+            "S": "Standard",
+            "P": "Premium",
+            "PRS": "PremiumRS"
+        },
+        "appServicePlanName": "[concat('spp-appserviceplan', uniqueString(resourceGroup().id))]",
+        "appServicePlanSkuTier": "[variables('appServicePlanSkuTiers')[substring(parameters('appServicePlanSkuName'), 0, 1)]]",
+        "appServicePlanSkuTiers": {
+            "S": "Standard",
+            "P": "Premium"
+        }
+    },
+    "resources": [
+        {
+            "name": "[variables('sqlServerName')]",
+            "type": "Microsoft.Sql/servers",
+            "apiVersion": "2014-04-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "administratorLogin": "[parameters('sqlServerAdminLogin')]",
+                "administratorLoginPassword": "[parameters('sqlServerAdminPassword')]",
+                "version": "12.0"
+            },
+            "resources": [
+                {
+                    "name": "AllowAllAzureIps",
+                    "type": "firewallrules",
+                    "apiVersion": "2014-04-01-preview",
+                    "properties": {
+                        "startIpAddress": "0.0.0.0",
+                        "endIpAddress": "0.0.0.0"
+                    },
+                    "dependsOn": [
+                        "[variables('sqlServerName')]"
+                    ]
+                },
+                {
+                    "name": "[parameters('dbName')]",
+                    "type": "databases",
+                    "apiVersion": "2014-04-01-preview",
+                    "location": "[resourceGroup().location]",
+                    "properties": {
+                        "collation": "[parameters('dbCollation')]",
+                        "maxSizeBytes": "[parameters('dbMaxSizeBytes')]",
+                        "edition": "[variables('dbEdition')]",
+                        "requestedServiceObjectiveName": "[parameters('dbPerfLevel')]"
+                    },
+                    "resources": [
+                        {
+                            "name": "sqlImport",
+                            "type": "extensions",
+                            "apiVersion": "2014-04-01-preview",
+                            "properties": {
+                                "operationMode": "Import",
+                                "storageUri": "[parameters('dbImportStorageUri')]",
+                                "storageKey": "[parameters('dbImportStorageKey')]",
+                                "storageKeyType": "Primary",
+                                "administratorLogin": "[parameters('sqlServerAdminLogin')]",
+                                "administratorLoginPassword": "[parameters('sqlServerAdminPassword')]"
+                            },
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Sql/servers/databases', variables('sqlServerName'), parameters('dbName'))]"
+                            ]
+                        }
+                    ],
+                    "dependsOn": [
+                        "[variables('sqlServerName')]"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "[variables('appServicePlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2016-09-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "name": "[variables('appServicePlanName')]"
+            },
+            "sku": {
+                "name": "[parameters('appServicePlanSkuName')]",
+                "tier": "[variables('appServicePlanSkuTier')]"
+            }
+        },
+        {
+            "name": "[variables('coreApiName')]",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2016-08-01",
+            "kind": "api",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+            },
+            "dependsOn": [
+                "[variables('appServicePlanName')]"
+            ]
+        },
+        {
+            "name": "[variables('adminAppName')]",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2016-08-01",
+            "kind": "app",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+            },
+            "dependsOn": [
+                "[variables('appServicePlanName')]"
+            ]
+        },
+        {
+            "name": "[variables('userImgStorageName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2017-06-01",
+            "kind": "BlobStorage",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "properties": {
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        },
+                        "file": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        },
+        {
+            "name": "[variables('dataloaderApiName')]",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2016-08-01",
+            "kind": "api",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+            },
+            "dependsOn": [
+                "[variables('appServicePlanName')]"
+            ]
+        },
+        {
+            "name": "[variables('dataloaderAppName')]",
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2016-08-01",
+            "kind": "app",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+            },
+            "dependsOn": [
+                "[variables('appServicePlanName')]"
+            ]
+        },
+        {
+            "name": "[variables('dataloaderSbName')]",
+            "type": "Microsoft.ServiceBus/namespaces",
+            "apiVersion": "2017-04-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard",
+                "tier": "Standard"
+            },
+            "properties": {}
+        },
+        {
+            "name": "[variables('fileStorageName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2017-06-01",
+            "kind": "Storage",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "properties": {
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": true
+                        },
+                        "file": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            }
+        },
+        {
+            "name": "[variables('schemaDocumentDbName')]",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "2015-04-08",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "name": "[variables('schemaDocumentDbName')]",
+                "databaseAccountOfferType": "Standard",
+                "locations": [
+                    {
+                        "locationName": "[resourceGroup().location]",
+                        "failoverPriority": 0
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+        "dbAdoConnString": {
+            "type": "string",
+            "value": "[concat('Server=tcp:',reference(variables('sqlServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('dbName'),';Persist Security Info=False;User ID=',reference(variables('sqlServerName')).administratorLogin,';Password=',reference(variables('sqlServerName')).administratorLoginPassword,';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]"
+        }
+    }
+}

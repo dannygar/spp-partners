@@ -1,0 +1,108 @@
+<!-- General info -->
+<div class="row">
+    <div class="col-md-3">First Name</div>
+    <div class="col-md-6">
+        <input type="text" size="30" ng-model="vm.user.name" readonly="readonly"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Last Name</div>
+    <div class="col-md-6">
+        <input type="text" size="30" ng-model="vm.user.lastName" readonly="readonly"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Date of Birth</div>
+    <date-picker format="M dd yy" class="col-md-4" show-icon="true"
+                 value="vm.user.dateOfBirth" input-class="square"></date-picker>
+</div>
+<div class="row">
+    <div class="col-md-3">Gender</div>
+    <div class="col-md-3">
+        <select ng-model="vm.user.gender"
+                ng-options="option for option in ::vm.genderOptions">
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Height</div>
+    <div class="col-md-6">
+        <div class="row">
+            <composite-switcher initial-text="In" toggled-text="Cm" on-switch="vm.switchHeightType"
+                                value="vm.user.height" factor="12"
+                                first-composite-measure-name="Feet" second-composite-measure-name="In">
+            </composite-switcher>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Weight</div>
+    <div class="col-md-6">
+        <div class="row">
+            <switcher initial-text="Lb" toggled-text="Kg" on-switch="vm.switchWeightType"
+                      value="vm.user.weight"></switcher>
+        </div>
+    </div>
+</div>
+
+<!-- Position info -->
+<div class="row margin-top-50" ng-if="vm.roleId === 2">
+    <div class="col-md-3">Shirt Number</div>
+    <div class="col-md-2">
+        <input type="number" min="0" ng-model="vm.user.shirtNumber">
+    </div>
+</div>
+<div class="row" ng-if="vm.roleId === 2">
+    <div class="col-md-3">Position</div>
+    <div class="col-md-5">
+        <select ng-model="vm.user.positionId"
+                ng-options="option.id as option.name for option in ::vm.positionOptions">
+        </select>
+    </div>
+</div>
+<div class="row" ng-if="vm.roleId === 2">
+    <div class="col-md-3">Sub-position</div>
+    <div class="col-md-5">
+        <select ng-model="vm.user.subPositionId"
+                ng-options="option.id as option.name for option in vm.subPositionOptions">
+        </select>
+    </div>
+</div>
+
+<!-- Account info -->
+<div class="row margin-top-50">
+    <div class="col-md-3">Email</div>
+    <div class="col-md-7">
+        <input type="email" size="35" ng-model="vm.user.email"/>
+    </div>
+</div>
+
+<modal-view modal-id="changePasswordModal" submit-text="Save changes" on-submit="vm.changePassword"
+            on-hide="vm.clearPassword"
+            title="Change user password."
+            spinner-show-event="showSpinnerInPasswordModal" spinner-hide-event="hideSpinnerInPasswordModal"
+            popover-show-event="showPopoverInPasswordModal">
+    <div class="row margin-bottom-10">
+        <div class="col-md-4">New password</div>
+        <div class="col-md-5">
+            <input type="password" size="35" ng-model="vm.newPassword"/>
+        </div>
+        <div ng-show="vm.showNewPasswordError" class="cold-md-3">
+            <div class="label label-danger">Required</div>
+        </div>
+    </div>
+    <div class="row margin-bottom-10">
+        <div class="col-md-4">Confirm password</div>
+        <div class="col-md-5">
+            <input type="password" size="35" ng-model="vm.confirmedPassword"/>
+        </div>
+        <div ng-show="vm.showConfirmPasswordError" class="cold-md-3">
+            <div class="label label-danger">Required</div>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-if="vm.showPasswordMismatchError" class="col-md-offset-4 col-md-5">
+            <div class="label label-danger">Passwords do not match. Please enter matching passwords.</div>
+        </div>
+    </div>
+</modal-view>

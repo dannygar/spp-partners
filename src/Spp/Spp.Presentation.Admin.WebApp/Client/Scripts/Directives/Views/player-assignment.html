@@ -1,0 +1,64 @@
+﻿<!-- Players table -->
+<div class="row margin-bottom-20">
+    <!-- Left column -->
+    <div class="col-md-6 box left-box">
+        <div class="row">
+            <div class="pull-left">
+                Athletes
+            </div>
+            <div class="pull-right" ng-click="addAll()">
+                Add all
+                <button class="btn btn-transparent btn-no-border padding-0 no-outline">
+                    <img src="/Client/CSS/images/player_add.png">
+                </button>
+            </div>
+        </div>
+
+        <div class="row line margin-bottom-5"></div>
+
+        <div class="row scrollable-list" ng-class="{'disabled': disabled}">
+            <div class="row greed-container" ng-repeat="(group, groupPlayers) in groups">
+                <div class="row group-title">{{group}}</div>
+                <div class="row" ng-repeat="item in groupPlayers | orderBy:'LastName'" ng-click="transferFromAvailablePlayersToSession(item)">
+                    <div class="col-md-2">
+                        <img class="img-responsive img-circle" ng-src="{{::item.PathToPhoto}}" />
+                    </div>
+                    <div class="col-md-10">
+                        {{::(item.lastName + ', ' + item.firstName)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="col-md-6 box right-box">
+        <div class="row">
+            <div class="pull-left">
+                Selected Athletes
+            </div>
+            <div class="pull-right" ng-click="removeAll()">
+                Clear all
+                <button class="btn btn-transparent btn-no-border padding-0 no-outline">
+                    <img src="/Client/CSS/images/player_remove.png">
+                </button>
+            </div>
+        </div>
+
+        <div class="row line margin-bottom-5"></div>
+
+        <div class="row scrollable-list" ng-class="{'disabled': disabled}">
+            <div class="row greed-container" ng-repeat="(group, groupPlayers) in sessionGroups">
+                <div class="row group-title">{{group}}</div>
+                <div class="row" ng-repeat="item in groupPlayers | orderBy:'LastName'" ng-click="transferFromSessionToAvailablePlayers(item)">
+                    <div class="col-md-2 img-column">
+                        <img class="img-responsive img-circle" ng-src="{{::item.PathToPhoto}}" />
+                    </div>
+                    <div class="col-md-10">
+                        {{::(item.lastName + ', ' + item.firstName)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

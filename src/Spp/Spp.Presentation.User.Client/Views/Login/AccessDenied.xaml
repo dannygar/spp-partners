@@ -1,0 +1,48 @@
+﻿<Page x:Name="AccessDeniedPage"
+    x:Class="MicrosoftSportsScience.Views.AccessDenied"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
+    mc:Ignorable="d"
+    SizeChanged="SignInPage_SizeChanged">
+
+    <Grid Background="{StaticResource PlayerHubBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ProgressRing Grid.Row="0" Grid.RowSpan="3"
+            Style="{StaticResource PlayerHubProgressRing}"
+            Visibility="{Binding IsLoading, Converter={StaticResource TrueToVisibleConverter}}"
+            IsActive="{Binding IsLoading}" />
+
+        <Grid Grid.Row="1"  x:Name="accessDeniedGrid">
+            <TextBlock x:Name="textBlock" Text="Access Denied." TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Foreground="{ThemeResource SystemControlForegroundChromeBlackMediumBrush}" FontStyle="Normal" FontWeight="Bold" Opacity="100" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BackButton" HorizontalAlignment="Center" VerticalAlignment="Top" Tapped="BackButton_OnTapped" 
+                    Background="#c0C4c8" 
+                    Foreground="{StaticResource LightAccentBlueBrush}" 
+                    Height="60" Width="180"
+                        Margin="0,0,40,0"
+                        FontSize="20"
+                        Padding="0" Opacity="0.8">Go Back</Button>
+                <Button x:Name="SettingsButton" HorizontalAlignment="Center" VerticalAlignment="Top" Tapped="OnSettingsClicked" 
+                        Background="#c0C4c8" 
+                        Foreground="{StaticResource LightAccentBlueBrush}" 
+                        Height="60" Width="180"
+                    Margin="0"
+                    FontSize="20"
+                        Padding="0" Opacity="0.8">Go to Settings</Button>
+            </StackPanel>
+        </Grid>
+        <UserControls:SignInOptions CurrentMethod="Keyboard" VerticalAlignment="Bottom" Grid.Row="3" />
+    </Grid>
+
+
+</Page>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09944FC9-EA97-4B83-99E4-142B1256BC6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SportsDataLoader.FileProcessing</RootNamespace>
+    <AssemblyName>SportsDataLoader.FileProcessing</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.2.1\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\AnalysisExtensions.cs" />
+    <Compile Include="Extensions\DataTypeExtensions.cs" />
+    <Compile Include="Extensions\DelimitedTextRowExtensions.cs" />
+    <Compile Include="Extensions\SchemaExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\XlsxRowExtensions.cs" />
+    <Compile Include="Factories\FileProcessingServiceFactory.cs" />
+    <Compile Include="Factories\DataTableImportProcessorFactory.cs" />
+    <Compile Include="Discoverers\RelationshipDiscoverer.cs" />
+    <Compile Include="Interfaces\ICsvFileParser.cs" />
+    <Compile Include="Interfaces\IDataTableImportProcessor.cs" />
+    <Compile Include="Interfaces\IDataTableImportProcessorFactory.cs" />
+    <Compile Include="Interfaces\IDelimitedTextFileAnalysisProcessor.cs" />
+    <Compile Include="Interfaces\IDelimitedTextFileDataTableParser.cs" />
+    <Compile Include="Interfaces\IDelimitedTextFileProcessingService.cs" />
+    <Compile Include="Interfaces\IFileAnalysisProcessor.cs" />
+    <Compile Include="Interfaces\ITabularFileDataTableParser.cs" />
+    <Compile Include="Interfaces\IFileProcessingService.cs" />
+    <Compile Include="Interfaces\IFileProcessingServiceFactory.cs" />
+    <Compile Include="Interfaces\IAnalysisRepository.cs" />
+    <Compile Include="Interfaces\IDataTableAnalyzer.cs" />
+    <Compile Include="Interfaces\IDataTableScrubber.cs" />
+    <Compile Include="Interfaces\IImporter.cs" />
+    <Compile Include="Interfaces\IPrimaryKeyModel.cs" />
+    <Compile Include="Interfaces\IPrimaryKeyModelProvider.cs" />
+    <Compile Include="Interfaces\IRelationshipDiscoverer.cs" />
+    <Compile Include="Interfaces\ITabularFileProcessingService.cs" />
+    <Compile Include="Interfaces\ITsvFileParser.cs" />
+    <Compile Include="Interfaces\IXlsxFileAnalysisProcessor.cs" />
+    <Compile Include="Interfaces\IXlsxFileDataTableParser.cs" />
+    <Compile Include="Interfaces\IXlsxFileParser.cs" />
+    <Compile Include="Interfaces\IXlsxFileProcessingService.cs" />
+    <Compile Include="Interfaces\IXmlContextParser.cs" />
+    <Compile Include="Interfaces\IXmlParser.cs" />
+    <Compile Include="Interfaces\IZipFileParser.cs" />
+    <Compile Include="Interfaces\IZipFileProcessingService.cs" />
+    <Compile Include="Interfaces\IZipFileProcessor.cs" />
+    <Compile Include="Models\CustomDataForeignKeyModel.cs" />
+    <Compile Include="Models\DataTable.cs" />
+    <Compile Include="Models\DataTableImportMetadata.cs" />
+    <Compile Include="Models\DataValue.cs" />
+    <Compile Include="Models\DelimitedTextFile.cs" />
+    <Compile Include="Models\DelimitedTextRow.cs" />
+    <Compile Include="Models\DiscoveredRelationship.cs" />
+    <Compile Include="Models\ImportMetadata.cs" />
+    <Compile Include="Models\TabularFileAnalysis.cs" />
+    <Compile Include="Models\XlsxFile.cs" />
+    <Compile Include="Models\XlsxRow.cs" />
+    <Compile Include="Models\XlsxSheet.cs" />
+    <Compile Include="Models\ZipFile.cs" />
+    <Compile Include="Normalizers\DataTableNormalizer.cs" />
+    <Compile Include="Parsers\CsvFileParser.cs" />
+    <Compile Include="Parsers\DelimitedTextFileDataTableParser.cs" />
+    <Compile Include="Parsers\DelimitedTextFileParser.cs" />
+    <Compile Include="Parsers\TsvFileParser.cs" />
+    <Compile Include="Parsers\XlsxFileDataTableParser.cs" />
+    <Compile Include="Parsers\XlsxFileDataTableParserOptions.cs" />
+    <Compile Include="Parsers\XlsxFileParser.cs" />
+    <Compile Include="Parsers\ZipFileParser.cs" />
+    <Compile Include="Processors\BaseAnalysisProcessor.cs" />
+    <Compile Include="Processors\CustomDataEntityImportProcessor.cs" />
+    <Compile Include="Processors\TabularFileAnalysisProcessor.cs" />
+    <Compile Include="Processors\ZipFileProcessor.cs" />
+    <Compile Include="Scrubbers\JunkValueDataTableScrubber.cs" />
+    <Compile Include="Scrubbers\TimeZoneCodeDataTableScrubber.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scrubbers\NumericUnitDataTableScrubber.cs" />
+    <Compile Include="Analyzers\DataTableAnalyzer.cs" />
+    <Compile Include="Services\BaseFileProcessingService.cs" />
+    <Compile Include="Services\BaseTabularFileProcessingService.cs" />
+    <Compile Include="Services\DelimitedTextFileProcessingService.cs" />
+    <Compile Include="Services\XlsxFileProcessingService.cs" />
+    <Compile Include="Services\ZipFileProcessingService.cs" />
+    <Compile Include="Xml\XmlContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportsDataLoader.FileManagement\SportsDataLoader.FileManagement.csproj">
+      <Project>{844330C5-9E97-484A-B863-101C1117A897}</Project>
+      <Name>SportsDataLoader.FileManagement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsDataLoader.Messaging\SportsDataLoader.Messaging.csproj">
+      <Project>{1B18A634-AF52-4E39-96A3-F327C9FF910B}</Project>
+      <Name>SportsDataLoader.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsDataLoader.Model\SportsDataLoader.Model.csproj">
+      <Project>{042DFD24-A036-4743-A172-E6D10BBD728F}</Project>
+      <Name>SportsDataLoader.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsDataLoader.Shared\SportsDataLoader.Shared.csproj">
+      <Project>{94B79209-322A-407A-BB4A-E1DA2158738D}</Project>
+      <Name>SportsDataLoader.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\IDelimitedTextFileParser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

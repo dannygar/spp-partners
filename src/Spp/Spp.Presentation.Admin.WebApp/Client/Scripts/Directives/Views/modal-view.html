@@ -1,0 +1,24 @@
+﻿<div class="modal fade" tabindex="-1" role="dialog" id="{{::modalId}}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div ng-transclude class="modal-transclude"></div>
+            </div>
+            <div class="modal-footer">
+                <loading-spinner start-event="{{spinnerShowEvent}}" end-event="{{spinnerHideEvent}}"></loading-spinner>
+                <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary text-uppercase" 
+                        ng-click="submit()"
+                        popover start-event="{{popoverShowEvent}}" end-event="{{popoverHideEvent}}">
+                    {{::submitText}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

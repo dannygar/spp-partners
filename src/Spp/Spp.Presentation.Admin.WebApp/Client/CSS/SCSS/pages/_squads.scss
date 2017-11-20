@@ -1,0 +1,9 @@
+.squads-page
+{
+    .squad-list {
+        .row:nth-child(2) {
+            pointer-events: none;
+            opacity: 0.64;
+        }
+    }
+}

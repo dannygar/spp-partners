@@ -1,0 +1,39 @@
+<!-- Step 3 Overview -->
+<div class="col-md-10 col-md-offset-1">
+    <label>Session overview:</label>
+
+    <div class="row">
+        <div class="col-md-2 text-right">Duration</div>
+        <div class="col-md-8">{{vm.session.durationMinutes}}</div>
+    </div>
+    <!--
+    <div class="row">
+        <div class="col-md-2 text-right">Coach Rating</div>
+        <div class="col-md-8">{{vm.session.coachRating}}</div>
+    </div>-->
+    <div class="row">
+        <div class="col-md-2 text-right">Date</div>
+        <div class="col-md-8">{{vm.step3.startDate()}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 text-right">Type</div>
+        <div class="col-md-8">{{vm.step3.type()}}</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-2 text-right">Sub type</div>
+        <div class="col-md-8">{{vm.step3.subType() || "none"}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 text-right">Location</div>
+        <div class="col-md-8">{{vm.step3.location() || "none"}}</div>
+    </div><!--
+    <div class="row">
+        <div class="col-md-2 text-right">Day type</div>
+        <div class="col-md-8">{{vm.step3.dayType()}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 text-right">Alert after</div>
+        <div class="col-md-8">{{vm.session.alertAfterMinutes}}</div>
+    </div>-->
+</div>

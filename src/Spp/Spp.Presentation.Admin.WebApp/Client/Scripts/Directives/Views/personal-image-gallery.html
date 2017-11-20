@@ -1,0 +1,148 @@
+﻿<!-- Search and Management buttons -->
+<div class="row margin-top-5">
+    <div class="col-md-12 text-right">
+
+        <button class="btn btn-success text-uppercase"
+                data-toggle="modal" data-target="#addPersonalImageModal" ng-click="showAddImageModal()">
+            Upload new image
+        </button>
+    </div>
+</div>
+
+<div class="row h-center" ng-if="!images.length > 0">
+    No images yet
+</div>
+
+<!-- Image rows -->
+<div class="row">
+    <pager input="images"
+           output="pageImages"
+           filter="personalImages:personalImageSearch:players"
+           number-of-items-on-page="12"
+           numberOfVisiblePages="24">
+        <div class="col-md-3 v-center personal-image" context-menu="contextMenuOptions(item)"
+             data-toggle="modal" data-target="#editPersonalImageModal" ng-click="showEditImageModal(item)"
+             ng-repeat="item in pageImages">
+            <div class="image-wrapper">
+                <img class="img-responsive" ng-src="{{::item.url}}"/>
+            </div>
+        </div>
+    </pager>
+</div>
+
+<!-- Add image modal -->
+<modal-view modal-id="addPersonalImageModal"
+            title="Upload Image"
+            submit-text="Save image"
+            on-submit="saveNewImage"
+            on-hide="clearAddImageModal"
+            on-show="showAddImageModal"
+            spinner-show-event="showSpinnerInImageModal" spinner-hide-event="hideSpinnerInImageModal"
+            popover-show-event="showPopoverInImageModal">
+    <div class="row margin-bottom-10">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="input-group">
+                <span class="input-group-btn" popover start-event="showPopoverOnUploadButton"
+                      end-event="hidePopoverOnUploadButton">
+                    <span class="btn btn-primary btn-file">
+                        Browse&hellip; <input type="file" id="personal-image-input" accept="image/*">
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div ng-if="showImageError" class="col-md-offset-2 col-md-5">
+            <div class="label label-danger">Please select an image</div>
+        </div>
+    </div>
+
+    <div class="row margin-bottom-10">
+        <div class="col-md-8 col-md-offset-2">
+            <img class="image-preview" src="#" ng-show="showImagePreview"/>
+        </div>
+    </div>
+
+    <div class="row margin-bottom-10">
+        <div class="col-md-2">
+            Tag:
+        </div>
+        <div class="col-md-8">
+            <input type="text" ng-model="data.tags" readonly placeholder="Motivational" value="Motivational">
+        </div>
+    </div>
+
+    <div class="row">
+        <div ng-if="showImageError" class="col-md-offset-2 col-md-5">
+            <div class="label label-danger">Please add some tags to the image</div>
+        </div>
+    </div>
+</modal-view>
+
+
+<!-- Edit modal -->
+<modal-view modal-id="editPersonalImageModal"
+            title="Edit Image"
+            submit-text="Save image"
+            on-submit="saveEditedImage"
+            on-hide="clearImageFields"
+            spinner-show-event="showSpinnerInImageModal" spinner-hide-event="hideSpinnerInImageModal"
+            popover-show-event="showPopoverInImageModal">
+
+    <div class="row margin-bottom-10">
+        <div class="col-md-8 col-md-offset-2">
+            <img class="image-preview" ng-src="{{selectedImage.url}}"/>
+        </div>
+    </div>
+
+    <div class="row margin-bottom-10">
+        <div class="col-md-2">
+            Tag:
+        </div>
+        <div class="col-md-8">
+            <input type="text" ng-model="selectedImage.tags" readonly placeholder="Motivational">
+        </div>
+    </div>
+
+    <div class="row">
+        <div ng-if="showImageError" class="col-md-offset-2 col-md-5">
+            <div class="label label-danger">Please add some tags to the image</div>
+        </div>
+    </div>
+</modal-view>
+
+
+<!-- Delete modal -->
+<modal-view modal-id="deletePersonalImgModal" submit-text="Delete" on-submit="removeImageFromServer"
+            on-show="stopCarousel" on-hide="startCarousel"
+            title="Delete Image"
+            spinner-show-event="showSpinnerInDeleteImgModal" spinner-hide-event="hideSpinnerInDeleteImgModal"
+            popover-show-event="showPopoverInDeleteImgModal">
+    <p>Are you sure you want to delete this item?</p>
+</modal-view>
+
+<!-- Verification team modal -->
+<alert-view modal-id="verificationTeamImgModal" title="Assigned Motivation Images">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 greed-container">
+            <div class="row">
+                <div class="col-md-9">
+                    Player Name
+                </div>
+                <div class="col-md-3">
+                    Number
+                </div>
+            </div>
+            <div class="row" ng-repeat="player in players | orderBy:'LastName' | showUsers:true:false">
+                <div class="col-md-9">
+                    {{::(player.LastName + ', ' + player.Name)}}
+                </div>
+                <div class="col-md-3 text-center">
+                    {{numberOfPlayerPersonalImages(player)}}
+                </div>
+            </div>
+        </div>
+    </div>
+</alert-view>

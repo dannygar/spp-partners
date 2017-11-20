@@ -1,0 +1,56 @@
+.btn {
+    border-radius: 0;
+}
+
+.btn-modern {
+    background: #C4C4C4;
+    color: white;
+}
+
+.btn-success {
+    background: $light-green;
+}
+
+.btn-rounded {
+    border-radius: 8px;
+}
+
+.btn-transparent {
+    border: 1px white solid;
+    background: transparent;
+    color: white;
+
+    &.focus, &:focus, &:hover {
+        color: white;
+        outline: none;
+    }
+}
+
+.btn-wide {
+    padding: 10px 20px;
+}
+
+.btn-extra-wide {
+    width: 125px;
+    padding: 10px 20px;
+}
+
+.btn-group {
+    &.margin-around {
+        button {
+            margin: 5px;
+        }
+    }
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon input {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}

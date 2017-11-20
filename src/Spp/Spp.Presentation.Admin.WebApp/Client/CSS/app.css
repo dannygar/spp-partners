@@ -1,0 +1,1576 @@
+/* To include other scss files use following notation:
+    @import "test.scss";
+*/
+
+.primary-team-color{
+     /*background-color: #01478F !important;*/
+}
+.secondary-team-color{
+    /*background-color:yellow !important;
+    border-bottom-color: yellow !important;*/
+}
+.secondary-team-color:hover {
+    border-bottom-color: #dddddd !important; }
+.secondary-team-color:active {
+     border-bottom-color: transparent !important;
+  color: #555555 !important; }
+.container .top-header {
+  background-color: #0F1E2B;
+  color: white;
+  padding: 10px;
+  margin: 0; }
+  .container .top-header a {
+    text-decoration: none;
+    color: white; }
+  .container .top-header .team-logo {
+    max-width: 80%; }
+.container .nav.nav-tabs li {
+  background-color: #01478F; }
+  .container .nav.nav-tabs li a {
+    border-bottom-color: #01478F;
+    color: #ffffff; }
+  .container .nav.nav-tabs li a:hover {
+    border-bottom-color: #dddddd; }
+.container .nav.nav-tabs li.active a {
+  border-bottom-color: transparent;
+  color: #555555; }
+.container .nav-tabs.nav-justified > li > a {
+  border-radius: 0; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  min-width: 100%;
+  width: 1170px;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  line-height: 40px;
+  background-color: #E9E9E9; }
+
+input[type="button" i]:disabled,
+input[type="submit" i]:disabled,
+input[type="reset" i]:disabled,
+input[type="file" i]:disabled::-webkit-file-upload-button,
+input:disabled,
+button:disabled,
+select:disabled,
+keygen:disabled,
+optgroup:disabled,
+option:disabled,
+select[disabled] > option {
+  color: graytext; }
+
+.btn {
+  border-radius: 0; }
+
+.btn-modern {
+  background: #C4C4C4;
+  color: white; }
+
+.btn-success {
+  background: #69BE28; }
+
+.btn-rounded {
+  border-radius: 8px; }
+
+.btn-transparent {
+  border: 1px white solid;
+  background: transparent;
+  color: white; }
+  .btn-transparent.focus, .btn-transparent:focus, .btn-transparent:hover {
+    color: white;
+    outline: none; }
+
+.btn-wide {
+  padding: 10px 20px; }
+
+.btn-extra-wide {
+  width: 125px;
+  padding: 10px 20px; }
+
+.btn-group.margin-around button {
+  margin: 5px; }
+
+.left-inner-addon {
+  position: relative; }
+
+.left-inner-addon input {
+  padding-left: 30px; }
+
+.left-inner-addon i {
+  position: absolute;
+  padding: 10px 12px;
+  pointer-events: none; }
+
+.panel {
+  border-radius: 0; }
+
+.panel-modern {
+  background: #E9E9E9;
+  color: white; }
+
+.panel-success {
+  background: #69BE28; }
+
+.panel-rounded {
+  border-radius: 8px; }
+
+.panel-wide {
+  padding: 10px 20px; }
+
+.panel-title {
+  font-weight: 800;
+  padding-left: 3%; }
+
+input, select {
+  width: 100%;
+  height: 30px;
+  background: #EEF2F5;
+  border: 0;
+  padding: 2px 10px; }
+
+select {
+  overflow-y: auto; }
+
+input[readonly], select[readonly] {
+  background: #F8F8F8;
+  font-weight: 300; }
+
+textarea {
+  resize: none;
+  line-height: 28px;
+  padding: 0; }
+
+.greed-container > .row {
+  color: #0A2B44;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  margin: 0; }
+.greed-container > .row:nth-child(2n) {
+  background: #E9E9E9; }
+.greed-container > .row:first-child {
+  font-weight: 600;
+  font-size: large;
+  background: transparent; }
+.greed-container.no-first-row .row:first-child {
+  font-weight: inherit;
+  font-size: inherit; }
+
+.login-page {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(#097CAE, #0A3F5E);
+  overflow: auto; }
+  .login-page .sign-in {
+    color: white;
+    width: 100%;
+    border: none;
+    background: #0A2B44;
+    font-size: x-large; }
+  .login-page .error-message {
+    color: aliceblue;
+    font-size: medium; }
+  .login-page input {
+    background: transparent;
+    border: none;
+    border-radius: unset;
+    border-bottom: 1px solid black;
+    color: white;
+    box-shadow: none;
+    font-size: 28px;
+    line-height: 28px;
+    padding: 6px 12px;
+    height: 40px; }
+    .login-page input::-webkit-input-placeholder {
+      text-overflow: ellipsis;
+      color: white; }
+    .login-page input::-moz-placeholder {
+      text-overflow: ellipsis;
+      color: white; }
+    .login-page input:-moz-placeholder {
+      text-overflow: ellipsis;
+      color: white; }
+    .login-page input:-ms-input-placeholder {
+      text-overflow: ellipsis;
+      color: white; }
+    .login-page input:focus::-webkit-input-placeholder {
+      color: transparent; }
+    .login-page input:focus::-moz-placeholder {
+      color: transparent; }
+    .login-page input:focus:-moz-placeholder {
+      color: transparent; }
+    .login-page input:focus:-ms-input-placeholder {
+      color: transparent; }
+  @media (min-width: 768px) {
+    .login-page {
+      padding-top: 200px; } }
+
+.reports-page .scrollable {
+  overflow: auto; }
+.reports-page .top-bar .scrollable {
+  white-space: nowrap; }
+  .reports-page .top-bar .scrollable > div {
+    display: inline-block;
+    vertical-align: top;
+    float: none; }
+.reports-page .greed-wrapper {
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden; }
+  .reports-page .greed-wrapper > div {
+    padding: 0; }
+  .reports-page .greed-wrapper .no-horizontal-scrollbar {
+    overflow-x: hidden; }
+.reports-page .greed-container > .row {
+  white-space: nowrap;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 51px; }
+  .reports-page .greed-container > .row > div {
+    float: none;
+    display: inline-block;
+    height: 51px; }
+    .reports-page .greed-container > .row > div.v-center {
+      display: inline-flex;
+      justify-content: center;
+      background: inherit; }
+.reports-page .height-100 {
+  height: calc(100% - 1px); }
+.reports-page on-off-slider {
+  margin-left: 11px; }
+.reports-page .switcher-title {
+  font-weight: 600;
+  font-size: large;
+  text-align: right; }
+.reports-page .img-container {
+  height: Calc(100% - 2px); }
+.reports-page .player-avatar {
+  margin: 0 auto;
+  max-height: 100%; }
+.reports-page .player-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.sessions-page-day {
+  color: #0A2B44; }
+  .sessions-page-day .panel-modern .panel-body .btn-transparent {
+    height: 42px;
+    border: none; }
+  .sessions-page-day .panel-modern .panel-body .current-date {
+    color: #0A2B44;
+    font-size: 18px;
+    white-space: nowrap; }
+    .sessions-page-day .panel-modern .panel-body .current-date .text-center {
+      padding: 0; }
+    .sessions-page-day .panel-modern .panel-body .current-date .right-arrow {
+      padding-left: 5px; }
+    .sessions-page-day .panel-modern .panel-body .current-date button {
+      padding-left: 0;
+      padding-right: 0; }
+  .sessions-page-day .panel-modern .panel-body .turn-wellness {
+    color: black;
+    font-size: 16px; }
+    .sessions-page-day .panel-modern .panel-body .turn-wellness span {
+      margin-right: 10px; }
+    .sessions-page-day .panel-modern .panel-body .turn-wellness .time-postfix {
+      color: black; }
+  .sessions-page-day hr {
+    border-top-width: 3px;
+    margin-top: 0; }
+  .sessions-page-day .session-table .time-representation {
+    height: 60px;
+    padding-right: 10px;
+    line-height: 100%; }
+    .sessions-page-day .session-table .time-representation sup {
+      top: -0.4em;
+      font-size: 65%; }
+  .sessions-page-day .session-table .session-list > div {
+    background: #CDEBB7;
+    border-bottom: 1px solid white;
+    line-height: 100%;
+    padding-top: 4px; }
+  .sessions-page-day .session-table .session-list > div[name="-1"] {
+    opacity: 0.6;
+    background: #E9E9E9; }
+
+.sessions-page-week {
+  color: #0A2B44; }
+  .sessions-page-week .panel-modern .panel-body .btn-transparent {
+    height: 42px;
+    border: none; }
+  .sessions-page-week .panel-modern .panel-body .current-date {
+    color: #0A2B44;
+    font-size: 18px;
+    white-space: nowrap; }
+    .sessions-page-week .panel-modern .panel-body .current-date .text-center {
+      padding: 0; }
+    .sessions-page-week .panel-modern .panel-body .current-date .right-arrow {
+      padding-left: 5px; }
+    .sessions-page-week .panel-modern .panel-body .current-date button {
+      padding-left: 0;
+      padding-right: 0; }
+  .sessions-page-week .panel-modern .panel-body .turn-wellness {
+    color: black;
+    font-size: 16px; }
+    .sessions-page-week .panel-modern .panel-body .turn-wellness span {
+      margin-right: 10px; }
+    .sessions-page-week .panel-modern .panel-body .turn-wellness .time-postfix {
+      color: black; }
+  .sessions-page-week hr {
+    border-top-width: 3px;
+    margin-top: 0; }
+  .sessions-page-week .session-table .time-representation {
+    height: 60px;
+    padding-right: 10px;
+    line-height: 100%; }
+    .sessions-page-week .session-table .time-representation sup {
+      top: -0.4em;
+      font-size: 65%; }
+  .sessions-page-week .session-table .session-list > div {
+    background: #CDEBB7;
+    border-bottom: 1px solid white;
+    line-height: 100%;
+    padding-top: 1px; }
+  .sessions-page-week .session-table .session-list > div[name="-1"] {
+    opacity: 0.6;
+    background: #E9E9E9; }
+
+.session-detail-page .player-assignment-container {
+  padding-left: 5%;
+  padding-right: 5%; }
+.session-detail-page .session-data-picker input {
+  border-radius: 0; }
+.session-detail-page .session-time-picker .time-picker[disabled] {
+  background: #EEF2F5; }
+.session-detail-page .session-time-picker .time-postfix[disabled] {
+  background: #EEF2F5; }
+
+.squad-detail-page .players-container {
+  height: 250px; }
+  .squad-detail-page .players-container .box {
+    height: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow-x: hidden;
+    overflow-y: auto; }
+  .squad-detail-page .players-container .icon-middle {
+    height: 100%;
+    font-size: 35px; }
+    .squad-detail-page .players-container .icon-middle .glyphicon-arrow-left {
+      color: red; }
+    .squad-detail-page .players-container .icon-middle .glyphicon-arrow-right {
+      color: green; }
+
+.settings-page .carousel-container {
+  margin-left: 0;
+  margin-right: 0; }
+.settings-page .nav.nav-pills > li.active > a, .settings-page .nav-pills > li.active > a:hover, .settings-page .nav-pills > li.active > a:focus {
+  background-color: #69BE28;
+  border-radius: 0px; }
+.settings-page .nav.nav-pills > li {
+  text-transform: uppercase; }
+.settings-page .tab-content {
+  border-top: 1px solid #E9E9E9;
+  border-left: 1px solid #E9E9E9;
+  padding: 7px; }
+
+.users-page .switcher-title {
+  font-weight: 600;
+  font-size: large;
+  text-align: right; }
+
+.squads-page .squad-list .row:nth-child(2) {
+  pointer-events: none;
+  opacity: 0.64; }
+
+.about-page .wp-license {
+  font-size: 9.5pt; }
+  .about-page .wp-license h1, .about-page .wp-license h2, .about-page .wp-license h3, .about-page .wp-license h4, .about-page .wp-license h5, .about-page .wp-license h6, .about-page .wp-license p {
+    margin: 6pt 0pt 0pt 18pt; }
+  .about-page .wp-license li {
+    margin-top: 6pt;
+    margin-bottom: 0pt; }
+  .about-page .wp-license h1 {
+    margin-top: 6pt;
+    margin-left: 17.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license h2 {
+    margin-top: 6pt;
+    margin-left: 36pt;
+    margin-bottom: 0pt;
+    text-indent: -18.15pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license h3 {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license h4 {
+    margin-top: 6pt;
+    margin-left: 71.75pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license h5 {
+    margin-top: 6pt;
+    margin-left: 89.6pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license h6 {
+    margin-top: 6pt;
+    margin-left: 107.45pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license .Heading7 {
+    margin-top: 6pt;
+    margin-left: 125.3pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license .Heading8 {
+    margin-top: 6pt;
+    margin-left: 143.15pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license .Heading9 {
+    margin-top: 6pt;
+    margin-left: 161.05pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license .AdditionalSoftware {
+    margin-bottom: 0pt;
+    line-height: 12pt;
+    font-family: 'Trebuchet MS';
+    font-size: 9pt; }
+  .about-page .wp-license .BalloonText {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 8pt; }
+  .about-page .wp-license .Body0 {
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body0Bold {
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .Body1 {
+    margin-top: 6pt;
+    margin-left: 17.85pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body2 {
+    margin-top: 6pt;
+    margin-left: 36pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body2Underline {
+    margin-top: 6pt;
+    margin-left: 36pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    text-decoration: underline; }
+  .about-page .wp-license .Body3 {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body3Underline {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    text-decoration: underline; }
+  .about-page .wp-license .Body4 {
+    margin-top: 6pt;
+    margin-left: 71.75pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body5 {
+    margin-top: 6pt;
+    margin-left: 90.15pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body6 {
+    margin-top: 6pt;
+    margin-left: 108pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body7 {
+    margin-top: 6pt;
+    margin-left: 125.3pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body8 {
+    margin-top: 6pt;
+    margin-left: 143.15pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Body9 {
+    margin-top: 6pt;
+    margin-left: 161.05pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .BodyText2 {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: 200%;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .BodyTextIndent {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: 200%;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet1 {
+    margin-top: 6pt;
+    margin-left: 17.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet2 {
+    margin-top: 6pt;
+    margin-left: 36pt;
+    margin-bottom: 0pt;
+    text-indent: -18.15pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet3 {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet3Underline {
+    margin-top: 6pt;
+    margin-left: 0pt;
+    margin-bottom: 0pt;
+    text-indent: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    text-decoration: underline; }
+  .about-page .wp-license .Bullet3Underlined {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    text-decoration: underline; }
+  .about-page .wp-license .Bullet4 {
+    margin-top: 6pt;
+    margin-left: 71.75pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet4Italics {
+    margin-top: 6pt;
+    margin-left: 71.75pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-style: italic; }
+  .about-page .wp-license .Bullet4Underline {
+    margin-top: 6pt;
+    margin-left: 71.75pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    text-decoration: underline; }
+  .about-page .wp-license .Bullet4Underlined {
+    margin-top: 6pt;
+    margin-left: 71.75pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    text-decoration: underline; }
+  .about-page .wp-license .Bullet5 {
+    margin-top: 6pt;
+    margin-left: 89.6pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet6 {
+    margin-top: 6pt;
+    margin-left: 107.45pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet7 {
+    margin-top: 6pt;
+    margin-left: 125.3pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet8 {
+    margin-top: 6pt;
+    margin-left: 143.15pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Bullet9 {
+    margin-top: 6pt;
+    margin-left: 161.05pt;
+    margin-bottom: 0pt;
+    text-indent: -17.9pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Char {
+    margin-top: 0pt;
+    margin-left: 18pt;
+    margin-bottom: 8pt;
+    line-height: 12pt;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .CharCharCharChar {
+    margin-top: 0pt;
+    margin-left: 18pt;
+    margin-bottom: 8pt;
+    line-height: 12pt;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .CharCharCharChar1 {
+    margin-top: 0pt;
+    margin-left: 18pt;
+    margin-bottom: 8pt;
+    line-height: 12pt;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .CommentSubject {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 10pt;
+    font-weight: bold; }
+  .about-page .wp-license .CommentText {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .EndnoteText {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Footer {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .FootnoteText {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Header {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Heading1Warranty {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    text-indent: -18pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Heading2Warranty {
+    margin-top: 6pt;
+    margin-left: 36pt;
+    margin-bottom: 0pt;
+    text-indent: -18pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .Heading3Bold {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .HeadingEULA {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 14pt;
+    font-weight: bold; }
+  .about-page .wp-license .HeadingFrenchWarranty {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    text-indent: -18pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .HeadingSoftwareTitle {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    border-bottom-style: solid;
+    border-bottom-width: 0.75pt;
+    border-bottom-color: #000000;
+    padding-bottom: 1pt;
+    font-family: Tahoma;
+    font-size: 14pt;
+    font-weight: bold; }
+  .about-page .wp-license .HeadingWarranty {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    text-align: center;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .LIMPAT4WINEXTERNAL {
+    margin-top: 0pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 6.67pt;
+    font-weight: bold;
+    vertical-align: super; }
+  .about-page .wp-license .ListParagraph {
+    margin-top: 6pt;
+    margin-left: 36pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .NormalWeb {
+    margin-top: 5pt;
+    margin-left: 18pt;
+    margin-bottom: 5pt;
+    line-height: normal;
+    font-family: 'Times New Roman';
+    font-size: 12pt; }
+  .about-page .wp-license .Preamble {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .PreambleBorder {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    border-bottom-style: solid;
+    border-bottom-width: 0.75pt;
+    border-bottom-color: #000000;
+    padding-bottom: 1pt;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .PreambleBorderAbove {
+    margin-top: 6pt;
+    margin-left: 18pt;
+    margin-bottom: 0pt;
+    line-height: normal;
+    border-top-style: solid;
+    border-top-width: 0.75pt;
+    border-top-color: #000000;
+    padding-top: 1pt;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license .Revision {
+    margin-bottom: 0pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license .StyleHeading3BoldAsianTimesNewRoman95pt {
+    margin-top: 6pt;
+    margin-left: 53.85pt;
+    margin-bottom: 0pt;
+    text-indent: -17.85pt;
+    line-height: normal;
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license span.BalloonTextChar {
+    font-family: Tahoma;
+    font-size: 8pt; }
+  .about-page .wp-license span.Body0BoldChar {
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license span.Body1Char {
+    font-family: Tahoma; }
+  .about-page .wp-license span.Body2Char {
+    font-family: Tahoma; }
+  .about-page .wp-license span.Body3Char {
+    font-family: Tahoma; }
+  .about-page .wp-license span.Body3CharCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCarCar {
+    font-family: Tahoma; }
+  .about-page .wp-license span.Body4Char {
+    font-family: Tahoma; }
+  .about-page .wp-license span.BodyText2Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.BodyTextIndentChar {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Bullet3Char1 {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.CharChar {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.CharChar1 {
+    font-family: 'Trebuchet MS';
+    font-size: 12pt;
+    font-weight: bold; }
+  .about-page .wp-license span.Hyperlink, .about-page .wp-license span.CharChar7 {
+    text-decoration: underline;
+    color: #0000ff; }
+  .about-page .wp-license span.CommentReference {
+    font-size: 8pt; }
+  .about-page .wp-license span.CommentSubjectChar {
+    font-family: Tahoma;
+    font-size: 10pt;
+    font-weight: bold; }
+  .about-page .wp-license span.CommentTextChar {
+    font-family: Tahoma;
+    font-size: 10pt; }
+  .about-page .wp-license span.DONOTTRANSLATE {
+    font-family: 'Courier New';
+    color: #800000; }
+  .about-page .wp-license span.EndnoteReference {
+    vertical-align: super; }
+  .about-page .wp-license span.EndnoteTextChar {
+    font-family: Tahoma;
+    font-size: 10pt; }
+  .about-page .wp-license span.FooterChar {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.FootnoteReference {
+    vertical-align: super; }
+  .about-page .wp-license span.FootnoteTextChar {
+    font-family: Tahoma;
+    font-size: 10pt; }
+  .about-page .wp-license span.HeaderChar {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading1Char {
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license span.Heading2Char {
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license span.Heading2Char1 {
+    font-family: 'Trebuchet MS';
+    font-weight: bold; }
+  .about-page .wp-license span.Heading3BoldChar {
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: bold; }
+  .about-page .wp-license span.Heading3Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading4Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading5Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading6Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading7Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading8Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.Heading9Char {
+    font-family: Tahoma;
+    font-size: 9.5pt; }
+  .about-page .wp-license span.LIMPAT4WINEXTERNALChar {
+    font-family: Tahoma;
+    font-size: 6.67pt;
+    font-weight: bold;
+    vertical-align: super; }
+  .about-page .wp-license span.PreambleChar {
+    font-family: Tahoma;
+    font-weight: bold; }
+  .about-page .wp-license span.Strong {
+    font-weight: bold; }
+  .about-page .wp-license span.StyleHeading3BoldAsianTimesNewRoman95ptChar {
+    font-family: Tahoma;
+    font-size: 9.5pt;
+    font-weight: normal; }
+  .about-page .wp-license span.tw4winError {
+    font-family: 'Courier New';
+    font-size: 20pt;
+    color: #00ff00; }
+  .about-page .wp-license span.tw4winExternal {
+    font-family: 'Courier New';
+    color: #808080; }
+  .about-page .wp-license span.tw4winInternal {
+    font-family: 'Courier New';
+    color: #ff0000; }
+  .about-page .wp-license span.tw4winJump {
+    font-family: 'Courier New';
+    color: #008080; }
+  .about-page .wp-license span.tw4winMark {
+    font-family: 'Courier New';
+    font-size: 8pt;
+    vertical-align: sub;
+    color: #800080;
+    display: none; }
+  .about-page .wp-license span.tw4winPopup {
+    font-family: 'Courier New';
+    color: #008000; }
+  .about-page .wp-license span.tw4winTerm {
+    color: #0000ff; }
+
+loading-spinner {
+  display: none;
+  position: relative;
+  z-index: 9999999;
+  text-align: left; }
+  loading-spinner .spinner div {
+    opacity: 0;
+    position: relative;
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: #0A2B44;
+    animation: loading 3s cubic-bezier(0, 0.95, 1, 0.05) infinite, loading-opacity 1.5s ease-in-out infinite alternate; }
+  loading-spinner .spinner div:nth-child(5) {
+    animation-delay: .1s; }
+  loading-spinner .spinner div:nth-child(4) {
+    animation-delay: .2s; }
+  loading-spinner .spinner div:nth-child(3) {
+    animation-delay: .3s; }
+  loading-spinner .spinner div:nth-child(2) {
+    animation-delay: .4s; }
+  loading-spinner .spinner div:nth-child(1) {
+    animation-delay: .5s; }
+@keyframes loading-opacity {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+@keyframes loading {
+  0% {
+    left: 0; }
+  100% {
+    left: 95%; } }
+date-picker {
+  display: block; }
+  date-picker .date-picker {
+    border-radius: 7px; }
+    date-picker .date-picker.has-icon {
+      width: calc(100% - 46px);
+      vertical-align: middle; }
+    date-picker .date-picker.square {
+      border-radius: 0; }
+  date-picker input.transparent {
+    border: 1px white solid;
+    background: transparent;
+    color: white; }
+  date-picker input.wide {
+    height: auto;
+    padding: 8px 26px; }
+  date-picker input.lg {
+    font-size: large; }
+  date-picker input.extra-width {
+    width: 105%; }
+  date-picker button {
+    border: none;
+    background: transparent; }
+
+time-picker {
+  display: block; }
+  time-picker .ui-spinner {
+    border-radius: 0;
+    width: calc(100% - 98px);
+    height: 35px;
+    border: none;
+    margin-right: 3px;
+    background: transparent; }
+  time-picker .time-picker {
+    border-radius: 0;
+    width: 100%;
+    padding-left: 4px;
+    height: 35px;
+    margin: 0;
+    border: none;
+    background: #EEF2F5; }
+    time-picker .time-picker[disabled] {
+      background: #fff; }
+  time-picker .time-postfix {
+    color: #333333;
+    border-radius: 0;
+    width: 60px;
+    height: 35px;
+    padding-left: 4px;
+    margin-right: 3px; }
+    time-picker .time-postfix[disabled] {
+      opacity: 0.35;
+      background: #fff; }
+  time-picker .clocks {
+    width: 30px;
+    display: inline-block;
+    max-width: 100%;
+    height: auto; }
+
+timezone-picker {
+  display: block; }
+  timezone-picker .timezone-picker {
+    max-width: 300px; }
+
+on-off-slider {
+  width: 66px;
+  height: 26px;
+  line-height: 26px;
+  background: white;
+  opacity: 60%;
+  border-radius: 50px;
+  position: relative;
+  display: block;
+  border: 2px solid #B6C9D7;
+  box-sizing: content-box;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400; }
+  on-off-slider:before {
+    content: attr(unchecked-text);
+    color: #B00015;
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    visibility: visible; }
+  on-off-slider:after {
+    content: attr(checked-text);
+    color: #69BE28;
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    visibility: hidden; }
+  on-off-slider .slider {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    z-index: 1;
+    background: #B00015; }
+  on-off-slider.toggled .slider {
+    left: 41px;
+    background: #69BE28; }
+  on-off-slider.toggled:after {
+    visibility: visible; }
+  on-off-slider.toggled:before {
+    visibility: hidden; }
+
+image-cropper {
+  display: block; }
+  image-cropper #cropper-preview {
+    height: 270px; }
+  image-cropper .cropper-face, image-cropper .cropper-view-box {
+    border-radius: 50%; }
+  image-cropper .cropper-face {
+    opacity: 0.15; }
+  image-cropper .cropper-modal {
+    opacity: 0.8; }
+
+switcher .switcher, composite-switcher .switcher {
+  width: 66px;
+  height: 26px;
+  line-height: 26px;
+  background: white;
+  opacity: 60%;
+  border-radius: 50px;
+  position: relative;
+  display: block;
+  border: 2px solid #B6C9D7;
+  box-sizing: content-box;
+  font-size: 14px;
+  font-weight: 400;
+  color: #A9CBE4;
+  margin: 0 -15px; }
+  switcher .switcher:before, composite-switcher .switcher:before {
+    content: attr(initial-text);
+    position: absolute;
+    right: 10px;
+    z-index: 0;
+    visibility: visible; }
+  switcher .switcher:after, composite-switcher .switcher:after {
+    content: attr(toggled-text);
+    position: absolute;
+    left: 10px;
+    z-index: 0;
+    visibility: hidden; }
+  switcher .switcher .slider, composite-switcher .switcher .slider {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all .4s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    z-index: 1;
+    background: #A9CBE4; }
+  switcher .switcher.toggled .slider, composite-switcher .switcher.toggled .slider {
+    left: 41px; }
+  switcher .switcher.toggled:after, composite-switcher .switcher.toggled:after {
+    visibility: visible; }
+  switcher .switcher.toggled:before, composite-switcher .switcher.toggled:before {
+    visibility: hidden; }
+
+dynamic-content {
+  display: block; }
+  dynamic-content .dynamic-content {
+    background-size: cover;
+    background: url("images/page-body-header.jpeg") no-repeat 50% 0;
+    width: 100%;
+    height: 192px; }
+  dynamic-content .dynamic-transclude {
+    height: 100%; }
+
+.notification-popover-container {
+  outline: none !important;
+  /* to override pseudo-classes of container */
+  position: relative; }
+
+.notification-popover {
+  background-color: rgba(255, 32, 32, 0.85);
+  box-shadow: 0 0 5px rgba(255, 32, 32, 0.4);
+  font-size: 12px;
+  color: #fff;
+  text-transform: none;
+  text-align: center;
+  white-space: normal;
+  border-radius: 5px;
+  -webkit-animation: fade-in .3s linear 1, move-up .3s linear 1;
+  -moz-animation: fade-in .3s linear 1, move-up .3s linear 1;
+  -ms-animation: fade-in .3s linear 1, move-up .3s linear 1;
+  display: block;
+  position: absolute;
+  bottom: 42px;
+  padding: 10px 5px;
+  width: 200%;
+  max-width: 200px;
+  min-width: 100px;
+  z-index: 5; }
+  .notification-popover:before {
+    border-top: 7px solid rgba(255, 32, 32, 0.85);
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    margin-left: -7px; }
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-ms-keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes move-up {
+  from {
+    bottom: 30px; }
+  to {
+    bottom: 42px; } }
+@-moz-keyframes move-up {
+  from {
+    bottom: 30px; }
+  to {
+    bottom: 42px; } }
+@-ms-keyframes move-up {
+  from {
+    bottom: 30px; }
+  to {
+    bottom: 42px; } }
+wellness-popover .wellness-popover {
+  position: absolute;
+  bottom: 45px;
+  left: 26px;
+  width: 300px;
+  text-transform: none;
+  z-index: 9999999999;
+  background: #E9E9E9;
+  padding: 15px;
+  box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.2); }
+  wellness-popover .wellness-popover .triangle-wrapper {
+    position: absolute;
+    background: transparent;
+    bottom: -20px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    box-shadow: -6px 0 6px -3px rgba(0, 0, 0, 0.1); }
+    wellness-popover .wellness-popover .triangle-wrapper .triangle {
+      background: #E9E9E9;
+      position: absolute;
+      bottom: 0;
+      left: -28px;
+      width: 40px;
+      height: 40px;
+      transform: rotate(45deg);
+      box-shadow: 3px 0 9px -2px rgba(0, 0, 0, 0.1); }
+
+player-assignment .squad-list-title {
+  text-transform: uppercase; }
+player-assignment .line {
+  height: 3px;
+  background-color: #eef2f5; }
+player-assignment .left-box {
+  padding-left: 0;
+  padding-right: 15px; }
+player-assignment .right-box {
+  padding-left: 15px;
+  padding-right: 0; }
+player-assignment .box .no-outline:hover {
+  outline: none; }
+player-assignment .box .row {
+  margin-left: 0;
+  margin-right: 0; }
+player-assignment .box .scrollable-list {
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+  player-assignment .box .scrollable-list .group-title {
+    text-transform: uppercase;
+    padding-left: 5px; }
+  player-assignment .box .scrollable-list img {
+    height: 30px; }
+  player-assignment .box .scrollable-list.disabled .row {
+    color: graytext; }
+
+carousel {
+  /* Modal view styles */ }
+  carousel .carousel-title {
+    font-weight: 600;
+    font-size: large;
+    margin-left: 5px; }
+  carousel .empty-carousel {
+    font-weight: 600;
+    font-size: large;
+    margin-left: 5px;
+    text-align: center; }
+  carousel #carousel {
+    height: 420px; }
+    carousel #carousel .carousel-inner > .item > img {
+      margin: 0 auto;
+      width: auto;
+      height: 420px;
+      max-height: 420px;
+      padding-top: 5px;
+      padding-bottom: 5px; }
+    carousel #carousel .carousel-inner loading-spinner .spinner {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%; }
+    carousel #carousel .left {
+      border-radius: 15px 0 0 15px; }
+    carousel #carousel .right {
+      border-radius: 0 15px 15px 0; }
+  carousel #image-preview {
+    max-width: 60%;
+    max-height: 270px; }
+  carousel .input-group .input-group-btn .btn-file {
+    position: relative;
+    overflow: hidden; }
+    carousel .input-group .input-group-btn .btn-file input[type=file] {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: auto;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      cursor: inherit;
+      display: block; }
+  carousel .input-group input[readonly] {
+    background-color: white !important;
+    cursor: text !important; }
+
+personal-image-gallery {
+  /* Modal view styles */ }
+  personal-image-gallery .gallery-title {
+    font-weight: 600;
+    font-size: large;
+    margin-left: 5px; }
+  personal-image-gallery .image-preview {
+    max-width: 60%;
+    max-height: 270px; }
+  personal-image-gallery .personal-image {
+    height: 180px;
+    margin-top: 10px; }
+    personal-image-gallery .personal-image .image-wrapper {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      position: relative;
+      width: 100%;
+      height: 100%; }
+      personal-image-gallery .personal-image .image-wrapper img {
+        max-height: 100%;
+        max-width: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto; }
+  personal-image-gallery .input-group .input-group-btn .btn-file {
+    position: relative;
+    overflow: hidden; }
+    personal-image-gallery .input-group .input-group-btn .btn-file input[type=file] {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: auto;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      cursor: inherit;
+      display: block; }
+  personal-image-gallery .input-group input[readonly] {
+    background-color: white !important;
+    cursor: text !important; }
+
+pager .pagination {
+  margin: 0;
+  padding: 0 15px; }
+  pager .pagination li {
+    cursor: pointer; }
+
+html, body {
+  font-family: 'Open Sans', sans-serif !important; }
+
+ui-view {
+  display: block; }
+
+.cursor-pointer {
+  cursor: pointer; }
+
+.tight {
+  padding-left: 30px;
+  padding-right: 30px; }
+
+.children-row-margin-10 > .row {
+  margin-bottom: 10px; }
+
+.margin-left-15 {
+  margin-left: 15px; }
+
+.margin-bottom-5 {
+  margin-bottom: 5px; }
+
+.margin-bottom-10 {
+  margin-bottom: 10px; }
+
+.margin-bottom-20 {
+  margin-bottom: 20px; }
+
+.margin-bottom-60 {
+  margin-bottom: 60px; }
+
+.margin-top-5 {
+  margin-top: 5px; }
+
+.margin-top-10 {
+  margin-top: 10px; }
+
+.margin-top-20 {
+  margin-top: 20px; }
+
+.margin-top-50 {
+  margin-top: 50px; }
+
+.padding-0 {
+  padding: 0; }
+
+.inline-block {
+  display: inline-block; }
+
+.v-center {
+  display: flex;
+  align-items: center; }
+
+.h-center {
+  display: flex;
+  justify-content: center; }
+
+.bold {
+  font-weight: 700; }
+
+.text-light {
+  font-weight: 300; }
+
+.height-100 {
+  height: 100%; }
+
+.text-large {
+  font-size: large; }
+
+.text-x-large {
+  font-size: x-large; }
+
+.text-medium {
+  font-size: medium; }
+
+.text-small {
+  font-size: small; }
+
+.text-smaller {
+  font-size: smaller; }
+
+.dark-blue {
+  color: #0A2B44; }
+
+.square {
+  border-radius: 0; }
+
+/*# sourceMappingURL=app.css.map */

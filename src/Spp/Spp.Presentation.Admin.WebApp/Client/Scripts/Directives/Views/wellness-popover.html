@@ -1,0 +1,29 @@
+﻿<img ng-if="wellnessTurned" src="/Client/CSS/images/heart_on.png">
+<img ng-if="!wellnessTurned" src="/Client/CSS/images/heart_off.png">
+
+<div class="wellness-popover hidden col-md-12">
+    <div class="row margin-bottom-10">
+        <div class="col-md-10">
+            Ask for Wellness
+        </div>
+        <div class="col-md-2">
+            <img src="/Client/CSS/images/x.png" ng-click="triggerPopover()">
+        </div>
+    </div>
+    <div class="row text-smaller">
+        <div class="col-md-4">
+            <on-off-slider value="wellnessTurned" checked-text="Yes" unchecked-text="No"
+                           on-change="turnWellness" debounce-time="500">
+            </on-off-slider>
+        </div>
+        <time-picker class="col-md-8" value="wellnessReminderTime"
+                     on-change="setWellnessAlert" debounce-time="500"
+                     disabled="isWellnessReminderDisabled">
+        </time-picker>
+    </div>
+
+    <!-- Triangle -->
+    <div class="triangle-wrapper">
+        <div class="triangle"></div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+.container {
+
+    .top-header {
+        background-color: #001532;
+        color: white;
+        padding: 10px;
+        margin: 0;
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .team-logo {
+            max-width: 80%;
+        }
+    }
+
+    .nav.nav-tabs {
+        $nav-tabs-background-color: #6ABE28;
+
+        li {
+            background-color: $nav-tabs-background-color;
+
+            a {
+                border-bottom-color: $nav-tabs-background-color;
+                color: #ffffff;
+            }
+
+            a:hover {
+                border-bottom-color: #dddddd;
+            }
+        }
+
+        li.active a {
+            border-bottom-color: transparent;
+            color: #555555;
+        }
+    }
+
+    .nav-tabs.nav-justified>li>a {
+        border-radius: 0;
+    }
+}

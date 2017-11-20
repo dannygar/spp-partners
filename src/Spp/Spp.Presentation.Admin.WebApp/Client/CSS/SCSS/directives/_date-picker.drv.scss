@@ -1,0 +1,40 @@
+date-picker {
+    display: block;
+
+    .date-picker {
+        border-radius: 7px;
+
+        &.has-icon {
+            width: calc(100% - 46px);
+            vertical-align: middle;
+        }
+
+        &.square {
+            border-radius: 0;
+        }
+    }
+
+    input.transparent {
+        border: 1px white solid;
+        background: transparent;
+        color: white;
+    }
+
+    input.wide {
+        height: auto;
+        padding: 8px 26px;
+    }
+
+    input.lg {
+        font-size: large;
+    }
+
+    input.extra-width {
+        width: 105%;
+    }
+
+    button {
+        border: none;
+        background: transparent;
+    }
+}

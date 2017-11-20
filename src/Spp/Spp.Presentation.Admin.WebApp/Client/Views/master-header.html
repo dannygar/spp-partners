@@ -1,0 +1,31 @@
+﻿<div class="col-md-2">
+    <div class="row">
+        <div class="col-md-11 col-md-offset-1">
+            <img ng-src="{{main.currentUser.teamLogo}}" class="img-responsive team-logo"/>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3 col-md-offset-3">
+    <img class="img-responsive" src=""/>
+</div>
+
+<div class="col-md-4">
+    <div class="row v-center">
+        <div class="col-md-8">
+            <div class="row text-right text-medium">
+                <div class="col-md-12">
+                    {{:: main.currentUser.name + " " + main.currentUser.lastName }}
+                </div>
+            </div>
+            <div class="row text-right">
+                <div class="col-md-12">
+                    <a class="cursor-pointer text-light" ng-click="main.logout()">Sign out</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img class="img-responsive img-circle" ng-src="{{main.currentUser.pathToPhoto}}"/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<!-- User photo -->
+<div class="row">
+    <div class="col-md-3">Photo</div>
+    <div class="col-md-5">
+        <img ng-src="{{vm.user.pathToPhoto}}" class="img-responsive img-circle"
+             data-toggle="modal" data-target="#photoModal"/>
+        <modal-view modal-id="photoModal" submit-text="Save changes" on-submit="vm.savePhotoChanges"
+                    title="Player's photo editor" 
+                    spinner-show-event="showSpinnerInPhotoModal" spinner-hide-event="hideSpinnerInPhotoModal" 
+                    popover-show-event="showPopoverInPhotoModal">
+            <image-cropper class="img-responsive" src="vm.user.pathToPhoto"
+                           data="vm.cropperData" original-image-data="vm.originalImageData" file-object="vm.fileObject"></image-cropper>
+        </modal-view>
+    </div>
+</div>
+
+<!-- Access info -->
+<div class="row">
+    <div class="col-md-3">Roles</div>
+    <div class="col-md-4">
+        <select ng-model="vm.roleId" redraw
+                ng-options="option.Id as option.Name for option in ::vm.roleOptions" >
+        </select>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Active Profile</div>
+    <div class="col-md-4">
+        <on-off-slider value="vm.user.active" checked-text="Yes" unchecked-text="No"></on-off-slider>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">Alerts</div>
+    <div class="col-md-4">
+        <on-off-slider value="vm.user.getsAlerts" checked-text="Yes" unchecked-text="No"></on-off-slider>
+    </div>
+</div><!--
+<div class="row">
+    <div class="col-md-3">Email Notifications</div>
+    <div class="col-md-4">
+        <on-off-slider value="vm.user.hasEmailNotifications" checked-text="Yes" unchecked-text="No"></on-off-slider>
+    </div>
+</div>-->

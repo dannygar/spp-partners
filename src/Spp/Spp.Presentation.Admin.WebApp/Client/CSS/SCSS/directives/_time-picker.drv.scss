@@ -1,0 +1,51 @@
+time-picker {
+    display: block;
+
+    $height: 35px;
+    $disabled-background: #fff;
+    $disabled-opacity: 0.35;
+
+    .ui-spinner {
+        border-radius: 0;
+        width: calc(100% - 98px);
+        height: $height;
+        border: none;
+        margin-right: 3px;
+        background: transparent;
+    }
+
+    .time-picker {
+        border-radius: 0;
+        width: 100%;
+        padding-left: 4px;
+        height: $height;
+        margin: 0;
+        border: none;
+        background: $input-select-color;
+
+        &[disabled] {
+            background: $disabled-background;
+        }
+    }
+
+    .time-postfix {
+        color: rgb(51, 51, 51);
+        border-radius: 0;
+        width: 60px;
+        height: $height;
+        padding-left: 4px;
+        margin-right: 3px;
+
+        &[disabled] {
+            opacity: $disabled-opacity;
+            background: $disabled-background;
+        }
+    }
+
+    .clocks {
+        width: 30px;
+        display: inline-block;
+        max-width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,43 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MicrosoftSportsScience"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:MicrosoftSportsScience.ViewModels"
+    xmlns:converters="using:Converters" xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
+    x:Class="MicrosoftSportsScience.EditQuestions"
+    mc:Ignorable="d"
+    >
+
+    <!--<Page.Resources>
+        <converters:IndexConverter x:Name="indexconverter" />
+    </Page.Resources>-->
+    <!-- 4 questions grid -->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Images/Edit_BG.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Wellness" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="36" Margin="0,30,0,0" />
+        <!-- Single question grid-->
+        <Grid Grid.Row="1">
+            <UserControls:QuestionUserControl Title="Energy" LowRangeText="Exhaustion" MidRangeText="Somewhat Energetic" HighRangeText="High Energy" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <UserControls:QuestionUserControl Title="Sleep" LowRangeText="Poor" MidRangeText="Restless" HighRangeText="Outstanding" />
+        </Grid>
+        <Grid Grid.Row="3">
+            <UserControls:QuestionUserControl Title="Soreness" LowRangeText="Extremely Sore" MidRangeText="Moderately Sore" HighRangeText="No Soreness" />
+        </Grid>
+        <Grid Grid.Row="4">
+            <UserControls:QuestionUserControl Title="Stress" LowRangeText="High Stress" MidRangeText="Moderate Stress" HighRangeText="Stress Free" />
+        </Grid>
+    </Grid>
+</Page>

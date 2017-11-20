@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="MicrosoftSportsScience.UserControls.PracticeTileUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:MicrosoftSportsScience.UserControls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+
+    <Grid x:Name="grid"
+          Tapped="grid_Tapped"
+          Style="{StaticResource StandardTileContainer}">
+        <Grid.Projection>
+            <PlaneProjection />
+        </Grid.Projection>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Transitions">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0" />
+                </VisualStateGroup.Transitions>
+                <VisualState x:Name="Flip">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)"
+                                                       Storyboard.TargetName="grid">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+                                                  Value="90" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                                  Value="180" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="grid1">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="grid2">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="FlipBack">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Projection).(PlaneProjection.RotationY)"
+                                                       Storyboard.TargetName="grid">
+                            <EasingDoubleKeyFrame KeyTime="0"
+                                                  Value="180" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+                                                  Value="90" />
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                                  Value="0" />
+                        </DoubleAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="grid1">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                       Storyboard.TargetName="grid2">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                            <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid x:Name="grid1"
+              Background="{StaticResource TileBGBlueBlueBrush}"
+              Padding="25"
+              Visibility="Collapsed">
+            <Grid.Projection>
+                <PlaneProjection RotationY="180" />
+            </Grid.Projection>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".3*" />
+                <RowDefinition Height=".35*" />
+                <RowDefinition Height=".3*" />
+            </Grid.RowDefinitions>
+            <Grid Width="120"
+                  Height="50"
+                  VerticalAlignment="Bottom"
+                  Tapped="EditTapped">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Image Style="{StaticResource EditIconStyle}"
+                           Margin="0,0,10,0"
+                           Width="18"
+                           Height="18" />
+                    <TextBlock Text="Edit"
+                               Style="{StaticResource Paragraph}"
+                               Margin="0"
+                               VerticalAlignment="Center"
+                               FontSize="20" />
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="1"
+                    BorderThickness="0,1,0,0"
+                    BorderBrush="White"
+                    VerticalAlignment="Center" />
+            <Grid Grid.Row="2"
+                  Width="120"
+                  Height="50"
+                  VerticalAlignment="Top"
+                  Tapped="ScheduleTapped">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Image Source="ms-appx:///Assets/Images/Icons/recovery-time-icons.png"
+                           Stretch="UniformToFill"
+                           Margin="0,0,10,0"
+                           Width="18"
+                           Height="18"
+                           VerticalAlignment="Center" />
+                    <TextBlock Text="Schedule"
+                               Style="{StaticResource Paragraph}"
+                               Margin="0"
+                               VerticalAlignment="Center"
+                               FontSize="20" />
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        <Grid x:Name="grid2"
+              Padding="25"
+              Background="#FF014880">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="160" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top">
+                <Border Width="10"
+                        Height="10"
+                        Background="{x:Bind CategoryColor, Mode=OneWay}"
+                        VerticalAlignment="Top"
+                        Margin="0,6,0,10" />
+                <TextBlock Style="{StaticResource Paragraph}"
+                           Margin="10,0,0,0"
+                           Text="{x:Bind Category, Mode=OneWay}"
+                           VerticalAlignment="Top" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock LineStackingStrategy="BlockLineHeight"
+                           LineHeight="35"
+                           Style="{StaticResource Header2}"
+                           Text="{x:Bind PracticeTopic, Mode=OneWay}"
+                           VerticalAlignment="Center"
+                           Margin="0" />
+            </StackPanel>
+            <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock LineStackingStrategy="BlockLineHeight"
+                           LineHeight="25"
+                           Style="{StaticResource Header3}"
+                           Text="{x:Bind PracticeName, Mode=OneWay}"
+                           VerticalAlignment="Center"
+                           Margin="0" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

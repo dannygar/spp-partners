@@ -1,0 +1,55 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MicrosoftSportsScience"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:MicrosoftSportsScience.ViewModels"
+    xmlns:converters="using:Converters" 
+    xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
+    x:Class="MicrosoftSportsScience.AnswerQuestions"
+    mc:Ignorable="d"
+    >
+
+    <!--<Page.Resources>
+        <converters:IndexConverter x:Name="indexconverter" />
+    </Page.Resources>-->
+    <!--<Page.Resources>
+        <converters:BooleanToVisible x:Key="BooleanToVisible" />
+    </Page.Resources>-->
+    <!-- 4 questions grid -->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill"  ImageSource="ms-appx:///Assets/Images/SignIn_BG.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90" />
+            <RowDefinition />
+            <RowDefinition Height="90" />
+        </Grid.RowDefinitions>
+        
+
+        <TextBlock Style="{StaticResource Header1}" Grid.Row="0" Text="Pre Workout"  HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="48"   />
+        <!-- Single question grid-->
+        <ItemsControl Grid.Row="1" x:Name="MainList" ItemsSource="{x:Bind PreWorkoutQuestions.Questions, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,150,0" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:AthleteQuestionViewModel">
+                    <Grid Height="150" HorizontalAlignment="Right">
+                        <UserControls:QuestionUserControl QuestionId="{x:Bind QuestionId}" Title="{x:Bind QuestionText }" LowRangeText="{x:Bind Answers[0].Caption}" MidRangeText="{x:Bind Answers[1].Caption}" HighRangeText="{x:Bind Answers[2].Caption}" VerticalAlignment="Center" ResponseSelected="QuestionUserControl_ResponseSelected" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <UserControls:PointerButton Style="{StaticResource PointButton}" Background="{StaticResource LightAccentBlueBrush}"
+                                    IsEnabled="False"
+                                    Width="180" Height="60" Grid.Row="2"  
+                                    HorizontalAlignment="Center" Margin="0"
+                                    x:Name="SubmitButton"
+                                    BorderBrush="White" BorderThickness="2"
+                                    Click="SubmitAnswers">
+            <TextBlock Text="Submit" Foreground="{StaticResource BasicWhiteColorBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+                                                           FontSize="20" Padding="0" Opacity="0.8" />
+        </UserControls:PointerButton>
+
+    </Grid>
+</Page>

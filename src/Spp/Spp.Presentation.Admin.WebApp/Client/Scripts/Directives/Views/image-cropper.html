@@ -1,0 +1,16 @@
+﻿<div class="margin-bottom-20">
+    <img id="cropper-preview" ng-src="{{src}}" class="{{::class}}">
+</div>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-primary" title="Reset" ng-click="reset()">
+        <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+    <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+        <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
+        <span class="glyphicon glyphicon-upload"></span>
+    </label>
+    <button type="button" class="btn btn-primary" title="Remove photo" ng-click="remove()">
+        <span class="glyphicon glyphicon-remove"></span>
+    </button>
+</div>

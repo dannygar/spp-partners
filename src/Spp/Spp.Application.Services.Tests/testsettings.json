@@ -1,0 +1,14 @@
+﻿{
+  "DbTenants": {
+    "ActiveTenant": "Spp",
+    "Spp": {
+      "SppDbConnection": "[YOUR DATABASE CONNECTION STRING]"
+    },
+    "LocalDb": {
+      "SppDbConnection": "[YOUR DATABASE CONNECTION STRING]"
+    }
+  },
+  "Benchmark": {
+    "NumberOfRuns": 30
+  }
+}

@@ -1,0 +1,82 @@
+.reports-page {
+
+    $row-height: 51px;
+
+    .scrollable {
+        overflow: auto;
+    }
+
+    .top-bar {
+        .scrollable {
+            white-space: nowrap;
+
+            > div {
+                display: inline-block;
+                vertical-align: top;
+                float: none;
+            }
+        }
+    }
+
+    .greed-wrapper {
+        height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        > div {
+            padding: 0;
+        }
+
+        .no-horizontal-scrollbar {
+            overflow-x: hidden;
+        }
+    }
+
+    .greed-container > .row {
+        white-space: nowrap;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: $row-height;
+
+        > div {
+            float: none;
+            display: inline-block;
+            height: $row-height;
+
+            &.v-center {
+                display: inline-flex;
+                justify-content: center;
+                background: inherit;
+            }
+        }
+    }
+
+    .height-100 {
+        height: calc(100% - 1px);
+    }
+
+    on-off-slider {
+        margin-left: 11px;
+    }
+
+    .switcher-title {
+        font-weight: 600;
+        font-size: large; 
+        text-align: right;
+    }
+
+    .img-container {
+        height: Calc(100% - 2px);
+    }
+
+    .player-avatar {
+        margin: 0 auto;
+        max-height: 100%;
+    }
+
+    .player-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

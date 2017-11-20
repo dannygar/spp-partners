@@ -1,0 +1,73 @@
+<div class="row users-page">
+    <div class="col-md-12">
+
+       
+
+        <!-- Active/Non-Active switchers-->
+        <div class="row margin-bottom-10">
+            <button class="col-md-2 col-md-offset-1 btn btn-success btn-lg text-uppercase"
+                    ng-click="vm.addUser()">
+                Add Player
+            </button>
+            <div class="col-md-offset-2 col-md-2 switcher-title">Active</div>
+            <div class="col-md-1">
+                <on-off-slider value="vm.showActiveUsers" cache-as="users-page-show-active"></on-off-slider>
+            </div>
+            <div class="col-md-2 switcher-title">Non-Active</div>
+            <div class="col-md-1">
+                <on-off-slider value="vm.showNonActiveUsers" cache-as="users-page-show-inactive"></on-off-slider>
+            </div>
+        </div>
+        <div class="row margin-bottom-10">
+            <div class="col-md-4 col-md-offset-8">
+                <select ng-model="vm.id"
+                        ng-change="vm.teamSelected()"
+                        ng-options="option.Id as option.Name for option in ::vm.teamOptions">
+                    <option value="">Team Select</option>
+                </select>
+            </div>
+        </div>
+
+
+            <hr />
+
+            <!-- User table -->
+            <div class="row">
+                <loading-spinner start-event="showSpinner" end-event="hideSpinner" save-height="true"></loading-spinner>
+                <div class="col-md-12 greed-container">
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-1">Name</div>
+                        <div class="col-md-3">Roles</div>
+                        <div class="col-md-1 text-center">Alerts</div>
+                        <div class="col-md-1 text-center">Active</div>
+                    </div>
+                    <div class="row cursor-pointer v-center"
+                         ng-repeat="item in vm.users | orderBy:'LastName' | showUsers:vm.showActiveUsers:vm.showNonActiveUsers"
+                         ng-click="vm.openOnEdit(item)">
+                        <div class="col-md-1">
+                            <div class="row">
+                                <div class="col-md-9 col-md-offset-3">
+                                    <img class="img-responsive img-circle" ng-src="{{::item.pathtoPhoto}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            {{::(item.lastName + ', ' + item.firstName)}}
+                        </div>
+                        <div class="col-md-3">
+                            {{::item.Role}}
+                        </div>
+                        <div class="col-md-1">
+                            <on-off-slider value="item.isEnabled" on-change="vm.switchAlerts"
+                                           debounce-time="1000" extra-args="item"></on-off-slider>
+                        </div>
+                        <div class="col-md-1">
+                            <on-off-slider value="item.isActive" checked-text="Yes" unchecked-text="No"
+                                           on-change="vm.switchActive" debounce-time="1000" extra-args="item"></on-off-slider>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

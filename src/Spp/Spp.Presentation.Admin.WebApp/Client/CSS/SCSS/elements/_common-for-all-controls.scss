@@ -1,0 +1,13 @@
+input[type="button" i]:disabled, 
+input[type="submit" i]:disabled, 
+input[type="reset" i]:disabled, 
+input[type="file" i]:disabled::-webkit-file-upload-button, 
+input:disabled, 
+button:disabled,
+select:disabled,
+keygen:disabled,
+optgroup:disabled,
+option:disabled,
+select[disabled] > option {
+    color: $disabled-color;
+}

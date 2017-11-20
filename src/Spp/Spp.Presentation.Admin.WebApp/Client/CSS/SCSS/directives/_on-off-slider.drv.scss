@@ -1,0 +1,66 @@
+on-off-slider {
+    $box-height: 26px;
+    $box-width: 66px;
+    $slider-size: ($box-height - 6px);
+    $slider-shift-default: 5px;
+    $slider-shift-checked: ($box-width - $slider-shift-default - $slider-size);
+    $slider-top: ($box-height - $slider-size) / 2;
+
+    width: $box-width;
+    height: $box-height;
+    line-height: $box-height;
+    background: white;
+    opacity: 60%;
+    border-radius: 50px;
+    position: relative;
+    display: block;
+    border: 2px solid #B6C9D7;
+    box-sizing: content-box;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+
+    &:before {
+        content: attr(unchecked-text);
+        color: $bright-red;
+        position: absolute;
+        right: 10px;
+        z-index: 0;
+        visibility: visible;
+    }
+
+    &:after {
+        content: attr(checked-text);
+        color: $light-green;
+        position: absolute;
+        left: 10px;
+        z-index: 0;
+        visibility: hidden;
+    }
+
+    .slider {
+        width: $slider-size;
+        height: $slider-size;
+        border-radius: 50%;
+        transition: all .4s ease;
+        cursor: pointer;
+        position: absolute;
+        top: $slider-top;
+        left: $slider-shift-default;
+        z-index: 1;
+        background: $bright-red;
+    }
+
+    &.toggled .slider {
+        left: $slider-shift-checked;
+        background: $light-green;
+    }
+
+    &.toggled:after {
+        visibility: visible;
+    }
+
+    &.toggled:before {
+        visibility: hidden;
+    }
+}

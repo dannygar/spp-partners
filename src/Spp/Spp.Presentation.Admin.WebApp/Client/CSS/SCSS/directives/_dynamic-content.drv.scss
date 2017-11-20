@@ -1,0 +1,14 @@
+dynamic-content {
+    display: block;
+
+    .dynamic-content {
+        background-size: cover;
+        background: url('images/page-body-header.png') no-repeat 50% 0;
+        width: 100%;
+        height: 192px;
+    }
+
+    .dynamic-transclude {
+        height: 100%;
+    }
+}

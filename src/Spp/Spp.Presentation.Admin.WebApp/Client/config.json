@@ -1,0 +1,54 @@
+﻿{
+  "apiEndpoint": "https://sppdevapi.azurewebsites.net",
+  "apiTokenEndpoint": "https://tppapidev.azurewebsites.net/api/v2/auth/b2b/token",
+
+  "tenant": "tppusers.onmicrosoft.com",
+  "client_id": "YOUR_CLIENTID",
+  "instance": "https://login.microsoftonline.com/",
+
+  "aadInstance_b2b": "https://login.microsoftonline.com/{0}",
+  "tenant_b2b": "tppadmin.onmicrosoft.com",
+  "audience_b2b": "https://tppadmin.onmicrosoft.com/tppapi",
+  "clientKey_b2b": "YOUR_CLIENTKEY",
+  "clientId_b2b": "YOUR_CLIENTID",
+
+  "blob_baseUrl": "YOUR_BLOB_URL",
+  "blob_sasToken": "YOUR_BLOB_SAS_TOKEN",
+
+  "defaultUserPhoto": "/Client/CSS/images/default-user.png",
+
+  "startSessionTime": "6.00 AM",
+  "endSessionTime": "5.31 PM",
+  "idForNewItems": "-1",
+
+  "wellnessReminder": {
+    "defaultTime": "9:00 AM",
+    "remindBeforeFirstSession": 20
+  },
+
+  "session": {
+    "defaultDuration": 30,
+    "maxDuration": 1440,
+    "maxAlertsAfterMinutes": 1440,
+    "maxCoachesRating": 10,
+    "coachRatingStep": 0.1
+  },
+
+  "sessionView": {
+    "intervalDuration": 60
+  },
+
+  "emptyElement": {
+    "Id": -1,
+    "Name": ""
+  },
+
+  "defaultErrorMessage": "Something went wrong. Please reload the page and try again.",
+  "errorPopoverTime": 5000,
+
+  "defaultAllActivePlayersTag": "Everyone",
+
+  "pager": {
+    "defaultNumberOfVisiblePages": 5
+  }
+}

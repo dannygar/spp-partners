@@ -1,0 +1,25 @@
+.greed-container {
+    > .row {
+        color: $dark-blue;
+        padding-bottom: 2px;
+        padding-top: 2px;
+        margin: 0;
+    }
+
+    > .row:nth-child(2n) {
+        background: $light-gray;
+    }
+
+    > .row:first-child {
+        font-weight: 600;
+        font-size: large;
+        background: transparent;
+    }
+
+    &.no-first-row {
+        .row:first-child {
+            font-weight: inherit;
+            font-size: inherit;
+        }
+    }
+}

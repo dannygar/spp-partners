@@ -1,0 +1,25 @@
+.panel {
+    border-radius: 0;
+}
+
+.panel-modern {
+    background: $light-gray;
+    color: white;
+}
+
+.panel-success {
+    background: $light-green;
+}
+
+.panel-rounded {
+    border-radius: 8px;
+}
+
+.panel-wide {
+    padding: 10px 20px;
+}
+
+.panel-title {
+    font-weight: 800;
+    padding-left: 3%;
+}

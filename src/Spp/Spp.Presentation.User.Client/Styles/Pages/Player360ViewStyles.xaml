@@ -1,0 +1,99 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:toText="using:MicrosoftSportsScience.Converters.ToText"
+    xmlns:userControls="using:MicrosoftSportsScience.UserControls">
+    
+    <Style x:Key="HeaderPlayerTile" TargetType="userControls:PlayerTileUserControl">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <CompositeTransform TranslateY="30"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="IsHitTestVisible" Value="False" />
+
+        <Setter Property="NameAreaVisibility" Value="Collapsed"/>
+        <Setter Property="ClubNameVisibility" Value="Collapsed"/>
+        <Setter Property="RestingIconVisibility" Value="Collapsed"/>
+        <Setter Property="SkillIconVisibility" Value="Collapsed"/>
+        <Setter Property="TeamColor" Value="#bfbfbf" />
+    </Style>
+
+    <GridLength x:Key="HeaderHeight">134</GridLength>
+
+    <!--The second column (switch) can overlay the first one (name, age and height) so we should set MinWidth for the first column.-->
+    <!--TODO: This value should based on actual width-->
+    <x:Double x:Key="FirstHeaderContainerMinWidth">1130</x:Double>
+
+    <Style x:Key="HeaderContainersStyle" TargetType="Panel">
+        <Setter Property="Margin" Value="0,0,0,40" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+    
+    <Style x:Key="HeaderInfoBlock" TargetType="StackPanel">
+        <Setter Property="Padding" Value="23,0,0,0"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <Style x:Key="GrayVerticalSeparator" TargetType="Rectangle">
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="Fill" Value="#bfbfbf" />
+        <Setter Property="Margin" Value="21,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+
+    <Style x:Key="StandardHeaderValueText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontStyle" Value="Normal"/>
+        <Setter Property="FontSize" Value="35"/>
+        <Setter Property="Foreground" Value="#000000"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="PlayerNameHeaderText" TargetType="TextBlock" BasedOn="{StaticResource StandardHeaderValueText}">
+        <Setter Property="MinWidth" Value="200"/>
+    </Style>
+
+    <Style x:Key="SkillHeaderText" TargetType="TextBlock" BasedOn="{StaticResource StandardHeaderValueText}">
+        <Setter Property="MinWidth" Value="100"/>
+    </Style>
+
+    <Style x:Key="HeaderSkillIcon" TargetType="Image">
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0,0,12,0"/>
+    </Style>
+
+    <Style x:Key="HeaderPropertyText" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="#00b140"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,10,0" />
+    </Style>
+
+    <Style x:Key="HeaderSwitchContainer" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="HeaderSwitchText" TargetType="TextBlock" BasedOn="{StaticResource StandardHeaderValueText}">
+        <Setter Property="Margin" Value="0,0,28,2" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style x:Key="HeaderSwitchGrid" TargetType="Grid">
+        <Setter Property="Width" Value="88" />
+    </Style>
+
+    <toText:PlayerToFullNameConverter x:Key="ToFullNameConverter"/>
+    <toText:HeightToTextConverter x:Key="HeightToTextConverter" />
+    <toText:AgeToTextConverter x:Key="AgeToTextConverter" />
+
+</ResourceDictionary>

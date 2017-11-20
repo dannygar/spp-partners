@@ -1,0 +1,78 @@
+.login-page {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(#097CAE, #0A3F5E);
+    overflow: auto;
+
+    .sign-in {
+        color: white;
+        width: 100%;
+        border: none;
+        background: $dark-blue;
+        font-size: x-large;
+    }
+
+    .error-message {
+        color: aliceblue;
+        font-size: medium;
+    }
+
+    input {
+        background: transparent;
+        border: none;
+        border-radius: unset;
+        border-bottom: 1px solid black;
+        color: white;
+        box-shadow: none;
+        font-size: 28px;
+        line-height: 28px;
+        padding: 6px 12px;
+        height: 40px;
+
+        @mixin input-placeholder-style() {
+            text-overflow: ellipsis;
+            color: white;
+        }
+
+        &::-webkit-input-placeholder {
+            @include input-placeholder-style();
+        }
+
+        &::-moz-placeholder {
+            @include input-placeholder-style();
+        }
+
+        &:-moz-placeholder {
+            @include input-placeholder-style();
+        }
+
+        &:-ms-input-placeholder {
+            @include input-placeholder-style();
+        }
+
+        @mixin input-placeholder-focus-style() {
+            color: transparent;
+        }
+
+        &:focus::-webkit-input-placeholder {
+            @include input-placeholder-focus-style();
+        }
+
+        &:focus::-moz-placeholder {
+            @include input-placeholder-focus-style();
+        }
+
+        &:focus:-moz-placeholder {
+            @include input-placeholder-focus-style();
+        }
+
+        &:focus:-ms-input-placeholder {
+            @include input-placeholder-focus-style();
+        }
+    }
+
+    @media (min-width: 768px) {
+        padding-top: 200px;
+    }
+}

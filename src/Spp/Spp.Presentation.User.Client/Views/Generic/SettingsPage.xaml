@@ -1,0 +1,112 @@
+﻿<Page
+    x:Class="MicrosoftSportsScience.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:userControls="using:MicrosoftSportsScience.UserControls"
+    mc:Ignorable="d">
+
+    <Grid EntranceNavigationTransitionInfo.IsTargetElement="True">
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/Images/SignIn_BG.jpg" />
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <CommandBar x:Name="commandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch">
+            <AppBarButton Icon="Undo" Label="Reset Settings" Click="OnResetSettingsClick"/>
+        </CommandBar>
+        
+        <ScrollViewer Grid.Row="1">
+
+           <StackPanel Orientation="Vertical" Margin="12,12" >
+
+                <StackPanel Margin="0,50,0,0" Orientation="Vertical" Width="900px" HorizontalAlignment="Left">
+                    <TextBlock Text="SPP API Settings" Style="{StaticResource Header2}"/>
+
+                   <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="API Endpoint Url: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <TextBox Width="900px" Text="{x:Bind AppSettingsViewModel.AppConfigurationSettings.APIEndpointUrl, Mode=TwoWay}" Style="{StaticResource Header3Box}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                   </StackPanel>
+                   <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Client Id: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <TextBox Width="500px" Text="{x:Bind AppSettingsViewModel.AppConfigurationSettings.ClientId, Mode=TwoWay}" Style="{StaticResource Header3Box}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                   </StackPanel>
+                   <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Tenant Id: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <TextBox Width="500px" Text="{x:Bind AppSettingsViewModel.AppConfigurationSettings.TenantId, Mode=TwoWay}" Style="{StaticResource Header3Box}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                   </StackPanel>
+                   <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="ML Endpoint Url: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <TextBox Width="1200px" Text="{x:Bind AppSettingsViewModel.AppConfigurationSettings.MLEndpointUrl, Mode=TwoWay}" Style="{StaticResource Header3Box}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                   </StackPanel>
+                   <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="ML Client Key: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <TextBox Width="1200px" Text="{x:Bind AppSettingsViewModel.AppConfigurationSettings.MLClientKey, Mode=TwoWay}" Style="{StaticResource Header3Box}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                   </StackPanel>
+                   <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Default Session Date: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <DatePicker x:Name="SessionDatePicker" Style="{StaticResource WhiteDatePicker}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12,0,0,0" Foreground="White"/>
+                   </StackPanel>
+               </StackPanel>
+
+                <StackPanel Margin="0,50,0,0">
+                    <TextBlock Text="Face Recognition" Style="{StaticResource Header2}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Enable Face Recognition: " Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <ToggleSwitch IsOn="{x:Bind EnableFaceRecognition, Mode=TwoWay}" Margin="10,6,0,0" Style="{StaticResource ToggleSwitchStyle}" Foreground="White" />
+                    </StackPanel>
+                    <ComboBox x:Name="cameraSourceComboBox" Header="Camera Source" Style="{StaticResource LightCombobox}" SelectionChanged="OnCameraSourceSelectionChanged"/>               
+                
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Minimum detectable face size (as % of image height):" Style="{StaticResource Header3}" VerticalAlignment="Center"></TextBlock>
+                        <Slider x:Name="MinDetectableFaceSizeSlider" Minimum="0" Maximum="100" Value="{x:Bind MinDetectableFaceCoveragePercentage, Mode=TwoWay}" SmallChange="1" LargeChange="5" HorizontalAlignment="Left" Margin="0,0,0,0" StepFrequency="1" Foreground="White" FocusVisualPrimaryBrush="#FFF7F7F7" Background="#CCFFFFFF" Width="824"/>
+                    </StackPanel>
+                        <TextBlock Text="{Binding ElementName=MinDetectableFaceSizeSlider, Path=Value}" Style="{StaticResource Header3}" VerticalAlignment="Bottom" Margin="12,0,0,0"/>
+                </StackPanel>
+             </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0,50,20,0">
+                    <userControls:PointerButton Style="{StaticResource PointButton}" Background="#FFC0C4C8"
+                                                Width="180" Height="60" FontSize="26"
+                                                HorizontalAlignment="Center" Margin="0,6,0,0"
+                                                Tapped="OnSaveSettingsClicked">
+                            <TextBlock Text="Save Settings" Foreground="{StaticResource LightAccentBlueBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+                                   FontSize="20" Padding="0" Opacity="0.8" />
+                    </userControls:PointerButton>
+                </StackPanel>
+
+                <StackPanel Margin="0,50,20,0">
+                    <userControls:PointerButton Style="{StaticResource PointButton}" Background="#FFC0C4C8"
+                                                Width="220" Height="60" FontSize="26"
+                                                HorizontalAlignment="Center" Margin="0,6,0,0"
+                                                Tapped="OnClearCacheClicked">
+                        <TextBlock Text="Clear Sign-in Cache" Foreground="{StaticResource LightAccentBlueBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+                                   FontSize="20" Padding="0" Opacity="0.8" />
+                    </userControls:PointerButton>
+                </StackPanel>
+
+                <StackPanel Margin="0,50,20,0">
+                    <userControls:PointerButton Style="{StaticResource PointButton}" Background="#FFC0C4C8"
+                                                Width="180" Height="60" FontSize="26"
+                                                HorizontalAlignment="Center" Margin="0,6,0,0"
+                                                Tapped="OnExitClicked">
+                        <TextBlock Text="Exit" Foreground="{StaticResource LightAccentBlueBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+                                   FontSize="20" Padding="0" Opacity="0.8" />
+                    </userControls:PointerButton>
+                </StackPanel>
+
+            </StackPanel>
+
+          </StackPanel>
+            
+        </ScrollViewer>
+
+    </Grid>
+</Page>

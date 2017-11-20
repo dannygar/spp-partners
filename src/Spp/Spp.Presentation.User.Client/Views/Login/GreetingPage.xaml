@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="MicrosoftSportsScience.Views.GreetingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ctl="using:MicrosoftSportsScience.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:userControls="using:MicrosoftSportsScience.UserControls"
+    SizeChanged="OnPageSizeChanged"
+    mc:Ignorable="d"
+    xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
+    x:Name="Greeting">
+
+    <Grid x:Name="MainGrid" Background="Black"
+            EntranceNavigationTransitionInfo.IsTargetElement="True" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*" />
+            <RowDefinition Height="0.10*" />
+            <RowDefinition Height="0.05*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.RowSpan="4">
+            <Image x:Name="motivationalImage" DataContext="{x:Bind ImagesModel}" Source="{Binding CurrentImage}" Stretch="UniformToFill">
+                <Image.Resources>
+                    <Storyboard x:Name="fadeOut" Completed="fadeOut_Completed">
+                        <DoubleAnimation Storyboard.TargetName="motivationalImage" Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.5" />
+                    </Storyboard>
+                    <Storyboard x:Name="fadeIn" Completed="fadeIn_Completed">
+                        <DoubleAnimation Storyboard.TargetName="motivationalImage" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" />
+                    </Storyboard>
+                </Image.Resources>
+            </Image>
+            <Grid Background="Black" Opacity="0.2" />
+        </Grid>
+
+        <Grid x:Name="cameraHostGrid" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.RowSpan="3" Margin="5" >
+            <userControls:CameraControl x:Name="cameraControl" />
+        </Grid>
+
+        <Grid Grid.RowSpan="4" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.8" Grid.Row="1" >
+                <Viewbox Width="100" Height="100" HorizontalAlignment="Center">
+                    <SymbolIcon Symbol="Contact" x:Name="greetingSymbol" />
+                </Viewbox>
+                <TextBlock x:Name="greetingTextBlock" HorizontalAlignment="Center" Margin="0,24,0,0" Text="Step in front of the camera to start"  Style="{StaticResource HeaderTextBlockStyle}" FontFamily="Segoe UI Light" FontStyle="Italic"  />
+            </StackPanel>
+
+            <!--<ctl:PointerButton Width="120" Height="50" HorizontalAlignment="Center" Background="White" Tapped="RestartButton_Clicked" Content="Restart" Grid.Row="2" Opacity="0.5">
+            </ctl:PointerButton>-->
+
+        </Grid>
+
+        <TextBlock Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" x:Name="faceLantencyDebugText" Opacity="0.5" />
+
+        <UserControls:SignInOptions CurrentMethod="Camera" VerticalAlignment="Bottom" Grid.Row="3" />
+    </Grid>
+</Page>

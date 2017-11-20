@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="MicrosoftSportsScience.UserControls.PerformanceSnapshotUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:MicrosoftSportsScience.UserControls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Loaded="UserControl_Loaded">
+
+    <Grid Width="540" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Opened">
+                    <Storyboard>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="polygon">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="180" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="3" Text="PERFORMANCE SNAPSHOT" Style="{StaticResource Paragraph}" Margin="0" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{x:Bind TopString}" Style="{StaticResource Paragraph}" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock.RenderTransform>
+                <CompositeTransform TranslateY="-10"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Grid.Row="2" Text="{x:Bind TopLeftString}" Style="{StaticResource Paragraph}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock.RenderTransform>
+                <CompositeTransform TranslateY="50"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{x:Bind TopRightString}" Style="{StaticResource Paragraph}" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock.RenderTransform>
+                <CompositeTransform TranslateY="50"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Grid.Row="3" Text="{x:Bind BottomLeftString}" Style="{StaticResource Paragraph}" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock.RenderTransform>
+                <CompositeTransform TranslateY="-50"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2" Text="{x:Bind BottomRightString}" Style="{StaticResource Paragraph}" Margin="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock.RenderTransform>
+                <CompositeTransform TranslateY="-50"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{x:Bind BottomString}" Style="{StaticResource Paragraph}" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+            <TextBlock.RenderTransform>
+                <CompositeTransform TranslateY="20"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <StackPanel Grid.Row="5" Grid.ColumnSpan="3" Orientation="Vertical" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                <Ellipse Height="15" Width="15" Fill="#FF576EFF" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" >
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform TranslateY="2"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <TextBlock Style="{StaticResource Paragraph}" Text="Russell Willson" VerticalAlignment="Center" Margin="10,0,0,0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Height="15" Width="15" Fill="#FF576EFF" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" >
+                    <Ellipse.RenderTransform>
+                        <CompositeTransform TranslateY="2"/>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <TextBlock Style="{StaticResource Paragraph}" Text="Team" Margin="10,0,0,0" VerticalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Tapped="StackPanel_Tapped" Grid.Column="1 " Grid.ColumnSpan="2" Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Image Source="ms-appx:///Assets/Images/Icons/Plus_Circle.png" Width="15" Height="15" Margin="0,0,5,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <CompositeTransform TranslateY="2"/>
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock Style="{StaticResource Paragraph}" Text="Change Comparison" Margin="0" VerticalAlignment="Center" />
+        </StackPanel>
+        <Image Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="3" Source="ms-appx:///Assets/Images/spider-web.png" Stretch="Fill" Margin="110,70" />
+        <Canvas Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="3">
+            <Polygon x:Name="polygon"  Points="270,100 360,200 390,318 270,300 130,329 150,183" Fill="#FF8686FF" Opacity="0" />
+        </Canvas>
+    </Grid>
+</UserControl>

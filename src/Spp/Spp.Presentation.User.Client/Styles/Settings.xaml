@@ -1,0 +1,39 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Colors-->
+    <Color x:Key="BasicWhiteColor">#FFFFFFFF</Color>
+    <Color x:Key="TransparentWhiteColor">#19FFFFFF</Color>
+    <Color x:Key="BasicBlackColor">#FF000000</Color>
+    <Color x:Key="TransparentBlackColor">#19000000</Color>
+    <Color x:Key="TileBGBlueColor">#FF004b86</Color>
+    <Color x:Key="DarkAccentBlueColor">#FF0d2142</Color>
+    <Color x:Key="LightAccentBlueColor">#FF005aa1</Color>
+    <Color x:Key="CheckboxRedColor">#FFFF0012</Color>
+    <Color x:Key="CheckboxOrangeColor">#FFff8400</Color>
+    <Color x:Key="CheckboxGreenColor">#FF78db0e</Color>
+
+    <!--Brushes-->
+    <SolidColorBrush x:Key="BasicWhiteColorBrush" Color="{StaticResource BasicWhiteColor}" />
+    <SolidColorBrush x:Key="TransparentWhiteColorBrush" Color="{StaticResource TransparentWhiteColor}" />
+    <SolidColorBrush x:Key="BasicBlackColorBrush" Color="{StaticResource BasicBlackColor}" />
+    <SolidColorBrush x:Key="TransparentBlackColorBrush" Color="{StaticResource TransparentBlackColor}" />
+    <SolidColorBrush x:Key="TileBGBlueBlueBrush" Color="{StaticResource TileBGBlueColor}" />
+    <SolidColorBrush x:Key="LightAccentBlueBrush" Color="{StaticResource LightAccentBlueColor}" />
+    <SolidColorBrush x:Key="DarkAccentBlueBrush" Color="{StaticResource DarkAccentBlueColor}" />
+    <SolidColorBrush x:Key="TransparentBrush" Color="Transparent" />
+    <SolidColorBrush x:Key="CheckboxRedColorBrush" Color="{StaticResource CheckboxRedColor}" />
+    <SolidColorBrush x:Key="CheckboxOrangeColorBrush" Color="{StaticResource CheckboxOrangeColor}" />
+    <SolidColorBrush x:Key="CheckboxGreenColorBrush" Color="{StaticResource CheckboxGreenColor}" />
+
+    <!--Tiles-->
+    <x:Double x:Key="StandardTileSize">270</x:Double>
+
+    <!--Rando-->
+    <Thickness x:Key="PagePadding">40 40 40 0</Thickness>
+    <Thickness x:Key="BottomThirtyMargin">0 0 0 30</Thickness>
+
+    <GridLength x:Key="SidebarWidth">320</GridLength>
+
+</ResourceDictionary>

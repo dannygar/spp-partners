@@ -1,0 +1,102 @@
+﻿<Page
+    x:Class="MicrosoftSportsScience.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MicrosoftSportsScience"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <SplitView x:Name="ShellSplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+              CompactPaneLength="50" OpenPaneLength="180" Content="{Binding}">
+        <SplitView.Pane>
+            <Grid x:Name="PaneGrid">
+                <StackPanel Background="#c0c4c8" Margin="0">
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button x:Name="HamburgerButton" Width="50" Height="50" Click="HamburgerButton_Click" Style="{StaticResource DefaultButton}" >
+                            <Image Source="ms-appx:///Assets/Images/Menu/Hamburger_Button.png" Width="26" Height="26" Margin="12" />
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FFC0C4C8" >
+                        <Button x:Name="MenuButton1" Padding="0" BorderBrush="#FFC0C4C8" HorizontalAlignment="Stretch" BorderThickness="0" Click="MenuButton1_Click">
+                            <StackPanel Orientation="Horizontal" Background="#FFC0C4C8">
+                                <Grid>
+                                    <Image Width="50" Height="50" Source="ms-appx:///Assets/Images/Menu/Profile_Example.jpg" x:Name="ProfileImage" />
+                                    <Image Width="50" Height="50" Source="ms-appx:///Assets/Images/Menu/Profile_Button.png" />
+                                </Grid>
+                                <TextBlock Text="Home" FontSize="18" SelectionHighlightColor="#FFC0C4C8" Foreground="White" Padding="15,0,0,0" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button x:Name="backButton" Style="{StaticResource DefaultButton}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="backButton_Click" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <SymbolIcon Foreground="White" Symbol="Back" Width="26" Height="26" Margin="0,0,0,0" />
+                                <TextBlock Text="Back" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button IsEnabled="False" x:Name="MenuButton2" Style="{StaticResource DefaultButton}" VerticalAlignment="Stretch" Click="MenuButton2_Click" >
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image Source="ms-appx:///Assets/Images/Menu/Heart_Button.png" Width="26" Height="26" />
+                                <TextBlock Text="Button 2" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button IsEnabled="False" x:Name="MenuButton3" Style="{StaticResource DefaultButton}" VerticalAlignment="Stretch" Click="OpenWorkouts">
+                            <StackPanel Orientation="Horizontal" >
+                                <Image Source="ms-appx:///Assets/Images/Menu/VS_Button.png" Width="26" Height="26"/>
+                                <TextBlock Text="Button 3" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button IsEnabled="False" x:Name="MenuButton4" Style="{StaticResource DefaultButton}" VerticalAlignment="Stretch" Click="MenuButton4_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="ms-appx:///Assets/Images/Menu/Dialog_Button.png" Width="26" Height="26" />
+                                <TextBlock Text="Button 4" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button  IsEnabled="False" x:Name="MenuButton5" Style="{StaticResource DefaultButton}" VerticalAlignment="Stretch" Click="MenuButton5_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="ms-appx:///Assets/Images/Menu/Calendar_Button.png" Width="26" Height="26" />
+                                <TextBlock Text="Button 5" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button  IsEnabled="False" x:Name="MenuButton6" Style="{StaticResource DefaultButton}"  VerticalAlignment="Stretch" Click="MenuButton6_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="ms-appx:///Assets/Images/Menu/Stopwatch_Button.png" Width="26" Height="26" />
+                                <TextBlock Text="Button 6" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Background="#FF2067C0">
+                        <Button  IsEnabled="False" x:Name="MenuButton7" Style="{StaticResource DefaultButton}"  VerticalAlignment="Stretch" Tapped="MenuButton7_Tapped">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="ms-appx:///Assets/Images/Menu/Graph_Button.png" Width="26" Height="26" />
+                                <TextBlock Text="Button 7" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal" Background="#FFC0C4C8" >
+                        <Button x:Name="MenuButton8"  Background="#c0c4c8" VerticalAlignment="Stretch" BorderThickness="0" Padding="0" Click="MenuButton8_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="ms-appx:///Assets/Images/Menu/Settings_Button.png" Width="26" Height="26" Margin="12" />
+                                <TextBlock Text="Settings" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <Image Source="ms-appx:///Assets/Images/Menu/SportsPerformance-App-Logo.png" Width="44" Stretch="Fill" HorizontalAlignment="Left" Margin="2,15" />
+                </StackPanel>
+            </Grid>
+        </SplitView.Pane>
+    </SplitView>
+</Page>

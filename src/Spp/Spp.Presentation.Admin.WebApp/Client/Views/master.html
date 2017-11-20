@@ -1,0 +1,38 @@
+<div class="container margin-bottom-60">
+    <!-- Common header -->
+    <div class="row top-header v-center primary-team-color" ng-include="'/Client/Views/master-header.html'" ng-style="{'background-color': main.primaryColor}"></div>
+
+    <!-- Navigation -->
+    <ul class="nav nav-tabs nav-justified">
+        <li ng-style="{'background-color': main.secondaryColor}" class="secondary-team-color"><a href="#/app/users" class="secondary-team-color">Players</a></li>
+        <li ng-style="{'background-color': main.secondaryColor}" class="secondary-team-color"><a href="#/app/sessions/day">Sessions</a></li>
+        <li ng-style="{'background-color': main.secondaryColor}" class="secondary-team-color"><a href="#/app/settings">Settings</a></li>
+    </ul>
+
+    <!-- Page body header -->
+    <div class="row margin-bottom-20">
+        <div class="col-md-12">
+            <dynamic-content content-id="body-header"></dynamic-content>
+        </div>
+    </div>
+
+    <!-- Page Body -->
+    <div class="row">
+        <loading-spinner start-event="$stateChangeStart" end-event="$viewContentLoaded"></loading-spinner>
+        <ui-view class="col-md-12 tight" name="nestedHolder"></ui-view>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container text-center h6">
+        <a href="#/app/about">Terms of use</a> |
+        <a href="https://www.microsoft.com/en-us/privacystatement/OnlineServices/Default.aspx">Privacy</a> |
+        &copy; {{::main.footerDate | date:'yyyy'}} Microsoft.
+    </div>
+</footer>
+
+<!-- Alert -->
+<alert-view modal-id="alert" title="Warning">
+    <p>{{main.warningMessage}}</p>
+</alert-view>

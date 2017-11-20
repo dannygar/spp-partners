@@ -1,0 +1,19 @@
+image-cropper {
+    display: block;
+
+    #cropper-preview {
+        height: 270px;
+    }
+
+    .cropper-face, .cropper-view-box {
+        border-radius: 50%;
+    }
+
+    .cropper-face {
+        opacity: 0.15;
+    }
+
+    .cropper-modal {
+        opacity: 0.8;
+    }
+}

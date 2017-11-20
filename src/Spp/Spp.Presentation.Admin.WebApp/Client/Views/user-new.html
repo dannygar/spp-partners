@@ -1,0 +1,35 @@
+﻿<div class="row user-new-page">
+    <div class="col-md-12">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="bold"><span ng-if="vm.roleId === 1">Coach -</span><span ng-if="vm.roleId === 2">Player -</span><span ng-if="vm.roleId === 3">Administrator -</span> {{vm.user.name}} {{vm.user.lastName}}</h3>
+            </div>
+        </div>
+
+        <!-- Player settings -->
+        <div class="row margin-top-50 dark-blue">
+            <div class="col-md-6 children-row-margin-10"
+                 ng-include="'/Client/Views/user-new-left-column.html'"></div>
+            <div class="col-md-6 children-row-margin-10"
+                 ng-include="'/Client/Views/user-new-right-column.html'"></div>
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div class="row margin-top-50">
+            <loading-spinner start-event="showUserPageSpinner" end-event="hideUserPageSpinner" save-height="true"></loading-spinner>
+            <div class="col-md-6 col-md-offset-5 text-right">
+                <div class="row">
+                    <button class="col-md-4 col-md-offset-3 btn btn-success btn-lg text-uppercase"
+                            ng-click="vm.cancel()">
+                        Cancel
+                    </button>
+                    <button class="col-md-4 col-md-offset-1 btn btn-success btn-lg text-uppercase"
+                            ng-click="vm.createUser()">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

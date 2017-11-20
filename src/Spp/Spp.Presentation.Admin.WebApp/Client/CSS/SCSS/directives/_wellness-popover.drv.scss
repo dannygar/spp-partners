@@ -1,0 +1,37 @@
+wellness-popover {
+    .wellness-popover {
+        position: absolute;
+        bottom: 45px;
+        left: 26px;
+        width: 300px;
+        text-transform: none;
+        z-index: 9999999999;
+        background: $light-gray;
+        padding: 15px;
+        box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.2);
+
+        .triangle-wrapper {
+            $triangle-size: 40px;
+
+            position: absolute;
+            background: transparent;
+            bottom: -($triangle-size/2);
+            left: 0;
+            width: $triangle-size/2;
+            height: $triangle-size/2;
+            overflow: hidden;
+            box-shadow: -6px 0 6px -3px rgba(0, 0, 0, 0.1);
+
+            .triangle {
+                background: $light-gray;
+                position: absolute;
+                bottom: 0;
+                left: -28px;
+                width: $triangle-size;
+                height: $triangle-size;
+                transform: rotate(45deg);
+                box-shadow: 3px 0 9px -2px rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+}

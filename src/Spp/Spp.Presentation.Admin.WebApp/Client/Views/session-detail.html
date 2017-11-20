@@ -1,0 +1,73 @@
+<div class="row session-detail-page">
+    <div class="col-md-12 children-row-margin-10">
+
+        <div class="panel-group" id="accordion">
+            <!-- Step 1 General Settings-->
+            <div class="panel panel-default">
+                <div class="panel-title panel-heading" role="button" data-toggle="collapse"
+                     data-parent="#accordion" href="#step1" aria-expanded="true" id="headingStep1">
+                    General Settings
+                </div>
+                <div id="step1" class="panel-collapse collapse in" role="tabpanel"
+                     aria-labelledby="headingStep1">
+                    <div class="panel-body">
+                        <div class="row" ng-include="'/Client/Views/session-detail-step1.html'"></div>
+                        <div class="row">
+                            <div class="col-md-1 col-md-offset-10">
+                                <button class="btn btn-success text-uppercase" ng-click="vm.openStep(2)">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Step 2 Player assigning -->
+            <div class="panel panel-default">
+                <div class="collapsed panel-title panel-heading" role="button" data-toggle="collapse"
+                     data-parent="#accordion" href="#step2" aria-expanded="false" id="headingStep2">
+                    Player Assignment
+                </div>
+                <div id="step2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingStep2">
+                    <div class="panel-body">
+                        <div class="row players-container margin-bottom-10"
+                             ng-include="'/Client/Views/session-detail-step2.html'"></div>
+                        <!-- Submit session -->
+                        <div class="row">
+                            <loading-spinner start-event="showSpinner" end-event="hideSpinner"></loading-spinner>
+                            <div class="col-md-1 col-md-offset-9">
+                                <button class="btn btn-success text-uppercase" ng-click="vm.openStep(1)">Back</button>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-success text-uppercase" ng-click="vm.openStep(3)">Next</button>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-success text-uppercase" ng-click="vm.save()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Step 3 Overview -->
+            <div class="panel panel-default">
+                <div class="collapsed panel-title panel-heading" role="button" data-toggle="collapse"
+                     data-parent="#accordion" href="#step3" aria-expanded="false" id="headingStep3">
+                    Overview
+                </div>
+                <div id="step3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingStep3">
+                    <div class="panel-body">
+                        <div class="row" ng-include="'/Client/Views/session-detail-step3.html'"></div>
+                        <!-- Submit session -->
+                        <div class="row">
+                            <loading-spinner start-event="showSpinner" end-event="hideSpinner"></loading-spinner>
+                            <div class="col-md-1 col-md-offset-9">
+                                <button class="btn btn-success text-uppercase" ng-click="vm.openStep(2)">Back</button>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-success text-uppercase" ng-click="vm.save()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

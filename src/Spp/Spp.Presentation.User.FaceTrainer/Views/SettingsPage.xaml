@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="FaceAPITrainer.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceAPITrainer.Views"
+    xmlns:ctl="using:FaceAPITrainer.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          EntranceNavigationTransitionInfo.IsTargetElement="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <CommandBar x:Name="commandBar" VerticalAlignment="Top" HorizontalContentAlignment="Stretch">
+            <AppBarButton Icon="Undo" Label="Reset Settings" Click="OnResetSettingsClick"/>
+
+            <CommandBar.Content>
+                <ctl:PageHeader>
+                    <ctl:PageHeader.HeaderContent>
+                        <TextBlock Style="{ThemeResource PageTitleTextBlockStyle}" Text="SETTINGS"/>
+                    </ctl:PageHeader.HeaderContent>
+                </ctl:PageHeader>
+            </CommandBar.Content>
+        </CommandBar>
+        
+        <ScrollViewer Grid.Row="1">
+            <StackPanel  Orientation="Vertical" Margin="12,12" >
+                <StackPanel>
+                    <TextBlock Text="Team Cognitive Settings" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                    <TextBlock Text="Workspace Key" Style="{StaticResource BodyTextBlockStyle}" Margin="0,5,0,0"  />
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding WorkspaceKey, Mode=TwoWay}" Width="390" HorizontalAlignment="Left"/>
+                        <Button Content="Generate New Key" Margin="10,0,0,0" Click="OnGenerateNewKeyClicked"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Face API Key" Style="{StaticResource BodyTextBlockStyle}" Margin="0,5,0,0"  />
+                        <TextBox Text="{Binding FaceApiKey, Mode=TwoWay}" Width="390" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Emotion API Key" Style="{StaticResource BodyTextBlockStyle}" Margin="0,5,0,0"  />
+                        <TextBox Text="{Binding EmotionApiKey, Mode=TwoWay}" Width="390" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Bing API Key" Style="{StaticResource BodyTextBlockStyle}" Margin="0,5,0,0"  />
+                        <TextBox Text="{Binding BingApiKey, Mode=TwoWay}" Width="390" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Minimum detectable face coverage %" Style="{StaticResource BodyTextBlockStyle}" Margin="0,5,0,0"  />
+                        <TextBox Text="{Binding MinDetectableFaceCoveragePercentage, Mode=TwoWay}" Width="30" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+
+
+                    <StackPanel Margin="0,20,0,0" Orientation="Vertical">
+                        <TextBlock Text="Miscellaneous" Style="{StaticResource SubheaderTextBlockStyle}"/>
+                        <ComboBox x:Name="cameraSourceComboBox" Header="Camera Source" Width="300" SelectionChanged="OnCameraSourceSelectionChanged"/>
+                        <ComboBox x:Name="cognitiveServicesDCComboBox" Header="Cognitive Services Location" Width="300" SelectionChanged="OnLocationSelectionChanged"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <Button Content="Save Changes" Margin="10,20,0,0" Click="OnSaveChangesClicked"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

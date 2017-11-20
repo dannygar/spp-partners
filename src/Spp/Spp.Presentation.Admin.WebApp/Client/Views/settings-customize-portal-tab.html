@@ -1,0 +1,72 @@
+﻿<div class="col-md-12"><h4>Pick Your Team Colors</h4>
+</div>
+<div class="col-md-5">
+    <h5>Primary color</h5>
+    <input type="text" class="prim-color" ng-model="vm.primaryColor" style="display:none;" />
+    <div id="primary-color-palette"></div>
+
+</div>
+<div class="col-md-5">
+    <h5>Secondary color</h5>
+    <input type="text" class="sec-color" ng-model="vm.secondaryColor" style="display: none;"/>
+    <div id="secondary-color-palette"></div>
+</div>
+
+<div class="col-md-2 col-md-offset-6">
+    <button type="button" id="reset-colors-btn" class="btn btn-primary" ng-click="vm.resetTeamColors()" style="margin-top: 20px;">Reset Color</button>
+</div>
+<div class="col-md-2">
+    <button type="button" class="btn btn-primary" ng-click="vm.updateTeamColors()" style="margin-top: 20px;">{{vm.colorMessage}}</button>
+</div>
+<input type="hidden" id="reset-color-prim" ng-value="vm.resetPrimaryColor"/>
+<input type="hidden" id="reset-color-sec" ng-value="vm.resetSecondayColor" />
+
+<div class="col-md-12"><h3>Upload Your Team Logo</h3></div>
+
+    <div class="col-md-5 col-md-offset-3">
+        <img ng-src="{{vm.teamLogo}}" class="img-responsive img-circle"
+             data-toggle="modal" data-target="#logoModal" />
+        <modal-view modal-id="logoModal" submit-text="Save changes" on-submit="vm.savePhotoChanges"
+                    title="Team Logo Editor"
+                    spinner-show-event="showSpinnerInPhotoModal" spinner-hide-event="hideSpinnerInPhotoModal"
+                    popover-show-event="showPopoverInPhotoModal">
+            <image-cropper class="img-responsive" src="vm.teamLogo"
+                           data="vm.cropperData" original-image-data="vm.originalImageData" file-object="vm.fileObject"></image-cropper>
+        </modal-view>
+    </div>
+
+<!--Source http://demos.telerik.com/kendo-ui/colorpicker/index -->
+<script>
+
+    $("#reset-colors-btn").addClass("disabled");
+
+    function primaryColorUpdate(e) {
+        $(".primary-team-color").css("background-color", e.value);
+        $('.prim-color').val(e.value);
+        angular.element(jQuery('.prim-color')).triggerHandler('input');
+    }
+
+    function secondaryColorUpdate(e) {
+        $(".secondary-team-color").css("background-color", e.value);
+        $('.sec-color').val(e.value);
+        angular.element(jQuery('.sec-color')).triggerHandler('input');
+    }
+
+    $("#primary-color-palette").kendoColorPalette({
+        palette: [
+            "#0F1E2B", "#7f7f7f", "#880015", "#ed1c24", "#ff7f27", "#fff200", "#22b14c", "#00a2e8", "#3f48cc", "#8349a4",
+            "#01478F ", "#c3c3c3", "#b97a57", "#ffaec9", "#ffc90e ", "#EFE4B0", "#B5E61D", "#99D9EA", "#7092BE", "#C8BFE7"
+        ],
+        tileSize: 32,
+        change: primaryColorUpdate
+    });
+
+    $("#secondary-color-palette").kendoColorPalette({
+        palette: [
+            "#0F1E2B", "#7f7f7f", "#880015", "#ed1c24", "#ff7f27", "#fff200", "#22b14c", "#00a2e8", "#3f48cc", "#8349a4",
+            "#01478F ", "#c3c3c3", "#b97a57", "#ffaec9", "#ffc90e ", "#EFE4B0", "#B5E61D", "#99D9EA", "#7092BE", "#C8BFE7"
+        ],
+        tileSize: 32,
+        change: secondaryColorUpdate
+    });
+</script>
