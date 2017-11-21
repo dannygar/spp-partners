@@ -8,7 +8,7 @@ SPP is a platform that enables professional and amateur sports teams to collect 
 
 ### Prerequisites
 
-The project requires [Visual Studio 2017](https://www.visualstudio.com/) and [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) installed.
+The project requires [Visual Studio 2017](https://www.visualstudio.com/) and [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps) (version 5.0.0 or higher) installed.
 
 You will also need an active Azure subscription to deploy SPP. If you don't have one yet, go to the [Microsoft Azure](https://azure.microsoft.com) website to sign up.
 
