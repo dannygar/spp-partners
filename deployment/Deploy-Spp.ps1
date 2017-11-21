@@ -44,7 +44,7 @@ param(
 #############################################################
 
 function SignIn {
-    Write-Host "Logining..."
+    Write-Host "Logging in..."
     try {
         Get-AzureRmContext | Out-Null
     }
