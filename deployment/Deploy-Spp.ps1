@@ -45,16 +45,8 @@ param(
 
 function SignIn {
     Write-Host "Logging in..."
-    try {
-        Get-AzureRmContext | Out-Null
-    }
-    catch {
-        if ($_ -like "*Login-AzureRmAccount to login*") {
-            Login-AzureRmAccount | Out-Null
-        }
-        else {
-            throw
-        }
+    if ((Get-AzureRmContext).Account -eq $null) {
+        Login-AzureRmAccount
     }
 }
 
@@ -79,7 +71,7 @@ SignIn
 # Select subscription
 if (!$subscriptionId) {
     Write-Host "The following subscriptions are available for you:"
-    Get-AzureRmSubscription | Format-Table SubscriptionName, SubscriptionId
+    Get-AzureRmSubscription | Format-Table -AutoSize SubscriptionId, Name
     $subscriptionId = Read-Host -Prompt "Copy and paste a subscription id from the list above"
 }
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
