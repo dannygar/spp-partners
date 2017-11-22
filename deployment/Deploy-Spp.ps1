@@ -5,12 +5,12 @@
 	Deploys SPP template to Azure.
 .PARAMETER subscriptionId
 	The subscription id where the template will be deployed.
-.PARAMETER deploymentName
-	The deployment name.
 .PARAMETER resourceGroupName
 	The resource group name.
 .PARAMETER resourceGroupLocation
 	Optional, a resource group location. If specified, will try to create a new resource group in this location.
+.PARAMETER deploymentName
+	The deployment name.
 .PARAMETER templateFilePath
 	Optional, path to the template file. Defaults to spp.template.json.
 .PARAMETER parametersFilePath
@@ -30,6 +30,9 @@ param(
     $resourceGroupLocation,
 
     [string]
+    $deploymentName,
+
+    [string]
     $templateFilePath = "deploy-spp.json",
 
     [string]
@@ -39,14 +42,58 @@ param(
     $bacpacFilePath = "SppDbV2.bacpac"
 )
 
-#############################################################
-# Helper Functions
-#############################################################
+
+#region Helper Functions
+function Select-ListItem([array]$list) {
+    function Show-List([array]$list, [int]$pos) {
+        for ($i = 0; $i -le $list.length; $i++) {
+            if ($list[$i] -ne $null) {
+                $listItem = $list[$i]
+                if ($i -eq $pos) {
+                    Write-Host "> $($listItem)" -ForegroundColor Green
+                }
+                else {
+                    Write-Host "  $($listItem)"
+                }
+            }
+        }
+    }
+	
+    if ($list.Length -eq 0) {
+        return;
+    }
+
+    $pos = 0
+    $virtualKeycode = 0
+
+    Write-Host
+    $curTop = [System.Console]::CursorTop
+    [console]::CursorVisible = $false
+
+    Show-List $list $pos
+    While ($virtualKeycode -ne 0x0D) {
+        $key = $host.ui.rawui.readkey("NoEcho,IncludeKeyDown")
+        $virtualKeycode = $key.virtualkeycode
+
+        If ($virtualKeycode -eq 38 -or $key.Character -eq 'k') { $pos-- }
+        If ($virtualKeycode -eq 40 -or $key.Character -eq 'j') { $pos++ }
+        if ($pos -ge $list.Length) { $pos = 0 }
+        if ($pos -lt 0) { $pos = $list.Length - 1 }
+		
+        [System.Console]::SetCursorPosition(0, $curTop)
+        Show-List $list $pos
+    }
+
+    [console]::CursorVisible = $true
+    Write-Host
+
+    return $pos
+}
 
 function SignIn {
     Write-Host "Logging in..."
     if ((Get-AzureRmContext).Account -eq $null) {
-        Login-AzureRmAccount
+        Login-AzureRmAccount | Out-Null
     }
 }
 
@@ -60,23 +107,104 @@ function Register-ResourceProviders([array]$rpNamespaces) {
     }
 }
 
-#############################################################
-# Script Body
-#############################################################
+function Show-ParamHint([string]$param) {
+    Write-Host
+    Write-Host -NoNewLine "[$param]" -ForegroundColor Blue
+    Write-Host " not provided."
+}
+#endregion
 
+#region Environment Setup
 $ErrorActionPreference = "Stop"
 
 SignIn
+#endregion
 
-# Select subscription
+#region Parameters Supplement
 if (!$subscriptionId) {
-    Write-Host "The following subscriptions are available for you:"
-    Get-AzureRmSubscription | Format-Table -AutoSize SubscriptionId, Name
-    $subscriptionId = Read-Host -Prompt "Copy and paste a subscription id from the list above"
+    Show-ParamHint("subscriptionId")
+
+    Write-Host "Getting available subscriptions for you..."
+    $subscriptions = Get-AzureRmSubscription
+
+    Write-Host "Please choose a subscription for the deployment:"
+    $pos = Select-ListItem ($subscriptions | ForEach-Object { "$($_.SubscriptionId)    $($_.Name)" })
+    $subscriptionId = $subscriptions[$pos].Id
 }
+Write-Host "Switching to subscription '$subscriptionId'..."
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-# Register resource providers
+$resourceGroup = $null
+if (!$resourceGroupName) {
+    Show-ParamHint("resourceGroupName")
+
+    $message = "Do you want to use an existing resource group?"
+    $yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes - use existing", `
+        "Use an existing resource group"
+    $no = New-Object System.Management.Automation.Host.ChoiceDescription "&No - create new", `
+        "Create a new resource group"
+    $options = [System.Management.Automation.Host.ChoiceDescription[]]($yes, $no)
+    $result = $host.UI.PromptForChoice("", $message, $options, 0)
+    Write-Host
+
+    if ($result -eq 0) {
+        Write-Host "Getting existing resuorce groups..."
+        $existingResourceGroups = Get-AzureRmResourceGroup
+        if ($existingResourceGroups.Length -eq 0) {
+            Write-Host "No existing resource group found in the current subscription."
+        }
+        else {
+            Write-Host "Please choose a resource group:"
+            $pos = Select-ListItem $existingResourceGroups.ResourceGroupName
+            $resourceGroup = $existingResourceGroups[$pos]
+            $resourceGroupName = $resourceGroup.ResourceGroupName
+            $resourceGroupLocation = $resourceGroup.Location
+        }
+    }
+
+    if (!$resourceGroup) {
+        $prompt = "Please enter a new resource group name"
+        $resourceGroupName = Read-Host -Prompt $prompt
+        while ([string]::IsNullOrEmpty($resourceGroupName)) {
+            Write-Host "Resource group name cannot be empty."
+            $resourceGroupName = Read-Host -Prompt $prompt
+        }
+    }
+}
+
+if (!$resourceGroupLocation) {
+    Show-ParamHint("resourceGroupLocation")
+
+    Write-Host "Getting avaiable locations..."
+    $locations = (Get-AzureRmLocation).Location
+
+    Write-Host "Please select a location for your resource group:"
+    $pos = Select-ListItem $locations
+    $resourceGroupLocation = $locations[$pos]
+}
+
+if (!$deploymentName) {
+    Show-ParamHint("deploymentName")
+
+    $defaultName = "deploy-spp"
+    $deploymentName = Read-Host -Prompt "Please enter a deployment name ($defaultName)"
+    if ([String]::IsNullOrEmpty($deploymentName)) {
+        $deploymentName = $defaultName
+    }
+}
+#endregion
+
+#region Deployment Steps
+Write-Host
+Write-Host "Starting deployment..."
+
+# 1. Create new resource group if neccessary
+if (!$resourceGroup) {
+    Write-Host "Creating resource group '$resourceGroupName' in location '$resourceGroupLocation'..."
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation | Out-Null
+}
+
+# 2. Register resource providers
 $rpNameSpaces = @(
     "microsoft.Web",
     "Microsoft.Sql",
@@ -86,95 +214,49 @@ $rpNameSpaces = @(
 )
 Register-ResourceProviders($rpNameSpaces)
 
-# Supply resource group name if neccessary
-$createNewRg = $false
-if (!$resourceGroupName) {
-    $existingRgNames = ((Get-AzureRmResourceGroup) | Select-Object ResourceGroupName).ResourceGroupName
-    $prompt = "Type a resource group name from the list above or enter a new one"
-    if ($existingRgNames.Length) {
-        Write-Host "The following resource groups are available for your subscription:"
-        write-Host ""
-        for ($i = 1; $i -le $existingRgNames.Count; $i++) {
-            Write-Host $i'.' $existingRgNames[$i - 1]
-        }
-        Write-Host ""
-    }
-    else {
-        Write-Host "No existing resource groups found in the current subscription."
-        $prompt = "Please enter a new resource group name"
-    }
-
-    $resourceGroupName = Read-Host -Prompt $prompt
-    while ([string]::IsNullOrEmpty($resourceGroupName)) {
-        Write-Host "No resource group specified."
-        $resourceGroupName = Read-Host -Prompt $prompt
-    }
-
-    $createNewRg = !$existingRgNames.Contains($resourceGroupName)
-}
-
-# Supply location if neccessary
-if ($createNewRg -and !$resourceGroupLocation) {
-    Write-Host "The following locations are available for your resource group:"
-    write-Host ""
-    $locations = (Get-AzureRmLocation | Select-Object Location).Location
-    for ($i = 1; $i -le $locations.Count; $i++) {
-        Write-Host $i'. ' $locations[$i - 1]
-    }
-
-    $prompt = "Type a location from the list above"
-    write-Host ""
-    $resourceGroupLocation = Read-Host -Prompt $prompt
-
-    while ([string]::IsNullOrEmpty($resourceGroupLocation)) {
-        Write-Host "No resource group location specified."
-        $resourceGroupLocation = Read-Host -Prompt $prompt
-    }
-    while (!$locations.Contains($resourceGroupLocation)) {
-        Write-Host "Resource group location is not valid"
-        $resourceGroupLocation = Read-Host -Prompt $prompt
-    }
-}
-
-# Create or check for existing resource group
-if ($createNewRg) {
-    Write-Host "Creating resource group '$resourceGroupName' in location '$resourceGroupLocation'..."
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation | Out-Null
-}
-else {
-    Write-Host "Using existing resource group '$resourceGroupName'."
-    $resourceGroupLocation = (Get-AzureRmResourceGroup -Name $resourceGroupName).Location
-}
-
-# Prepare for database import
-Write-Host "Creating a temporary storage account for database import..."
-$storageAccountName = "dbimport$(Get-Random)"
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName `
-    -AccountName $storageAccountName `
-    -Location $resourceGroupLocation `
-    -Type "Standard_LRS" | Out-Null
-
+$storageAccountName = $null
 try {
+    # 3. Create a temporary storage account for database import
+    Write-Host "Creating a temporary storage account for database import..."
+    $storageAccountName = "dbimport$(Get-Random)"
+    New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName `
+        -AccountName $storageAccountName `
+        -Location $resourceGroupLocation `
+        -Type "Standard_LRS" | Out-Null
+	
     $storageContainerName = "dbimportcontainer$(Get-Random)"
     $storageAccountUri = "http://$storageAccountName.blob.core.windows.net/$storageContainerName/$bacpacFilePath"
-    $storageAccountKey = $(Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Value[0]
-    $storageContext = $(New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey)
+    $storageAccountKey = $(Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
+            -Name $storageAccountName).Value[0]
+    $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName `
+        -StorageAccountKey $storageAccountKey
 
-    # Create a storage container 
+    # 4. Create a storage container 
     Write-Host "Creating blob container..."
     New-AzureStorageContainer -Name $storageContainerName -Context $storageContext | Out-Null
 
-    # Upload sample database into storage container
+    # 5. Upload sample database into storage container
     Write-Host "Uploading database bacpac file..."
-    Set-AzureStorageBlobContent -Container $storageContainerName -File $bacpacFilePath -Context $storageContext | Out-Null 
+    Set-AzureStorageBlobContent -Container $storageContainerName `
+        -File $bacpacFilePath -Context $storageContext | Out-Null
+	
+    # 5. Test deployment
+    Write-Host "Verifying deployment parameters..."
+    Test-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+        -TemplateFile $templateFilePath `
+        -TemplateParameterFile $parametersFilePath `
+        -sqlServerAdminLogin "testsqladmin" `
+        -sqlServerAdminPassword (ConvertTo-SecureString -String "testsqlpassword123=" -AsPlainText -Force) `
+        -dbImportStorageKey (ConvertTo-SecureString -String $storageAccountKey -AsPlainText -Force) `
+        -dbImportStorageUri $storageAccountUri
 
-    # Deploy templatey
+    # 6. Deploy templatey
     Write-Host "Deploying template..."
     New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName `
         -TemplateFile $templateFilePath `
         -TemplateParameterFile $parametersFilePath `
         -dbImportStorageKey (ConvertTo-SecureString -String $storageAccountKey -AsPlainText -Force)`
-        -dbImportStorageUri $storageAccountUri
+        -dbImportStorageUri $storageAccountUri | Out-Null
 
 }
 catch {
@@ -184,9 +266,9 @@ catch {
 
     # On db import or deployment error, delete the whole resource group
     Write-Host "Error deploying template. Removing resource group..."
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -Confirm | Out-Null
+    Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName | Out-Null
 
-    Write-Host ""
+    Write-Host
     Write-Host "Deployment failed."
     exit
 }
@@ -194,22 +276,24 @@ catch {
 # Cleanup temporary storage account
 try {
     Write-Host "Finishing up deployment..."
-    Remove-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName -Force | Out-Null
+    Write-Host "Removing temparory storage account..."
+    Remove-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName -Force
 }
 catch {
-    Write-Host ""
+    Write-Host
     Write-Host $_
-    Write-Host ""
+    Write-Host
 	
-    Write-Host "Failed to remove temporary storage acouunt '$storageAccountName'."
-    Write-Host "You may manually remove it in the Azure portal."
+    Write-Host "Failed to remove temporary storage acouunt '$storageAccountName'. " `
+        "You may manually remove it in the Azure portal."
 }
 
-Write-Host ""
+Write-Host
 Write-Host "Deployment completed!"
+Write-Host
+#endregion
 
-
-# Inject application settings.
+#region Configurations Injection
 Write-Host "Injecting database connection string..."
 $outputs = (Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Select-Object -Last 1).Outputs
 $dbAdoConnString = $outputs.dbAdoConnString.Value
@@ -225,5 +309,6 @@ $settingsJson.DbTenants.$activeTenant.SppDbConnection = $dbAdoConnString
 $settingsJson | ConvertTo-Json | Set-Content -Path "../src/Spp/Spp.Application.Services.Tests/testsettings.json"
 
 # TODO: other settings
+#endregion
 
 Write-Host "Done!"
