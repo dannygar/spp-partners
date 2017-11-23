@@ -112,6 +112,18 @@ function Show-ParamHint([string]$param) {
     Write-Host -NoNewLine "[$param]" -ForegroundColor Blue
     Write-Host " not provided."
 }
+
+function CreateBlobContainer([string]$storageAccountName, [string]$storageContainerName) {
+
+    $storageAccountKey = $(Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName).Value[0]
+    $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName `
+        -StorageAccountKey $storageAccountKey
+    
+    # 4. Create a storage container
+    New-AzureStorageContainer -Name $storageContainerName -Context $storageContext | Out-Null
+}
+
 #endregion
 
 #region Environment Setup
@@ -297,16 +309,73 @@ Write-Host
 Write-Host "Injecting database connection string..."
 $outputs = (Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Select-Object -Last 1).Outputs
 $dbAdoConnString = $outputs.dbAdoConnString.Value
+$apiEndpoint = $outputs.apiEndpoint.Value
+$apiTokenEndpoint = $outputs.apiTokenEndpoint.Value
+$blobBaseUrl = $outputs.blobBaseUrl.Value
+$blobName = $outputs.blobName.Value
+Write-Host "dbAdoConnString val: $dbAdoConnString"
+Write-Host "apiEndpoint val: $apiEndpoint"
+Write-Host "apiTokenEndpoint val: $apiTokenEndpoint"
+Write-Host "blobBaseUrl val: $blobBaseUrl"
+Write-Host "blobName val: $blobName"
+Read-Host -Prompt "Press Enter to continue"
 
+# Inject credentials to Web App
+$configJson = (Get-Content -Path "../src/Spp/Spp.Presentation.Admin.WebApp/Client/config.json") | ConvertFrom-Json
+
+# Create a storage container to generate blob sas token
+$blobContainerName = "content"
+$storageAccountKey = $(Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
+    -Name $blobName).Value[0]
+$storageCtxt = New-AzureStorageContext -StorageAccountName $blobName `
+    -StorageAccountKey $storageAccountKey
+
+New-AzureStorageContainer -Name $blobContainerName -Context $storageCtxt | Out-Null
+$blobSasToken =  New-AzureStorageBlobSASToken -Container $blobContainerName -Blob blobName -Permission rwd -Context $storageCtxt
+
+$configJson.apiEndpoint = $apiEndpoint
+$configJson.apiTokenEndpoint = $apiEndpoint + '/api/v1/auth/b2b/token'
+$configJson.blob_baseUrl = $blobBaseUrl + '/' + $blobContainerName
+$configJson.blob_sasToken = $blobSasToken
+
+# Collect Azure AD Credentials
+Read-Host -Prompt "Now follow the Azure AD deployment steps to provide the necessary Azure credentials. Once complete press Enter to continue this deployment."
+$adTenant = Read-Host "Please enter your Azure AD Tenant URL: "
+$clientId = Read-Host "Please enter your Azure Client ID: "
+$instance = Read-Host "Please enter your Azure AD Instance URL: "
+$instanceB2b = Read-Host "Please enter your Azure AD B2B Instance URL: "
+$adTenantB2b = Read-Host "Please enter your Azure AD B2B Tenant URL: "
+$audienceB2b = Read-Host "Please enter your Azure AD B2B Audience URL: "
+$clientKeyB2b = Read-Host "Please enter your Azure AD B2B Client Key: "
+$clientIdB2b = Read-Host "Please enter your Azure AD B2B Client ID: "
+
+$configJson.tenant = $adTenant
+$configJson.client_id = $clientId
+$configJson.instance = $instance
+$configJson.aadInstance_b2b = $instanceB2b
+
+$configJson.tenant_b2b = $adTenantB2b
+$configJson.audience_b2b = $audienceB2b
+$configJson.clientKey_b2b = $clientKeyB2b
+$configJson.clientId_b2b = $clientIdB2b
+
+$configJson | ConvertTo-Json | Set-Content -Path "../src/Spp/Spp.Presentation.Admin.WebApp/Client/config.json"
+Write-Host "blobSasToken val: $blobSasToken"
+Read-Host -Prompt "Press Enter to continue"
+
+
+# Inject credentials to API
 $settingsJson = (Get-Content -Path "../src/Spp/Spp.Application.Api/appsettings.json") | ConvertFrom-Json
 $activeTenant = $settingsJson.DbTenants.ActiveTenant
 $settingsJson.DbTenants.$activeTenant.SppDbConnection = $dbAdoConnString
 $settingsJson | ConvertTo-Json | Set-Content -Path "../src/Spp/Spp.Application.Api/appsettings.json"
 
+# Inject credentials to Tests
 $settingsJson = (Get-Content -Path "../src/Spp/Spp.Application.Services.Tests/testsettings.json") | ConvertFrom-Json
 $activeTenant = $settingsJson.DbTenants.ActiveTenant
 $settingsJson.DbTenants.$activeTenant.SppDbConnection = $dbAdoConnString
 $settingsJson | ConvertTo-Json | Set-Content -Path "../src/Spp/Spp.Application.Services.Tests/testsettings.json"
+
 
 # TODO: other settings
 #endregion

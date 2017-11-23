@@ -388,6 +388,18 @@
         "dbAdoConnString": {
             "type": "string",
             "value": "[concat('Server=tcp:',reference(variables('sqlServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('dbName'),';Persist Security Info=False;User ID=',reference(variables('sqlServerName')).administratorLogin,';Password=',reference(variables('sqlServerName')).administratorLoginPassword,';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]"
+        },
+        "apiEndpoint": {
+            "type": "string",
+            "value": "[concat('https://',variables('coreApiName'), '.azurewebsites.net')]"
+        },
+        "blobName": {
+            "type": "string",
+            "value": "[variables('userImgStorageName')]"
+        },
+        "blobBaseUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('userImgStorageName'), '.blob.core.windows.net')]"
         }
     }
 }
