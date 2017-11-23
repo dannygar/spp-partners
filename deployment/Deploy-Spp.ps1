@@ -360,7 +360,6 @@ $configJson.clientKey_b2b = $clientKeyB2b
 $configJson.clientId_b2b = $clientIdB2b
 
 $configJson | ConvertTo-Json | Set-Content -Path "../src/Spp/Spp.Presentation.Admin.WebApp/Client/config.json"
-Write-Host "blobSasToken val: $blobSasToken"
 Read-Host -Prompt "Press Enter to continue"
 
 
