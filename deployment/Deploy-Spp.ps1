@@ -310,14 +310,9 @@ Write-Host "Injecting database connection string..."
 $outputs = (Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Select-Object -Last 1).Outputs
 $dbAdoConnString = $outputs.dbAdoConnString.Value
 $apiEndpoint = $outputs.apiEndpoint.Value
-$apiTokenEndpoint = $outputs.apiTokenEndpoint.Value
+$apiTokenEndpoint = $apiEndpoint + '/api/v1/auth/b2b/token'
 $blobBaseUrl = $outputs.blobBaseUrl.Value
 $blobName = $outputs.blobName.Value
-Write-Host "dbAdoConnString val: $dbAdoConnString"
-Write-Host "apiEndpoint val: $apiEndpoint"
-Write-Host "apiTokenEndpoint val: $apiTokenEndpoint"
-Write-Host "blobBaseUrl val: $blobBaseUrl"
-Write-Host "blobName val: $blobName"
 Read-Host -Prompt "Press Enter to continue"
 
 # Inject credentials to Web App
@@ -334,7 +329,7 @@ New-AzureStorageContainer -Name $blobContainerName -Context $storageCtxt | Out-N
 $blobSasToken =  New-AzureStorageBlobSASToken -Container $blobContainerName -Blob blobName -Permission rwd -Context $storageCtxt
 
 $configJson.apiEndpoint = $apiEndpoint
-$configJson.apiTokenEndpoint = $apiEndpoint + '/api/v1/auth/b2b/token'
+$configJson.apiTokenEndpoint = $apiTokenEndpoint
 $configJson.blob_baseUrl = $blobBaseUrl + '/' + $blobContainerName
 $configJson.blob_sasToken = $blobSasToken
 
@@ -361,7 +356,6 @@ $configJson.clientId_b2b = $clientIdB2b
 
 $configJson | ConvertTo-Json | Set-Content -Path "../src/Spp/Spp.Presentation.Admin.WebApp/Client/config.json"
 Read-Host -Prompt "Press Enter to continue"
-
 
 # Inject credentials to API
 $settingsJson = (Get-Content -Path "../src/Spp/Spp.Application.Api/appsettings.json") | ConvertFrom-Json
