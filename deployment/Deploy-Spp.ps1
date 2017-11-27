@@ -334,7 +334,7 @@ $configJson.blob_baseUrl = $blobBaseUrl + '/' + $blobContainerName
 $configJson.blob_sasToken = $blobSasToken
 
 # Collect Azure AD Credentials
-Read-Host -Prompt "Now follow the Azure AD deployment steps to provide the necessary Azure credentials. Once complete press Enter to continue this deployment."
+Write-Host "Now follow the Azure AD deployment steps to provide the necessary Azure credentials. Once complete press Enter to continue this deployment."
 $adTenant = Read-Host "Please enter your Azure AD Tenant URL: "
 $clientId = Read-Host "Please enter your Azure Client ID: "
 $instance = Read-Host "Please enter your Azure AD Instance URL: "
