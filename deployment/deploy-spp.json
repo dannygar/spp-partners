@@ -264,7 +264,15 @@
             "kind": "api",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp/Spp.Application.Api/Spp.Application.Api.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -277,7 +285,15 @@
             "kind": "app",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp/Spp.Presentation.Admin.WebApp/Spp.Presentation.Admin.WebApp.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -314,7 +330,15 @@
             "kind": "api",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp.DataLoader/SportsDataLoader.WebApi/SportsDataLoader.WebApi.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -327,7 +351,15 @@
             "kind": "app",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp.DataLoader/SportsDataLoader.Web/SportsDataLoader.Web.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
