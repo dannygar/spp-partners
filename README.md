@@ -22,6 +22,21 @@ Navigate to the [deployment](deployment) folder in your local repo. Run the [Dep
 .\Deploy-Spp.ps1
 ```
 
+Once completed, you will find the following Azure resources in your SPP resource group:
+ - A SQL server.
+ - A SQL database containing sample SPP data.
+ - An APP Service Plan for Web APIs and APPs.
+ - An API APP for SPP.
+ - A Web APP for SPP admin portal.
+ - A Storage Account for SPP admin portal.
+ - A Storage Account for user images.
+ - An API APP for SPP data loader.
+ - A Web APP for SPP data loader.
+ - A Service Bus for SPP data loader.
+ - A Cosmos DB for SPP data loader schema files.
+
+The deployment script will also set up continuous integration and publish code for SPP API. However, for data loader and admin portal, you may need to do it manually at this time. Please check these [instructions](src/SPP.DataLoader/README.md) on how to manually set up SPP data loader.
+
 ### Setup Azure AD
 
 In the past, to configure SPP Azure Active Directory authentication, you were required to integrate SPP with both Azure Active Directory B2B and Azure Active Directory B2C separate systems. This SPP release uses a new **Azure AD v2.0** endpoint authentication API version that enables you to sign in both types of accounts using one simple integration.
