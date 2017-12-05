@@ -264,7 +264,15 @@
             "kind": "api",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp/Spp.Application.Api/Spp.Application.Api.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -277,7 +285,15 @@
             "kind": "app",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp/Spp.Presentation.Admin.WebApp/Spp.Presentation.Admin.WebApp.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -314,7 +330,15 @@
             "kind": "api",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp.DataLoader/SportsDataLoader.WebApi/SportsDataLoader.WebApi.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -327,7 +351,15 @@
             "kind": "app",
             "location": "[resourceGroup().location]",
             "properties": {
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "PROJECT",
+                            "value": "src/Spp.DataLoader/SportsDataLoader.Web/SportsDataLoader.Web.csproj"
+                        }
+                    ]
+                }
             },
             "dependsOn": [
                 "[variables('appServicePlanName')]"
@@ -388,6 +420,22 @@
         "dbAdoConnString": {
             "type": "string",
             "value": "[concat('Server=tcp:',reference(variables('sqlServerName')).fullyQualifiedDomainName,',1433;Initial Catalog=',parameters('dbName'),';Persist Security Info=False;User ID=',reference(variables('sqlServerName')).administratorLogin,';Password=',reference(variables('sqlServerName')).administratorLoginPassword,';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;')]"
+        },
+        "apiName": {
+            "type": "string",
+            "value": "[variables('coreApiName')]"
+        },
+        "apiEndpoint": {
+            "type": "string",
+            "value": "[concat('https://',variables('coreApiName'), '.azurewebsites.net')]"
+        },
+        "blobName": {
+            "type": "string",
+            "value": "[variables('userImgStorageName')]"
+        },
+        "blobBaseUrl": {
+            "type": "string",
+            "value": "[concat('https://', variables('userImgStorageName'), '.blob.core.windows.net')]"
         }
     }
 }
