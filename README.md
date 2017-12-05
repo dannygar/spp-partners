@@ -35,7 +35,7 @@ Once completed, you will find the following Azure resources in your SPP resource
  - A Service Bus for SPP data loader.
  - A Cosmos DB for SPP data loader schema files.
 
-The deployment script will also set up continuous integration and publish code for SPP API. However, for data loader and admin portal, you may need to do it manually at this time. Please check these [instructions](src/SPP.DataLoader/README.md) on how to manually set up SPP data loader.
+The deployment script will also set up continuous integration and publish code for SPP API. However, for data loader and admin portal, you may need to do it manually at this time. Please check these [instructions](src/Spp.DataLoader/README.md) on how to manually set up SPP data loader.
 
 ### Setup Azure AD
 
