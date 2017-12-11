@@ -350,7 +350,7 @@ $PropertiesObject = @{
 }
 Set-AzureRmResource -PropertyObject $PropertiesObject `
 	-ResourceId "/providers/Microsoft.Web/sourcecontrols/GitHub" `
-	-ApiVersion 2015-08-01 -Force -Debug
+	-ApiVersion 2015-08-01 -Force
 
 # Configure GitHub deployment from user's GitHub repo and deploy once.
 $PropertiesObject = @{
