@@ -310,7 +310,7 @@ $dbAdoConnString = $outputs.dbAdoConnString.Value
 $apiName = $outputs.apiName.Value
 
 Write-Host "Now, please follow the 'Setup Azure AD' section in the README.md to configure Azure AD."
-Write-Host "Once completed, press Enter to continue..."
+Write-Host -NoNewLine "Once completed, press Enter to continue..."
 Read-Host
 
 Write-Host "Please provide with the necessary Azure AD credentials."
