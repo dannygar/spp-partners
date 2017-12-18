@@ -344,6 +344,11 @@ if ([String]::IsNullOrEmpty($gitBranch)) {
 	$gitBranch = "master"
 }
 
+# Push update to remote
+git add -A
+git commit -m "Update application settings"
+git push origin $gitBranch
+
 # Set up GitHub.
 $PropertiesObject = @{
     token = "$gitToken";
