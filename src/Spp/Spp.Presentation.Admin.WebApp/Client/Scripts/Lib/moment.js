@@ -1,7 +1,3 @@
-/*--------------------------------------------------------------------------------------------- 
- *  Copyright (c) Microsoft Corporation. All rights reserved. 
- *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
 //! moment.js
 //! version : 2.12.0
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
