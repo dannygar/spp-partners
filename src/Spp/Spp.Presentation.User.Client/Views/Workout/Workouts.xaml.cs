@@ -2,19 +2,19 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
  *--------------------------------------------------------------------------------------------*/
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.UserControls;
-using MicrosoftSportsScience.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class Workouts : Page
     {

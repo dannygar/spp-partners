@@ -2,15 +2,15 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
  *--------------------------------------------------------------------------------------------*/
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.WindowsAzure.MobileServices;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.Services;
-using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using System;
 using System.Diagnostics;
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.WindowsAzure.MobileServices;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.Services;
+using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Data.Xml.Dom;
@@ -19,7 +19,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     sealed partial class App : Application
     {
@@ -44,22 +44,9 @@ namespace MicrosoftSportsScience
             SimpleIoc.Default.Register<CoachModel, CoachModel>();
             SimpleIoc.Default.Register<ILogService, LocalLogService>();
             SimpleIoc.Default.Register<ICacheService, InMemoryCacheService>();
-            //#if AAD
             SimpleIoc.Default.Register<IApiAuthService, AzureADv2AuthService>();
             SimpleIoc.Default.Register<IHttpClientService, ApiClientService>();
-            //#else
-            //            SimpleIoc.Default.Register<IApiAuthService, FakeApiAuthService>();
-            //            SimpleIoc.Default.Register<IB2CAuthService, FakeApiAuthService>();
-
-            //            //Comment uncomment below to switch between live data and fake data
-            //            //SimpleIoc.Default.Register<ITypedDataService, TypedFakeService>();
-            //            SimpleIoc.Default.Register<ITypedDataService, TypedJsonService>();
-
-            //#endif
         }
-
-
-
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
@@ -102,9 +89,11 @@ namespace MicrosoftSportsScience
 
 
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
-                // Set the default language
-                rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+                rootFrame = new Frame
+                {
+                    // Set the default language
+                    Language = Windows.Globalization.ApplicationLanguages.Languages[0]
+                };
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
@@ -140,12 +129,10 @@ namespace MicrosoftSportsScience
             }
         }
 
-
         private static void LogException(Exception ex, string message)
         {
             Debug.WriteLine("Error detected! Exception: \"{0}\", More info: \"{1}\".", ex.Message, message);
         }
-
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails
@@ -179,7 +166,6 @@ namespace MicrosoftSportsScience
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://contoso.azurewebsites.net" // URL of the Mobile App
         );
-
 
         private static void ShowThrottlingToast(string api)
         {

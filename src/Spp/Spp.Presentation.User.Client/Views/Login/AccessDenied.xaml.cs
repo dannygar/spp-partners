@@ -1,17 +1,11 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// ------------------------------------------------------
-// <copyright file="AccessDenied.xaml.cs" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
-// ------------------------------------------------------
-
+ *--------------------------------------------------------------------------------------------*/
 using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Services;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.Views
+namespace Spp.Presentation.User.Client.Views
 {
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
@@ -48,7 +42,7 @@ namespace MicrosoftSportsScience.Views
             (this.rootPage.Content as Frame).Navigate(typeof(SignIn));
         }
 
-     
+
         private void OnSettingsClicked(object sender, TappedRoutedEventArgs e)
         {
             (this.rootPage.Content as Frame).Navigate(typeof(SettingsPage), this);

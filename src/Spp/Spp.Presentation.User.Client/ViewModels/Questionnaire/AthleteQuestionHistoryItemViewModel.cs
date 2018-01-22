@@ -1,20 +1,18 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using System;
+ *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using static MicrosoftSportsScience.Defines;
+using Spp.Presentation.User.Client.Data;
+using static Spp.Presentation.User.Client.Defines;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class AthleteQuestionHistoryItemViewModel : NotificationBase<AthleteQuestionHistory>
     {
-        public AthleteQuestionHistoryItemViewModel(AthleteQuestionHistory history) : base (history)
+        public AthleteQuestionHistoryItemViewModel(AthleteQuestionHistory history) : base(history)
         {
 
         }
@@ -36,7 +34,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         public GraphMode GraphMode
         {
-            get { return (This.Question != null && This.Question.Id % 2 == 1) ? GraphMode.Line : GraphMode.Bar;  }
+            get { return (This.Question != null && This.Question.Id % 2 == 1) ? GraphMode.Line : GraphMode.Bar; }
         }
 
         public override Task Load()

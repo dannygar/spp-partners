@@ -1,11 +1,11 @@
 ﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:selector="using:MicrosoftSportsScience.Helpers"
+      xmlns:selector="using:Spp.Presentation.User.Client.Helpers"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
-      xmlns:viewModels="using:MicrosoftSportsScience.ViewModels"
-      x:Class="MicrosoftSportsScience.PracticeSessionManager"
+      xmlns:UserControls="using:Spp.Presentation.User.Client.UserControls"
+      xmlns:viewModels="using:Spp.Presentation.User.Client.ViewModels"
+      x:Class="Spp.Presentation.User.Client.PracticeSessionManager"
       mc:Ignorable="d">
 
     <Page.Resources>
@@ -124,7 +124,7 @@
                                            PlaceHolderText2="New Practice Topic" 
                                            PlaceHolderText3="New Practice Subtopic" 
                                            stages="3" 
-                                           Destination="MicrosoftSportsScience.PracticeSessionPlannerAddDrills" />
+                                           Destination="Spp.Presentation.User.Client.PracticeSessionPlannerAddDrills" />
         <Grid x:Name="progress">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity="0.2" />

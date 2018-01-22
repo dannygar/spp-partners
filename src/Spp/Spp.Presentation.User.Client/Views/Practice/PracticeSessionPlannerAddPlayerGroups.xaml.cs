@@ -1,34 +1,24 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.ViewModels;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.Data;
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
-using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    using Data;
+
     public sealed partial class PracticeSessionPlannerAddPlayerGroups : Page
     {
         SplitView rootPage = Shell.Current;
@@ -46,7 +36,7 @@ namespace MicrosoftSportsScience
             startDatePicker.Date = new DateTimeOffset(DateTime.Today);
             endDatePicker.Date = new DateTimeOffset(DateTime.Today.AddYears(1));
         }
-        
+
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -58,15 +48,14 @@ namespace MicrosoftSportsScience
             await LoadViewModel.Load();
             await PracticeViewModel.Load();
             await PracticeViewModel.LoadPlayerList();
-            
+
             progress.Visibility = Visibility.Collapsed;
         }
 
 
 
-        private async void BackButton_Tapped(object sender, TappedRoutedEventArgs e)
+        private void BackButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
             (rootPage.Content as Frame).Navigate(typeof(PracticeSessionManager));
         }
 

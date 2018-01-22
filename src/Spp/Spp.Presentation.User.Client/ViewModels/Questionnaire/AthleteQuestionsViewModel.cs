@@ -1,19 +1,18 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System.ComponentModel;
-using System.Collections.ObjectModel;
+ *--------------------------------------------------------------------------------------------*/
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.Data;
-using System.Collections.Generic;
-using System.Linq;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class AthleteQuestionsViewModel : NotificationBase
     {
@@ -34,7 +33,7 @@ namespace MicrosoftSportsScience.ViewModels
             get { return _questions; }
             set { SetProperty(ref _questions, value); }
         }
-        
+
         public int SelectedIndex
         {
             get { return _selectedIndex; }
@@ -55,7 +54,7 @@ namespace MicrosoftSportsScience.ViewModels
             _selectedIndex = -1;
 
             _logService.Info("Attempting to load questions for athlete", this);
-            _modelQuestions = (List<AthleteQuestion>) await _questionsModel.GetQuestions(_session.CurrentSession.Id);
+            _modelQuestions = (List<AthleteQuestion>)await _questionsModel.GetQuestions(_session.CurrentSession.Id);
 
             if (_modelQuestions == null)
                 return;

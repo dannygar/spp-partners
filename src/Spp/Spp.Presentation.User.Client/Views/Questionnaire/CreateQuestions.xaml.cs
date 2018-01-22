@@ -1,27 +1,23 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.UserControls;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+using System.Linq;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-using MicrosoftSportsScience.Annotations;
-using MicrosoftSportsScience.Helpers;
-using System.Linq;
-using Windows.UI.Popups;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class CreateQuestions : Page
     {
@@ -55,7 +51,7 @@ namespace MicrosoftSportsScience
 
         private void QuestionUserControl_ResponseSelected(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void AddTapped(object sender, TappedRoutedEventArgs e)
@@ -75,9 +71,9 @@ namespace MicrosoftSportsScience
                 List<FrameworkElement> children = new List<FrameworkElement>();
                 questionControls[index].Visibility = Visibility.Visible;
                 children = HelperMethods.GetChildren(questionControls[index]);
-                foreach(FrameworkElement child in children)
+                foreach (FrameworkElement child in children)
                 {
-                    if(child is QuestionUserControl)
+                    if (child is QuestionUserControl)
                     {
                         var tempQuestion = child as QuestionUserControl;
                         tempQuestion.Title = "Title";
@@ -94,8 +90,8 @@ namespace MicrosoftSportsScience
             int index = 0;
             FrameworkElement source = e.OriginalSource as FrameworkElement;
             source = source.Parent as FrameworkElement;
-         
-            if(source.Name == "button2")
+
+            if (source.Name == "button2")
             {
                 Question2.Title = Question3.Title;
                 Question2.LowRangeText = Question3.LowRangeText;
@@ -129,7 +125,7 @@ namespace MicrosoftSportsScience
             }
         }
 
-        private void page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             questionControls.Add(control1);
             questionControls.Add(control2);
@@ -140,7 +136,7 @@ namespace MicrosoftSportsScience
         private async void Button_Tapped(object sender, TappedRoutedEventArgs e)
         {
             var questionOrder = 1;
-        
+
             var sessionModel = SimpleIoc.Default.GetInstance<AthleteSessionModel>();
 
             var session = new Session
@@ -165,7 +161,7 @@ namespace MicrosoftSportsScience
             session.Users = PracticeViewModel.AssignedUsers.ToList();
             await sessionModel.SaveSessionUsers(session);
 
-          
+
             //save questions
             PracticeQuestions = new AthleteQuestionnaire()
             {
@@ -184,8 +180,7 @@ namespace MicrosoftSportsScience
                 var children = HelperMethods.GetChildren(t);
                 foreach (var child in children)
                 {
-                    var control = child as QuestionUserControl;
-                    if (control != null && control.Title != "Title")
+                    if (child is QuestionUserControl control && control.Title != "Title")
                     {
                         var questionControl = control;
                         var question = new AthleteQuestion()

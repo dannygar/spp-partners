@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="MicrosoftSportsScience.Shell"
+    x:Class="Spp.Presentation.User.Client.Shell"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MicrosoftSportsScience"
+    xmlns:local="using:Spp.Presentation.User.Client"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -29,7 +29,7 @@
                         </Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Background="#FF2067C0">
-                        <Button x:Name="backButton" Style="{StaticResource DefaultButton}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="backButton_Click" >
+                        <Button x:Name="backButton" Style="{StaticResource DefaultButton}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="BackButton_Click" >
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <SymbolIcon Foreground="White" Symbol="Back" Width="26" Height="26" Margin="0,0,0,0" />
                                 <TextBlock Text="Back" FontSize="18" Padding="15,0,50,0" Foreground="White" VerticalAlignment="Center" FontWeight="SemiLight" />

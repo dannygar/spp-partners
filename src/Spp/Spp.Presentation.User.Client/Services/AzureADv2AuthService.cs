@@ -1,17 +1,17 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Identity.Client;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.ViewModels;
 
-namespace MicrosoftSportsScience.Services
+namespace Spp.Presentation.User.Client.Services
 {
     // The following using statements were added for this sample.
     using AuthenticationResult = Microsoft.Identity.Client.AuthenticationResult;
@@ -62,10 +62,10 @@ namespace MicrosoftSportsScience.Services
             var authority = string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "https://login.microsoftonline.com/{0}/v2.0",
                 AppSettings.AppConfigurationSettings.TenantId);
-            
+
             //Public Client Application
             PublicClientApp = new PublicClientApplication(AppSettings.AppConfigurationSettings.ClientId, authority)
-                { RedirectUri = "https://login.microsoftonline.com/common/oauth2/nativeclient" };
+            { RedirectUri = "https://login.microsoftonline.com/common/oauth2/nativeclient" };
 
         }
 

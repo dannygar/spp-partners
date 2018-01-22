@@ -1,21 +1,15 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.Views;
+ *--------------------------------------------------------------------------------------------*/
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class ThankYouPage : Page
     {
         public ThankYouPage()

@@ -1,20 +1,19 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
+    using Data;
+
     public class AthletePracticeViewModel : NotificationBase<AthletePractice>
     {
         private AthletePracticeModel _practiceModel;
@@ -159,7 +158,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         public async Task LoadPlayerList()
         {
-             var t = await _teamModel.GetTeam(_sessionModel.TeamId);
+            var t = await _teamModel.GetTeam(_sessionModel.TeamId);
             _playerList = t.Users.Where(u => (RoleTypes)u.RoleId == RoleTypes.Player).ToList();
             RaisePropertyChanged("PlayerList");
         }

@@ -1,17 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// <copyright file="BooleanToVisible.cs" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
+ *--------------------------------------------------------------------------------------------*/
+using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
 
-namespace MicrosoftSportsScience.Converters
+namespace Spp.Presentation.User.Client.Converters
 {
-    using System;
-    using Windows.UI.Xaml;
-    using Windows.UI.Xaml.Data;
-
     public class BooleanToVisible : IValueConverter
     {
         public bool IsReversed { get; set; }

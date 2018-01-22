@@ -1,13 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Converters.ToText
-{
-    using System;
-    using Helpers;
-    using Windows.UI.Xaml.Data;
+ *--------------------------------------------------------------------------------------------*/
+using System;
+using Spp.Presentation.User.Client.Helpers;
+using Windows.UI.Xaml.Data;
 
+namespace Spp.Presentation.User.Client.Converters.ToText
+{
     public class DepthToTextConverter : IValueConverter
     {
         private const string DepthTextResourceKey = "DepthText";

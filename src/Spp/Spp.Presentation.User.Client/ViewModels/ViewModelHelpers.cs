@@ -1,16 +1,16 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using MicrosoftSportsScience.Services;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public abstract class NotificationBase : INotifyPropertyChanged
     {
@@ -46,10 +46,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         protected void RaisePropertyChanged(string property)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 
@@ -61,7 +58,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         public NotificationBase(T thing = null) : base()
         {
-            This = (thing == null) ? new T() : thing;
+            This = thing ?? new T();
         }
     }
 }

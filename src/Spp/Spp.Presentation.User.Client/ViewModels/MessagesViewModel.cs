@@ -1,19 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+ *--------------------------------------------------------------------------------------------*/
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class MessagesViewModel : NotificationBase<AthleteQuestion>
     {
@@ -37,7 +32,7 @@ namespace MicrosoftSportsScience.ViewModels
         {
             _logService.Info("Attempting to load messages for athlete: " + _sessionModel.CurrentUser.Id, this);
             var messages = await _messageModel.GetTodaysAthleteMessages(_sessionModel.CurrentUser, _sessionModel.CurrentSession.Id);
-            if(messages != null)
+            if (messages != null)
                 foreach (var message in messages)
                     _messages.Add(new MessageViewModel(message));
         }

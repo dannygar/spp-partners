@@ -1,25 +1,23 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using MicrosoftSportsScience.ViewModels;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.UserControls;
-using MicrosoftSportsScience.Data;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class SessionPlanner : Page
     {
@@ -49,7 +47,7 @@ namespace MicrosoftSportsScience
             await LoadViewModel.Load();
 
             progress.Visibility = Visibility.Collapsed;
-            
+
             DrillsList.ItemsSource = PracticeViewModel?.Drills;
 
             this.Bindings.Update();
@@ -81,7 +79,7 @@ namespace MicrosoftSportsScience
             PracticeViewModel.EstimatedTrainingLoad = CalculateTotalLoad();
 
             //Also, remove from the parent model view
-            var tobeRemoved = PracticeViewModel.Drills.Where(drillViewModel => drillViewModel.Name == e.DrillTitle 
+            var tobeRemoved = PracticeViewModel.Drills.Where(drillViewModel => drillViewModel.Name == e.DrillTitle
                 && drillViewModel.Description == e.DrillDescription).ToList();
             foreach (var viewModel in tobeRemoved)
             {
@@ -102,7 +100,7 @@ namespace MicrosoftSportsScience
 
         private void BackButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if(PracticeViewModel != null && PracticeViewModel.PreviousPage != null)
+            if (PracticeViewModel != null && PracticeViewModel.PreviousPage != null)
                 (rootPage.Content as Frame).Navigate(PracticeViewModel.PreviousPage, new ModalDialogEntries()
                 {
                     Entry1 = PracticeViewModel.Name,
@@ -146,7 +144,7 @@ namespace MicrosoftSportsScience
                     CalculatedTrainingLoad = drillMode.TrainingLoad,
                 });
             }
-            
+
             //Save a new practice to the DB
             await _practiceModel.SaveAthletePracticeForSession(newPractice);
 
@@ -161,7 +159,7 @@ namespace MicrosoftSportsScience
                 }
                 f.GoBack();
             }
-            
+
             else //not in the backstack so we arrived here through other means. Let's just navigate to it.
             {
                 f.Navigate(typeof(TrainingDashboard));

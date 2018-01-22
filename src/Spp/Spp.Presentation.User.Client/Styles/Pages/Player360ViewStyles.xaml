@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:toText="using:MicrosoftSportsScience.Converters.ToText"
-    xmlns:userControls="using:MicrosoftSportsScience.UserControls">
+    xmlns:toText="using:Spp.Presentation.User.Client.Converters.ToText"
+    xmlns:userControls="using:Spp.Presentation.User.Client.UserControls">
     
     <Style x:Key="HeaderPlayerTile" TargetType="userControls:PlayerTileUserControl">
         <Setter Property="HorizontalAlignment" Value="Left"/>

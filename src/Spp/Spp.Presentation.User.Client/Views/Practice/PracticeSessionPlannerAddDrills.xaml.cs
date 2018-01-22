@@ -1,39 +1,23 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
+ *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Spp.Presentation.User.Client.Annotations;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Annotations;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.UserControls;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.Models;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class PracticeSessionPlannerAddDrills : Page, INotifyPropertyChanged
     {
         readonly SplitView rootPage = Shell.Current;
@@ -67,7 +51,7 @@ namespace MicrosoftSportsScience
         public PracticeSessionPlannerAddDrills()
         {
             this.InitializeComponent();
-            
+
         }
 
 
@@ -85,7 +69,7 @@ namespace MicrosoftSportsScience
 
 
             DrillsList.ItemsSource = DrillsViewModel.Drills;
-         
+
 
             if (DrillsList.Items == null) return;
 
@@ -105,7 +89,7 @@ namespace MicrosoftSportsScience
                 IsNewPractice = true,
             };
 
-     
+
             //Update the binding for the asynchronous loading of items
             this.Bindings.Update();
 
@@ -145,7 +129,7 @@ namespace MicrosoftSportsScience
 
         private void NextButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-             (rootPage.Content as Frame).Navigate(typeof(SessionPlanner), PracticeViewModel);
+            (rootPage.Content as Frame).Navigate(typeof(SessionPlanner), PracticeViewModel);
         }
 
     }

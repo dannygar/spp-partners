@@ -1,15 +1,15 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
     public class CoachModel : BaseModel
     {
@@ -35,7 +35,7 @@ namespace MicrosoftSportsScience.Models
             }
 
             _logService.Info(String.Format("Getting coaches using: {0}", _dataService.GetType().ToString()), this);
-            var coaches =  await _dataService.GetItemAsync<List<Coach>>(Defines.API_COACHES_ENDPOINT);
+            var coaches = await _dataService.GetItemAsync<List<Coach>>(Defines.API_COACHES_ENDPOINT);
             this.CacheCoaches(coaches);
 
             return coaches;

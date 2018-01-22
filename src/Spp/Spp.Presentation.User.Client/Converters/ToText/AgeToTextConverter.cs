@@ -1,14 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Converters.ToText
-{
-    using System;
-    using Constants;
-    using Data;
-    using Windows.UI.Xaml.Data;
+ *--------------------------------------------------------------------------------------------*/
+using System;
+using Spp.Presentation.User.Client.Constants;
+using Spp.Presentation.User.Client.Data;
+using Windows.UI.Xaml.Data;
 
+namespace Spp.Presentation.User.Client.Converters.ToText
+{
     public class AgeToTextConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

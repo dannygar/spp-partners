@@ -1,30 +1,19 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
+ *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.Services;
+using Spp.Presentation.User.Client.Views;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.Views;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class Shell : Page
     {
@@ -46,11 +35,11 @@ namespace MicrosoftSportsScience
 
             if (AzureADv2AuthService.AppSettings.IsValid)
             {
-            //If Face Recognition is enabled, switch to the Face Recognition Sign in option
-            if (CSSettingsHelper.Instance.EnableFaceRecognition && CSSettingsHelper.Instance.IsValidSettings())
-                (ShellSplitView.Content as Frame).Navigate(typeof(GreetingPage));
-            else
-                (ShellSplitView.Content as Frame).Navigate(typeof(SignIn));
+                //If Face Recognition is enabled, switch to the Face Recognition Sign in option
+                if (CSSettingsHelper.Instance.EnableFaceRecognition && CSSettingsHelper.Instance.IsValidSettings())
+                    (ShellSplitView.Content as Frame).Navigate(typeof(GreetingPage));
+                else
+                    (ShellSplitView.Content as Frame).Navigate(typeof(SignIn));
             }
             else
                 (ShellSplitView.Content as Frame).Navigate(typeof(SettingsPage), this);
@@ -79,7 +68,7 @@ namespace MicrosoftSportsScience
             var sessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
             (Current.Content as Frame).Navigate(typeof(SignIn));
         }
-        
+
         private void MenuButton6_Click(object sender, RoutedEventArgs e)
         {
             (Current.Content as Frame).Navigate(typeof(Workouts));
@@ -91,7 +80,7 @@ namespace MicrosoftSportsScience
         }
         private void MenuButton2_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void MenuButton4_Click(object sender, RoutedEventArgs e)
@@ -124,7 +113,7 @@ namespace MicrosoftSportsScience
             (Current.Content as Frame).Navigate(typeof(SettingsPage), this);
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             var frame = Current.Content as Frame;
             if (frame?.CanGoBack == true)

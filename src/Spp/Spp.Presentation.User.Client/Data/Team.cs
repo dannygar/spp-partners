@@ -1,18 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
 
-namespace MicrosoftSportsScience.Data
+namespace Spp.Presentation.User.Client.Data
 {
     public class Team
     {
-        //public IEnumerable<Session> Sessions { get; set; }
-        //public IEnumerable<Athlete> Players { get; set; }
-        //public IEnumerable<Coach> Coaches { get; set; }
-
         public int id { get; set; }
 
         public string Name { get; set; }

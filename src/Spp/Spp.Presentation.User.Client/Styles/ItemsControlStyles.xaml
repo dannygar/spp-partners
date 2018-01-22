@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="using:MicrosoftSportsScience.Styles">
+                    xmlns:local="using:Spp.Presentation.User.Client.Styles">
 
     <Style TargetType="ItemsControl" x:Key="ItemsControlBase">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />

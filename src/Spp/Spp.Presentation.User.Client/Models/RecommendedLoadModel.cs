@@ -1,20 +1,17 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using Newtonsoft.Json.Linq;
+ *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.ViewModels;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Services;
+using Newtonsoft.Json.Linq;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
     class RecommendedLoadModel : BaseModel
     {
@@ -78,7 +75,7 @@ namespace MicrosoftSportsScience.Models
                     {
                         string jsonResult = await response.Content.ReadAsStringAsync();
                         var result = JObject.Parse(jsonResult).ToObject<ScoreRequestResult>();
-                        var table = result.Results.output1.value.Values;
+                        var table = result.Results.Output1.Value.Values;
                         return Double.Parse(table[table.GetLowerBound(0), table.GetUpperBound(1)]);
                     }
                     else

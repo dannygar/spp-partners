@@ -1,31 +1,18 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
+ *--------------------------------------------------------------------------------------------*/
+using Spp.Presentation.User.Client.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
     public sealed partial class ExerciseTileUserControl : UserControl
     {
@@ -63,9 +50,9 @@ namespace MicrosoftSportsScience.UserControls
             get { return (string)GetValue(ExerciseCategoryProperty); }
             set { SetValue(ExerciseCategoryProperty, value); }
         }
-        
+
         public static readonly DependencyProperty ExerciseCategoryProperty =
-            DependencyProperty.Register("ExerciseCategory", typeof(string), typeof(ExerciseTileUserControl), null );
+            DependencyProperty.Register("ExerciseCategory", typeof(string), typeof(ExerciseTileUserControl), null);
 
         public string ExerciseName
         {
@@ -144,7 +131,7 @@ namespace MicrosoftSportsScience.UserControls
 
             DetailsWindowOpen = !DetailsWindowOpen;
         }
-        
+
         public void OpenTile()
         {
             Storyboard sb = this.Resources["ActivateTile"] as Storyboard;

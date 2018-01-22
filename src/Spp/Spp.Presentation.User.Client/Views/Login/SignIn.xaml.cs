@@ -1,22 +1,22 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.UserControls;
-using MicrosoftSportsScience.ViewModels;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.Services;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
+using Spp.Presentation.User.Client.Views;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Views;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class SignIn : Page
     {
@@ -25,15 +25,15 @@ namespace MicrosoftSportsScience
 
         private AppSessionModel appSessionModel;
         private ILogService logService;
-      
+
 
         readonly SplitView rootPage = Shell.Current;
         public LoginViewModel UsersModel { get; set; }
-    
+
         public bool SignedIn
         {
             get { return (bool)GetValue(SignedInProperty); }
-            set { SetValue(SignedInProperty, value);  }
+            set { SetValue(SignedInProperty, value); }
         }
 
         public bool SigningIn
@@ -49,8 +49,8 @@ namespace MicrosoftSportsScience
             logService = SimpleIoc.Default.GetInstance<ILogService>();
 
             appSessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
-         
-           }
+
+        }
 
         public double TileWidth
         {
@@ -123,13 +123,13 @@ namespace MicrosoftSportsScience
 
                 //show players first and coaches last
                 this.PlayerList.ItemsSource = UsersModel.Users.OrderBy(u => u.IsCoach);
-                
+
                 //get compleness information on each user...asynchronously
                 foreach (var u in UsersModel.Users)
                 {
                     await u.LoadCompleteness();
                 }
-                
+
                 if (CSSettingsHelper.Instance.EnableFaceRecognition)
                 {
                     //Retrieve Cognitive Services API keys
@@ -140,7 +140,7 @@ namespace MicrosoftSportsScience
                 if (navigatedFromPage is GreetingPage)
                 {
                     var userTile =
-                        (UsersModel.Users.Any(u => u.User.FullName == appSessionModel.CurrentUser.FullName))?
+                        (UsersModel.Users.Any(u => u.User.FullName == appSessionModel.CurrentUser.FullName)) ?
                             UsersModel.Users.First(
                             u => u.User.FullName == appSessionModel.CurrentUser.FullName) : null;
                     if (userTile != null)
@@ -184,11 +184,11 @@ namespace MicrosoftSportsScience
         {
             var tile = (PlayerTileUserControl)sender;
             var session = SimpleIoc.Default.GetInstance<AppSessionModel>();
-          
+
             session.CurrentUser = tile.User;
             session.ContentView.Pane.Visibility = Windows.UI.Xaml.Visibility.Visible;
             session.AppShell.SetUserPhoto(tile.User.PathToPhoto);
-            
+
             // Navigate to appropriate page
             if (session.CurrentUser.IsAthlete)
                 (rootPage.Content as Frame).Navigate(typeof(AnswerQuestions));

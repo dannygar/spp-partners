@@ -1,18 +1,16 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
+ *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
+    using Data;
+
     public class UserViewModel : NotificationBase<User>
     {
 
@@ -82,7 +80,7 @@ namespace MicrosoftSportsScience.ViewModels
                 IsLoading = true;
                 CompletedQuestionnaire = await _answerModel.GetPlayerResponded(This.Id);
                 IsLoading = false;
-             }
+            }
 
             return;
         }

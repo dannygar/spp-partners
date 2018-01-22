@@ -1,15 +1,11 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+ *--------------------------------------------------------------------------------------------*/
 using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Data;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class AthleteExerciseSetViewModel : NotificationBase<AthleteExerciseSet>
     {
@@ -47,7 +43,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         public static int CalculateTrainingLoad(int reps, float weight)
         {
-            return (int) (weight * (float) (1 + (0.033 * reps)));
+            return (int)(weight * (float)(1 + (0.033 * reps)));
         }
     }
 }

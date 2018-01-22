@@ -1,13 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using Windows.UI;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
-namespace Converters
+namespace Spp.Presentation.User.Client.Converters
 {
     public class AlternateRowColorConverter : IValueConverter
     {

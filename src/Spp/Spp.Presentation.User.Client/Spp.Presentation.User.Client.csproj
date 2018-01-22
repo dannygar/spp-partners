@@ -7,7 +7,7 @@
     <ProjectGuid>{B817B51F-D993-40E8-A9D5-10DEF5D0A33B}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MicrosoftSportsScience</RootNamespace>
+    <RootNamespace>Spp.Presentation.User.Client</RootNamespace>
     <AssemblyName>MicrosoftSportsScience</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>

@@ -1,24 +1,23 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using MicrosoftSportsScience.ViewModels;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.UserControls;
+using Windows.UI.Xaml.Navigation;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class EditWorkoutDetails : Page
     {

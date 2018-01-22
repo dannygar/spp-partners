@@ -1,16 +1,15 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
     class AthleteSessionModel : BaseModel
     {
@@ -78,7 +77,7 @@ namespace MicrosoftSportsScience.Models
             return sessions;
         }
 
-         public async Task<int> SaveSession(Session session)
+        public async Task<int> SaveSession(Session session)
         {
             _logService.Info($"Saving a new session using: {_dataService.GetType()}", this);
             return await _dataService.SetItemAndReturnIdAsync<Session>(Defines.API_SESSION_ENDPOINT, session);

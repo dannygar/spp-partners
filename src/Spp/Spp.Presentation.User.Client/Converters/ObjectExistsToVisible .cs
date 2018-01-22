@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using Windows.UI.Xaml.Data;
 
-namespace Converters
+namespace Spp.Presentation.User.Client.Converters
 {
     public class ObjectExistsToVisible : IValueConverter
     {

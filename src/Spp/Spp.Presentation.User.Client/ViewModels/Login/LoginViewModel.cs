@@ -1,20 +1,18 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
 using Windows.UI.Popups;
-using Newtonsoft.Json;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
+    using Data;
+
     public class LoginViewModel : NotificationBase
     {
         private AppSessionModel _sessionModel;
@@ -24,7 +22,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         public LoginViewModel()
         {
-              _sessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
+            _sessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
         }
 
         public List<UserViewModel> Users
@@ -36,7 +34,7 @@ namespace MicrosoftSportsScience.ViewModels
         public override async Task Load()
         {
             _users = new List<User>();
-            
+
             await _appConfigurationSettings.Load();
             _logService.Info("Attempting to load players, coaches and the current session", this);
 
@@ -64,7 +62,7 @@ namespace MicrosoftSportsScience.ViewModels
             foreach (var user in _users)
             {
                 var np = new UserViewModel(user);
-                 _userModels.Add(np);
+                _userModels.Add(np);
             }
         }
     }

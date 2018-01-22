@@ -1,40 +1,11 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// 
-// Copyright (c) Microsoft. All rights reserved.
-// Licensed under the MIT license.
-// 
-// Microsoft Cognitive Services: http://www.microsoft.com/cognitive
-// 
-// Microsoft Cognitive Services Github:
-// https://github.com/Microsoft/Cognitive
-// 
-// Copyright (c) Microsoft Corporation
-// All rights reserved.
-// 
-// MIT License:
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-// 
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-// 
-
+ *--------------------------------------------------------------------------------------------*/
+using Microsoft.ProjectOxford.Emotion.Contract;
+using Microsoft.ProjectOxford.Face.Contract;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,15 +14,10 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
-using Microsoft.ProjectOxford.Emotion.Contract;
-using Microsoft.ProjectOxford.Face.Contract;
-using MicrosoftSportsScience.Helpers;
-using WinRTXamlToolkit.Controls.Extensions;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
     public class EmotionFeedback
     {
@@ -256,7 +222,7 @@ namespace MicrosoftSportsScience.UserControls
                 {
                     await imageWithFace.DetectFacesAsync(detectFaceAttributes: this.DetectFaceAttributes);
                 }
-                
+
                 //Detect emotions
                 if (imageWithFace.DetectedEmotion == null)
                 {
@@ -303,7 +269,7 @@ namespace MicrosoftSportsScience.UserControls
                         {
                             // Get the border for the associated face id
                             FaceIdentificationBorder faceUI = (FaceIdentificationBorder)this.hostGrid.Children.
-                                FirstOrDefault(e => e is FaceIdentificationBorder 
+                                FirstOrDefault(e => e is FaceIdentificationBorder
                                 && (Guid)(e as FaceIdentificationBorder).Tag == face.FaceId);
 
                             if (faceUI != null)
@@ -335,7 +301,7 @@ namespace MicrosoftSportsScience.UserControls
                         var emotions = await this.DetectAndShowEmotion();
 
                         //Add all recognized people and their emotions into the collection
-                        for(var i = 0; i < people.Count; i++)
+                        for (var i = 0; i < people.Count; i++)
                         {
                             recognizedFaces.Add(new FaceCharacteristics()
                             {
@@ -365,7 +331,7 @@ namespace MicrosoftSportsScience.UserControls
 
             foreach (var child in this.hostGrid.Children.Where(c => !(c is Image)).ToArray())
             {
-                leftShift = ((FrameworkElement) child).ActualWidth;
+                leftShift = ((FrameworkElement)child).ActualWidth;
                 //this.hostGrid.Children.Remove(child);
             }
 

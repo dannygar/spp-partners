@@ -1,15 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
+ *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Models;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     [SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1503:BracesMustNotBeOmitted", Justification = "Reviewed.")]
     public class ConfigurationSettingsViewModel : NotificationBase
@@ -17,8 +15,8 @@ namespace MicrosoftSportsScience.ViewModels
         public ConfigurationSettings AppConfigurationSettings;
 
 
-        public bool IsValid => !string.IsNullOrEmpty(AppConfigurationSettings.APIEndpointUrl) && 
-                               !string.IsNullOrEmpty(AppConfigurationSettings.ClientId) && 
+        public bool IsValid => !string.IsNullOrEmpty(AppConfigurationSettings.APIEndpointUrl) &&
+                               !string.IsNullOrEmpty(AppConfigurationSettings.ClientId) &&
                                !string.IsNullOrEmpty(AppConfigurationSettings.TenantId) &&
                                !string.IsNullOrEmpty(AppConfigurationSettings.MLEndpointUrl) &&
                                !string.IsNullOrEmpty(AppConfigurationSettings.MLClientKey);
@@ -36,15 +34,8 @@ namespace MicrosoftSportsScience.ViewModels
                 SessionDate = DateTime.TryParse((string)localSettings.Values["SessionDate"],
                     out DateTime sessionDate) ? sessionDate : DateTime.UtcNow
             };
-
-            //this.AppConfigurationSettings.SessionDate = sessionDate;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sessionDate"></param>
-        /// <returns></returns>
         public void Save(DateTime sessionDate)
         {
             if (AppConfigurationSettings == null) return;

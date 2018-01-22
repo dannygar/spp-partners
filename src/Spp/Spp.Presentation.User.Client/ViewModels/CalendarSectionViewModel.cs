@@ -1,15 +1,11 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
+ *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class CalendarSectionViewModel : NotificationBase
     {
@@ -24,7 +20,7 @@ namespace MicrosoftSportsScience.ViewModels
         }
 
         public string BackgroundColor => _backgroundColor;
-        
+
         public override Task Load() => null;
         public double Height;
         public double Width;

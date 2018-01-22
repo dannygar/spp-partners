@@ -1,24 +1,20 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.UserControls;
-using MicrosoftSportsScience.ViewModels;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Windows.Foundation;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Shapes;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class AnswerQuestions : Page
     {
@@ -59,7 +55,7 @@ namespace MicrosoftSportsScience
             if (_responses.Count == PreWorkoutQuestions.Questions.Count)
             {
                 SubmitButton.IsEnabled = true;
-            }  
+            }
         }
 
         private async void SubmitAnswers(object sender, RoutedEventArgs e)
@@ -83,7 +79,7 @@ namespace MicrosoftSportsScience
                 });
 
             (sessionModel.ContentView.Content as Frame).Navigate(typeof(AthleteSummary));
-            
+
         }
     }
 }

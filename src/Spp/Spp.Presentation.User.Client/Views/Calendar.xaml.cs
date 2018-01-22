@@ -1,30 +1,20 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -64,16 +54,16 @@ namespace MicrosoftSportsScience
             Days = new List<CalendarDayViewModel>();
 
             // Generate days
-            //for (int i=-7; i<7; i++)
-            //{
-            //    DateTime day = DateTime.Now.AddDays(i);
-            //    var session = sessions.FirstOrDefault(x => x.Scheduled.Month == day.Month && x.Scheduled.Day == day.Day);
+            for (int i = -7; i < 7; i++)
+            {
+                DateTime day = DateTime.Now.AddDays(i);
+                var session = sessions.FirstOrDefault(x => x.Scheduled.Month == day.Month && x.Scheduled.Day == day.Day);
 
-            //    if (session == null)
-            //        continue;
+                if (session == null)
+                    continue;
 
-            //    Days.Add(new CalendarDayViewModel(session, practices.Where(x => x.SessionId == session.Id).ToList(), workouts.Where(x => x.SessionId == session.Id).ToList(), day));
-            //}
+                Days.Add(new CalendarDayViewModel(session, practices.Where(x => x.SessionId == session.Id).ToList(), workouts.Where(x => x.SessionId == session.Id).ToList(), day));
+            }
         }
     }
 }

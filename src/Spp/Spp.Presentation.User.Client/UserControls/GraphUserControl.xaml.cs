@@ -2,7 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
  *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Helpers;
+﻿using Spp.Presentation.User.Client.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,11 +21,11 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 using System.Reflection;
-using static MicrosoftSportsScience.Defines;
+using static Spp.Presentation.User.Client.Defines;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
     
     public sealed partial class GraphUserControl : UserControl

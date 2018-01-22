@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +12,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     /// <summary>
     /// SuspensionManager captures global session state to simplify process lifetime management
@@ -63,8 +63,7 @@ namespace MicrosoftSportsScience
                 // Save the navigation state for all registered frames
                 foreach (var weakFrameReference in _registeredFrames)
                 {
-                    Frame frame;
-                    if (weakFrameReference.TryGetTarget(out frame))
+                    if (weakFrameReference.TryGetTarget(out Frame frame))
                     {
                         SaveFrameNavigationState(frame);
                     }
@@ -119,8 +118,7 @@ namespace MicrosoftSportsScience
                 // Restore any registered frames to their saved state
                 foreach (var weakFrameReference in _registeredFrames)
                 {
-                    Frame frame;
-                    if (weakFrameReference.TryGetTarget(out frame) && (string)frame.GetValue(FrameSessionBaseKeyProperty) == sessionBaseKey)
+                    if (weakFrameReference.TryGetTarget(out Frame frame) && (string)frame.GetValue(FrameSessionBaseKeyProperty) == sessionBaseKey)
                     {
                         frame.ClearValue(FrameSessionStateProperty);
                         RestoreFrameNavigationState(frame);
@@ -196,8 +194,7 @@ namespace MicrosoftSportsScience
             SessionState.Remove((String)frame.GetValue(FrameSessionStateKeyProperty));
             _registeredFrames.RemoveAll((weakFrameReference) =>
             {
-                Frame testFrame;
-                return !weakFrameReference.TryGetTarget(out testFrame) || testFrame == frame;
+                return !weakFrameReference.TryGetTarget(out Frame testFrame) || testFrame == frame;
             });
         }
 

@@ -1,19 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using MicrosoftSportsScience.ViewModels;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+ *--------------------------------------------------------------------------------------------*/
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class AthleteSummary : Page
     {

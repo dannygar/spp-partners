@@ -1,14 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
     public class AthleteQuestionModel : BaseModel
     {
@@ -35,7 +35,7 @@ namespace MicrosoftSportsScience.Models
             }
 
             _logService.Info(String.Format("Getting questions for session: {0}, using: {1}", sessionId, _dataService.GetType().ToString()), this);
-            var questionnaire =  await _dataService.GetItemAsync<AthleteQuestionnaire>(string.Format(Defines.API_QUESTIONS_ENDPOINT, sessionId));
+            var questionnaire = await _dataService.GetItemAsync<AthleteQuestionnaire>(string.Format(Defines.API_QUESTIONS_ENDPOINT, sessionId));
             if (questionnaire == null)
                 return null;
 
@@ -74,7 +74,7 @@ namespace MicrosoftSportsScience.Models
             foreach (var sessionId in sessionIds)
             {
                 var sessionCache = new Dictionary<int, List<AthleteQuestion>>();
-                historyCache.Add(sessionId, (List<AthleteQuestion>) await this.GetQuestions(sessionId));
+                historyCache.Add(sessionId, (List<AthleteQuestion>)await this.GetQuestions(sessionId));
             }
 
             _cacheService.SetItem<Dictionary<int, List<AthleteQuestion>>>(Defines.CACHE_KEY_ATHLETEQUESTIONS, historyCache);

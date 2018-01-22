@@ -1,14 +1,9 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+ *--------------------------------------------------------------------------------------------*/
 
-namespace MicrosoftSportsScience.Data
+namespace Spp.Presentation.User.Client.Data
 {
     public class Value
     {
@@ -19,13 +14,13 @@ namespace MicrosoftSportsScience.Data
 
     public class Output1
     {
-        public string type { get; set; }
-        public Value value { get; set; }
+        public string Type { get; set; }
+        public Value Value { get; set; }
     }
 
     public class Results
     {
-        public Output1 output1 { get; set; }
+        public Output1 Output1 { get; set; }
     }
 
     public class ScoreRequestResult

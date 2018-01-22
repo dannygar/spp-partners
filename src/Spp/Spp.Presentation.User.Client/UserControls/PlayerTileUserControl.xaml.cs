@@ -1,15 +1,16 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
+ *--------------------------------------------------------------------------------------------*/
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
+    using Data;
+
     public sealed partial class PlayerTileUserControl : UserControl
     {
         public PlayerTileUserControl()
@@ -32,7 +33,7 @@ namespace MicrosoftSportsScience.UserControls
             set { this.SetValue(NameAreaVisibilityProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty NameAreaVisibilityProperty =
             DependencyProperty.Register(nameof(NameAreaVisibility), typeof(Visibility), typeof(PlayerTileUserControl), new PropertyMetadata(Visibility.Visible));
 
@@ -48,7 +49,7 @@ namespace MicrosoftSportsScience.UserControls
         public static readonly DependencyProperty IsLoadingProperty =
             DependencyProperty.Register("IsLoading", typeof(bool), typeof(PlayerTileUserControl), new PropertyMetadata(false));
 
-        
+
         public bool DisplayCompletenessInfo
         {
             get { return (bool)GetValue(DisplayCompletenessInfoProperty); }
@@ -97,11 +98,11 @@ namespace MicrosoftSportsScience.UserControls
             get { return (double)GetValue(TileWidthProperty); }
             set { SetValue(TileWidthProperty, value); }
         }
-        
+
         public static readonly DependencyProperty TileWidthProperty =
             DependencyProperty.Register("TileWidth", typeof(double), typeof(PlayerTileUserControl), null);
 
-        
+
         public User User
         {
             get { return (User)GetValue(PlayerProperty); }
@@ -116,7 +117,7 @@ namespace MicrosoftSportsScience.UserControls
             get { return (string)GetValue(PlayerProfileImageProperty); }
             set { SetValue(PlayerProfileImageProperty, value); }
         }
-        
+
         public static readonly DependencyProperty PlayerProfileImageProperty =
             DependencyProperty.Register("PlayerProfileImage", typeof(string), typeof(PlayerTileUserControl), null);
 
@@ -137,7 +138,7 @@ namespace MicrosoftSportsScience.UserControls
 
         public static readonly DependencyProperty PlayerLastNameProperty =
             DependencyProperty.Register("PlayerLastName", typeof(string), typeof(PlayerTileUserControl), null);
-        
+
         public bool Completed
         {
             get { return (bool)GetValue(CompletedProperty); }

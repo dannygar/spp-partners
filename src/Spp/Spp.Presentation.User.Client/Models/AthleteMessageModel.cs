@@ -1,17 +1,16 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
+    using Data;
+
     class AthleteMessageModel : BaseModel
     {
         private IHttpClientService _dataService;
@@ -25,7 +24,7 @@ namespace MicrosoftSportsScience.Models
             _cacheService = cacheService;
         }
 
-        public async Task<List<Message>> GetTodaysAthleteMessages(User athlete, int sessionId)
+        public async Task<List<Message>> GetTodaysAthleteMessages(Data.User athlete, int sessionId)
         {
             if (athlete == null)
                 return null;
@@ -48,10 +47,10 @@ namespace MicrosoftSportsScience.Models
             return messages;
         }
 
-        public async Task CacheAllMessages(List<User> athletes, List<int> sessionIds)
+        public async Task CacheAllMessages(List<Data.User> athletes, List<int> sessionIds)
         {
             var messageCache = new Dictionary<int, Dictionary<int, List<Message>>>();
-            
+
             foreach (var sessionId in sessionIds)
             {
                 var sessionCache = new Dictionary<int, List<Message>>();

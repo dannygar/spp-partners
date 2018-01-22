@@ -1,13 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Converters
-{
-    using System;
-    using Windows.UI.Xaml;
-    using Windows.UI.Xaml.Data;
+ *--------------------------------------------------------------------------------------------*/
+using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Data;
 
+namespace Spp.Presentation.User.Client.Converters
+{
     /// <summary>
     /// Converts value to Thickness value for specifying left margin.
     /// </summary>

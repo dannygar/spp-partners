@@ -1,14 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Helpers
-{
-    using System;
-    using System.Threading.Tasks;
-    using Windows.ApplicationModel.Core;
-    using Windows.UI.Core;
+ *--------------------------------------------------------------------------------------------*/
+using System;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 
+namespace Spp.Presentation.User.Client.Helpers
+{
     public class TaskHelper
     {
         public void RunPromiseWithUiContinuation(Task promise, DispatchedHandler continuation)

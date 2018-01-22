@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:helpers="using:MicrosoftSportsScience.Helpers">
+                    xmlns:helpers="using:Spp.Presentation.User.Client.Helpers">
 
     <SolidColorBrush x:Key="ApplicationDefaultBrush" Color="#d7d7d7"></SolidColorBrush>
     

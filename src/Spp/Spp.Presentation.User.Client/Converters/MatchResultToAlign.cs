@@ -1,11 +1,11 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Converters
+ *--------------------------------------------------------------------------------------------*/
+namespace Spp.Presentation.User.Client.Converters
 {
     using System;
-    using MicrosoftSportsScience.Constants;
+    using Spp.Presentation.User.Client.Constants;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Data;
 

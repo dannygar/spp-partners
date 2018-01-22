@@ -1,20 +1,17 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.Models;
-using System;
+ *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class AthleteQuestionHistoryViewModel : NotificationBase
     {
@@ -36,7 +33,7 @@ namespace MicrosoftSportsScience.ViewModels
 
         private string _wellness = "";
 
-        public string  Wellness
+        public string Wellness
         {
             get { return _wellness; }
             set { SetProperty(ref _wellness, value); }
@@ -45,13 +42,13 @@ namespace MicrosoftSportsScience.ViewModels
         public override async Task Load()
         {
             _logService.Info("Attempting to load history data for athlete", this);
-            var historyItems = await _historyModel.GetHistory(_sessionModel.CurrentUser, 
+            var historyItems = await _historyModel.GetHistory(_sessionModel.CurrentUser,
                 _sessionModel.CurrentSession.Id);
 
             if (historyItems == null)
                 return;
 
-            
+
             var lastResponse = historyItems.GroupBy(x => x.Responses[0].AnswerDateTime).OrderByDescending(x => x.Key).First();
             var score = lastResponse.Sum(response => response.Responses.Sum(entry => entry.Answer.Value));
             Wellness = (score * 2.5).ToString(CultureInfo.InvariantCulture);
@@ -80,6 +77,6 @@ namespace MicrosoftSportsScience.ViewModels
                 var vm = new AthleteQuestionHistoryItemViewModel(h);
                 _history.Add(vm);
             }
-        }      
+        }
     }
 }

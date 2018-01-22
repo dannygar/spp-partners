@@ -1,31 +1,15 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// ******************************************************************
-// Copyright (c) Microsoft. All rights reserved.
-// This code is licensed under the MIT License (MIT).
-// THE CODE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-// IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-// TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
-// THE CODE OR THE USE OR OTHER DEALINGS IN THE CODE.
-// ******************************************************************
-
-using System;
+ *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Storage;
-using Windows.Storage.Streams;
-using Windows.UI.Xaml.Data;
 using Newtonsoft.Json;
+using Windows.UI.Xaml.Data;
 
-namespace MicrosoftSportsScience.Data
+namespace Spp.Presentation.User.Client.Data
 {
     [Bindable]
     public class PhotosDataSource
@@ -141,15 +125,15 @@ namespace MicrosoftSportsScience.Data
 
             return photos;
 
-            var prefix = online ? "Online" : string.Empty;
-            var uri = new Uri($"ms-appx:///Assets/Photos/{prefix}Photos.json");
-            StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(uri);
-            IRandomAccessStreamWithContentType randomStream = await file.OpenReadAsync();
+            //var prefix = online ? "Online" : string.Empty;
+            //var uri = new Uri($"ms-appx:///Assets/Photos/{prefix}Photos.json");
+            //StorageFile file = await StorageFile.GetFileFromApplicationUriAsync(uri);
+            //IRandomAccessStreamWithContentType randomStream = await file.OpenReadAsync();
 
-            using (StreamReader r = new StreamReader(randomStream.AsStreamForRead()))
-            {
-                return Parse(await r.ReadToEndAsync());
-            }
+            //using (StreamReader r = new StreamReader(randomStream.AsStreamForRead()))
+            //{
+            //    return Parse(await r.ReadToEndAsync());
+            //}
         }
 
         private static IEnumerable<PhotoDataItem> Parse(string jsonData)

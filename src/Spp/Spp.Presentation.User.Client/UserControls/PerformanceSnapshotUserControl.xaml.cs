@@ -1,25 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+ *--------------------------------------------------------------------------------------------*/
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
     public sealed partial class PerformanceSnapshotUserControl : UserControl
     {
@@ -46,7 +35,7 @@ namespace MicrosoftSportsScience.UserControls
         // Using a DependencyProperty as the backing store for TopString.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TopStringProperty =
             DependencyProperty.Register("TopString", typeof(string), typeof(PerformanceSnapshotUserControl), new PropertyMetadata(null));
-        
+
         public string TopLeftString
         {
             get { return (string)GetValue(TopLeftStringProperty); }
@@ -56,7 +45,7 @@ namespace MicrosoftSportsScience.UserControls
         // Using a DependencyProperty as the backing store for TopLeftString.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TopLeftStringProperty =
             DependencyProperty.Register("TopLeftString", typeof(string), typeof(PerformanceSnapshotUserControl), new PropertyMetadata(null));
-        
+
         public string TopRightString
         {
             get { return (string)GetValue(TopRightStringProperty); }
@@ -66,7 +55,7 @@ namespace MicrosoftSportsScience.UserControls
         // Using a DependencyProperty as the backing store for TopRightString.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TopRightStringProperty =
             DependencyProperty.Register("TopRightString", typeof(string), typeof(PerformanceSnapshotUserControl), new PropertyMetadata(null));
-        
+
         public string BottomLeftString
         {
             get { return (string)GetValue(BottomLeftStringProperty); }
@@ -76,7 +65,7 @@ namespace MicrosoftSportsScience.UserControls
         // Using a DependencyProperty as the backing store for BottomLeftString.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BottomLeftStringProperty =
             DependencyProperty.Register("BottomLeftString", typeof(string), typeof(PerformanceSnapshotUserControl), new PropertyMetadata(null));
-        
+
         public string BottomRightString
         {
             get { return (string)GetValue(BottomRightStringProperty); }
@@ -86,7 +75,7 @@ namespace MicrosoftSportsScience.UserControls
         // Using a DependencyProperty as the backing store for BottomRightString.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BottomRightStringProperty =
             DependencyProperty.Register("BottomRightString", typeof(string), typeof(PerformanceSnapshotUserControl), new PropertyMetadata(null));
-        
+
         public string BottomString
         {
             get { return (string)GetValue(BottomStringProperty); }

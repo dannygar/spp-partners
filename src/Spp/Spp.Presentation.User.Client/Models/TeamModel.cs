@@ -1,16 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Services;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
     public class TeamModel : BaseModel
     {
@@ -25,8 +23,8 @@ namespace MicrosoftSportsScience.Models
             _cacheService = cacheService;
         }
 
-     
-         public async Task<Team> GetTeam(int teamId)
+
+        public async Task<Team> GetTeam(int teamId)
         {
             // Check cache
             if (_cacheService.IsCached(Defines.CACHE_KEY_TEAM))
@@ -53,7 +51,7 @@ namespace MicrosoftSportsScience.Models
             _logService.Info(String.Format("Setting team: {0}-{1}, using: {2}", t.TeamId, t.Name, _dataService.GetType().ToString()), this);
             await _dataService.SetItemAsync<Team>(teamId, t);
         }
-        
+
 
         public void CacheTeam(Team t)
         {
@@ -66,7 +64,7 @@ namespace MicrosoftSportsScience.Models
                 cache.Remove(t.id);
 
             cache.Add(t.id, t);
-            
+
             _cacheService.SetItem<Dictionary<int, Team>>(Defines.CACHE_KEY_TEAM, cache);
         }
     }

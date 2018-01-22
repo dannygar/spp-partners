@@ -1,8 +1,8 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿//*********************************************************
+ *--------------------------------------------------------------------------------------------*/
+//*********************************************************
 //
 // Copyright (c) Microsoft. All rights reserved.
 // This code is licensed under the MIT License (MIT).
@@ -14,24 +14,17 @@
 //*********************************************************
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using Windows.ApplicationModel.Activation;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
-using MicrosoftSportsScience.Helpers;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
         public static MainPage Current;
@@ -54,11 +47,6 @@ namespace MicrosoftSportsScience
             // just ensure that the window is active
             if (rootFrame == null)
             {
-                // Cache Data
-                //var cacheModel = SimpleIoc.Default.GetInstance<CacheModel>();
-                //await cacheModel.CacheData();
-
-
                 // Cognitive Services Face Recognition API Initialization
                 // propogate settings to the core library
                 CSSettingsHelper.Instance.SettingsChanged += (target, args) =>
@@ -82,7 +70,6 @@ namespace MicrosoftSportsScience
                 //Read API keys from the local storage
                 CSSettingsHelper.Instance.Initialize();
 
-
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
 
@@ -97,7 +84,6 @@ namespace MicrosoftSportsScience
             Window.Current.Activate();
 
         }
-
 
         private static void LogException(Exception ex, string message)
         {
@@ -115,6 +101,5 @@ namespace MicrosoftSportsScience
             ToastNotification toast = new ToastNotification(toastXml);
             ToastNotificationManager.CreateToastNotifier().Show(toast);
         }
-
     }
 }

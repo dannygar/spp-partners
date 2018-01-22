@@ -1,25 +1,17 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// ------------------------------------------------------
-// <copyright file="TypedJsonService.cs" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
-// ------------------------------------------------------
-
+ *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Globalization;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Popups;
 using Newtonsoft.Json;
+using Windows.UI.Popups;
 
-namespace MicrosoftSportsScience.Services
+namespace Spp.Presentation.User.Client.Services
 {
     public class ApiClientService : IHttpClientService
     {
@@ -50,7 +42,7 @@ namespace MicrosoftSportsScience.Services
 
                     var token = await this.authService.GetAuthToken();
                     if (token != null)
-                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); 
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
                     HttpResponseMessage response = await client.GetAsync(uri);
 

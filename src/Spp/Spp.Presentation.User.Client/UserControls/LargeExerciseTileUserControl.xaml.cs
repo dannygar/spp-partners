@@ -1,31 +1,21 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.Helpers;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
     public sealed partial class LargeExerciseTileUserControl : UserControl
     {
@@ -49,13 +39,13 @@ namespace MicrosoftSportsScience.UserControls
 
         private void RightButtonTapped(object sender, TappedRoutedEventArgs e)
         {
-            if(RightButtonText.Text == "Remove Drill")
+            if (RightButtonText.Text == "Remove Drill")
             {
                 DrillHeight.Value = grid4.ActualHeight;
                 VisualStateManager.GoToState(this, "RemoveDrillForGood", true);
                 OnExerciseRemoved(this);
             }
-            else if(RightButtonText.Text == "Save Notes")
+            else if (RightButtonText.Text == "Save Notes")
             {
                 VisualStateManager.GoToState(this, "Idle", true);
             }
@@ -118,7 +108,7 @@ namespace MicrosoftSportsScience.UserControls
             set
             {
                 SetValue(TrainingLoadProperty, value);
-                OnExerciseUpdated((!string.IsNullOrEmpty(value))? int.Parse(value) : 0);
+                OnExerciseUpdated((!string.IsNullOrEmpty(value)) ? int.Parse(value) : 0);
             }
         }
 
@@ -136,7 +126,7 @@ namespace MicrosoftSportsScience.UserControls
         public static readonly DependencyProperty NumberOfSetsProperty =
             DependencyProperty.Register("NumberOfSets", typeof(string), typeof(LargeExerciseTileUserControl), null);
 
-        
+
         public ObservableCollection<AthleteExerciseSetViewModel> Sets
         {
             get { return (ObservableCollection<AthleteExerciseSetViewModel>)GetValue(SetsProperty); }
@@ -167,7 +157,7 @@ namespace MicrosoftSportsScience.UserControls
         public static readonly DependencyProperty NotesProperty =
             DependencyProperty.Register("Notes", typeof(string), typeof(LargeExerciseTileUserControl), null);
 
-        private void image_ImageOpened(object sender, RoutedEventArgs e)
+        private void Image_ImageOpened(object sender, RoutedEventArgs e)
         {
             Storyboard sb = this.Resources["ImageVisible"] as Storyboard;
             sb.Begin();
@@ -179,8 +169,7 @@ namespace MicrosoftSportsScience.UserControls
 
         private void DeleteSetTapped(object sender, TappedRoutedEventArgs e)
         {
-            var button = sender as Image;
-            if (button != null)
+            if (sender is Image button)
             {
                 var task = button.DataContext as AthleteExerciseSetViewModel;
 
@@ -199,7 +188,7 @@ namespace MicrosoftSportsScience.UserControls
             IEnumerable<TextBox> textBoxes = parentGrid.Children.OfType<TextBox>();
             IEnumerable<StackPanel> stackPanels = parentGrid.Children.OfType<StackPanel>();
             IEnumerable<Image> images = parentGrid.Children.OfType<Image>();
-            
+
             foreach (TextBlock textBlock in textBlocks)
             {
                 textBlock.Visibility = Visibility.Collapsed;
@@ -241,7 +230,7 @@ namespace MicrosoftSportsScience.UserControls
         {
             EditTileImage.Visibility = Visibility.Visible;
             SaveTileImage.Visibility = Visibility.Collapsed;
-            
+
             ExerciseDescriptionBlock.Visibility = Visibility.Visible;
             ExerciseDescriptionBox.Visibility = Visibility.Collapsed;
             ExerciseDescriptionBlock.Text = ExerciseDescriptionBox.Text;
@@ -284,9 +273,8 @@ namespace MicrosoftSportsScience.UserControls
                 {
                     try
                     {
-                        int iResult;
-                        this.Sets[0].Reps =
-                            !(string.IsNullOrEmpty(textBox.Text) && int.TryParse(textBox.Text, out iResult))
+                        Sets[0].Reps =
+                            !(string.IsNullOrEmpty(textBox.Text) && int.TryParse(textBox.Text, out int iResult))
                                 ? int.Parse(textBox.Text)
                                 : 0;
                     }
@@ -305,9 +293,8 @@ namespace MicrosoftSportsScience.UserControls
                 {
                     try
                     {
-                        float dResult;
-                        this.Sets[0].Weight =
-                            !(string.IsNullOrEmpty(textBox.Text) && float.TryParse(textBox.Text, out dResult))
+                        Sets[0].Weight =
+                            !(string.IsNullOrEmpty(textBox.Text) && float.TryParse(textBox.Text, out float dResult))
                                 ? float.Parse(textBox.Text)
                                 : 0;
                     }
@@ -336,7 +323,7 @@ namespace MicrosoftSportsScience.UserControls
             }
 
 
-            OnExerciseUpdated(!string.IsNullOrEmpty(this.TrainingLoad)? int.Parse(this.TrainingLoad) : 0);
+            OnExerciseUpdated(!string.IsNullOrEmpty(this.TrainingLoad) ? int.Parse(this.TrainingLoad) : 0);
         }
 
         private void OnExerciseUpdated(int e)

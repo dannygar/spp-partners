@@ -1,18 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// ------------------------------------------------------
-// <copyright file="MetricSets.cs" company="Microsoft">
-// Copyright (c) Microsoft. All rights reserved.
-// </copyright>
-// ------------------------------------------------------
+ *--------------------------------------------------------------------------------------------*/
 #pragma warning disable SA1649 // File name must match first type name
 #pragma warning disable SA1402 // File may only contain a single class : For some cases it is handy to keep simple models in one file.
-namespace MicrosoftSportsScience.Data
+namespace Spp.Presentation.User.Client.Data
 {
     using System.Collections.Generic;
-    using MicrosoftSportsScience.Constants;
+    using Spp.Presentation.User.Client.Constants;
 
     public class MetricSettings
     {

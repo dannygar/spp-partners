@@ -1,35 +1,13 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
+ *--------------------------------------------------------------------------------------------*/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MicrosoftSportsScience.Data
+namespace Spp.Presentation.User.Client.Data
 {
     public class User
     {
-        //public string FirstName { get; set; }
-        //public string MiddleName { get; set; }
-        //public string LastName { get; set; }
-        //public string Nickname { get; set; }
-        //public string FullName { get; set; }
-        //public string Nationality { get; set; }
-        //public string Education { get; set; }
-        //public RoleTypes? RoleId { get; set; }
-        //public int? Height { get; set; }
-        //public int? Weight { get; set; }
-        //public string PreferredLocale { get; set; }
-        //public string DateOfBirth { get; set; }
-        //public string PhoneNumber { get; set; }
-        //public string Email { get; set; }
-        //public int? Gender { get; set; }
-        //public bool? Active { get; set; }
-        //public string PathToPhoto { get; set; }
-
         public int Id { get; set; }
 
         public string FirstName { get; set; }

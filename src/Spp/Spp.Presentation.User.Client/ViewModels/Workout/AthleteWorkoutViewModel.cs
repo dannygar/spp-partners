@@ -1,24 +1,18 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Data;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
 using System.Threading.Tasks;
+using Spp.Presentation.User.Client.Data;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class AthleteWorkoutViewModel : NotificationBase<AthleteWorkout>
     {
-        //private List<AthleteExerciseViewModel> _exerciseModels;
-        //private ObservableCollection<AthleteExerciseViewModel>  _exercises;
-
         public List<AthleteExerciseViewModel> Exercises { get; set; }
 
         public AthleteWorkoutViewModel(AthleteWorkout workout) : base(workout)
@@ -30,13 +24,11 @@ namespace MicrosoftSportsScience.ViewModels
             {
                 Exercises.Add(new AthleteExerciseViewModel(exercise));
             }
-            //_exercises = (_exerciseModels != null)? new ObservableCollection<AthleteExerciseViewModel>(_exerciseModels) : null;
-            //PropertyChanged += AthleteWorkoutViewModel_PropertyChanged;
         }
 
         private void AthleteWorkoutViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            
+
         }
 
         public Type PreviousPage { get; set; }
@@ -44,7 +36,7 @@ namespace MicrosoftSportsScience.ViewModels
         public AthleteWorkout Workout { get; set; }
 
         public string Name => This?.Name;
-        public string Timestamp => (This.Session != null)? This.Session.Scheduled.ToString("MMMM", CultureInfo.InvariantCulture) + " " + This.Session.Scheduled.Day + ", " + This.Session.Scheduled.Year
+        public string Timestamp => (This.Session != null) ? This.Session.Scheduled.ToString("MMMM", CultureInfo.InvariantCulture) + " " + This.Session.Scheduled.Day + ", " + This.Session.Scheduled.Year
             : "";
         public override Task Load() => null;
 

@@ -1,12 +1,12 @@
-﻿<Page x:Class="MicrosoftSportsScience.SessionPlanner"
+﻿<Page x:Class="Spp.Presentation.User.Client.SessionPlanner"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="using:MicrosoftSportsScience"
+      xmlns:local="using:Spp.Presentation.User.Client"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:UserControls="using:MicrosoftSportsScience.UserControls"
-      xmlns:viewModels="using:MicrosoftSportsScience.ViewModels"
-      xmlns:helpers="using:MicrosoftSportsScience.Helpers"
+      xmlns:UserControls="using:Spp.Presentation.User.Client.UserControls"
+      xmlns:viewModels="using:Spp.Presentation.User.Client.ViewModels"
+      xmlns:helpers="using:Spp.Presentation.User.Client.Helpers"
       mc:Ignorable="d">
 
     <Grid>

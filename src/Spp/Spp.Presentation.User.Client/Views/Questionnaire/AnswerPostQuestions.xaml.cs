@@ -1,25 +1,20 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.UserControls;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.Views;
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Windows.Foundation;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.UserControls;
+using Spp.Presentation.User.Client.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Shapes;
 
-namespace MicrosoftSportsScience
+namespace Spp.Presentation.User.Client
 {
     public sealed partial class AnswerPostQuestions : Page
     {
@@ -61,22 +56,12 @@ namespace MicrosoftSportsScience
             }
         }
 
-        //private async void SubmitAnswers(object sender, RoutedEventArgs e)
-        //{
-        //    var answersModel = SimpleIoc.Default.GetInstance<AthleteAnswerModel>();
-        //    var sessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
-
-        //    await answersModel.SetAnswers(_responses.Keys.Select(x => new AthleteAnswer() { Value = _responses[x], QuestionId = x}).ToList(), sessionModel.CurrentUser as Athlete, sessionModel.CurrentSession.Id, 1);
-
-        //    (sessionModel.ContentView.Content as Frame).Navigate(typeof(AthleteSummary));
-        //}
-
         private async void SubmitButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             var sessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
             var answersModel = SimpleIoc.Default.GetInstance<AthleteAnswerModel>();
             var questionModel = SimpleIoc.Default.GetInstance<AthleteQuestionModel>();
-            await answersModel.SetAnswers( 
+            await answersModel.SetAnswers(
                 new PlayerResponse()
                 {
                     SessionId = sessionModel.CurrentSession.Id,

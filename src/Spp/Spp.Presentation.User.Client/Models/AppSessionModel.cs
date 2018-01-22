@@ -1,19 +1,20 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Services;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Services;
 using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using Windows.UI.Xaml.Controls;
 
-namespace MicrosoftSportsScience.Models
+namespace Spp.Presentation.User.Client.Models
 {
+    using Data;
+
     class AppSessionModel : BaseModel
     {
         public event EventHandler<int> Authenticated;

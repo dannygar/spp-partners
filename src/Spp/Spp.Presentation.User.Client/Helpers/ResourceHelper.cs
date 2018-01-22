@@ -1,12 +1,12 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Helpers
-{
-    using Windows.ApplicationModel.Resources;
-    using Windows.UI.Xaml;
+ *--------------------------------------------------------------------------------------------*/
+using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml;
 
+namespace Spp.Presentation.User.Client.Helpers
+{
     public class ResourceHelper
     {
         private static readonly ResourceLoader ResourceLoader = new ResourceLoader();

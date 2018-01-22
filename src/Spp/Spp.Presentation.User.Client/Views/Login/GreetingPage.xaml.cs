@@ -1,44 +1,19 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿// 
-// Copyright (c) Microsoft. All rights reserved.
-// Licensed under the MIT license.
-// 
-// Microsoft Cognitive Services: http://www.microsoft.com/cognitive
-// 
-// Microsoft Cognitive Services Github:
-// https://github.com/Microsoft/Cognitive
-// 
-// Copyright (c) Microsoft Corporation
-// All rights reserved.
-// 
-// MIT License:
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-// 
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-// 
-
+ *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Microsoft.ProjectOxford.Common.Contract;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Helpers;
+using Spp.Presentation.User.Client.Models;
+using Spp.Presentation.User.Client.Services;
+using Spp.Presentation.User.Client.ViewModels;
+using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -46,17 +21,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
-using GalaSoft.MvvmLight.Ioc;
-using Microsoft.ProjectOxford.Common.Contract;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
-using Windows.UI.Xaml.Media.Imaging;
 
-namespace MicrosoftSportsScience.Views
+namespace Spp.Presentation.User.Client.Views
 {
 
     public sealed partial class GreetingPage : Page
@@ -94,8 +60,10 @@ namespace MicrosoftSportsScience.Views
 
             if (ImagesModel.MotivationalImages != null)
             {
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(5);
+                timer = new DispatcherTimer
+                {
+                    Interval = TimeSpan.FromSeconds(5)
+                };
                 timer.Tick += Timer_Tick;
                 timer.Start();
             }
@@ -108,17 +76,17 @@ namespace MicrosoftSportsScience.Views
         }
 
         private void SwitchImage()
-        {     
+        {
             fadeOut.Begin();
         }
 
-        private void fadeOut_Completed(object sender, object e)
+        private void FadeOut_Completed(object sender, object e)
         {
             ImagesModel.MoveNext();
             fadeIn.Begin();
         }
 
-        private void fadeIn_Completed(object sender, object e)
+        private void FadeIn_Completed(object sender, object e)
         {
             timer.Start();
         }
@@ -343,7 +311,7 @@ namespace MicrosoftSportsScience.Views
             //get the person's team Id by authenticating the recognized person with TPP DB
             var appSessionModel = SimpleIoc.Default.GetInstance<AppSessionModel>();
 
-            appSessionModel.Authenticated += AppSessionModel_Authenticated; 
+            appSessionModel.Authenticated += AppSessionModel_Authenticated;
 
             //Map IdentifiedPerson to the UserIdentity
             var peopleIdentities = new List<UserIdentity>();
@@ -388,7 +356,7 @@ namespace MicrosoftSportsScience.Views
 
         }
 
-     
+
 
         private async void RestartButton_Clicked(object sender, TappedRoutedEventArgs e)
         {
@@ -397,6 +365,6 @@ namespace MicrosoftSportsScience.Views
             this.StartProcessingLoop();
         }
 
-       
+
     }
 }

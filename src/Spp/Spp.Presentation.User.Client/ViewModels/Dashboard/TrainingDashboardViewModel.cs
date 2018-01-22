@@ -2,15 +2,15 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
  *--------------------------------------------------------------------------------------------*/
-using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Ioc;
+using Spp.Presentation.User.Client.Data;
+using Spp.Presentation.User.Client.Models;
 
-namespace MicrosoftSportsScience.ViewModels.Dashboard
+namespace Spp.Presentation.User.Client.ViewModels.Dashboard
 {
     public class TrainingDashboardViewModel : NotificationBase
     {
@@ -39,32 +39,20 @@ namespace MicrosoftSportsScience.ViewModels.Dashboard
 
             var session = _sessionModel.CurrentSession;
 
-            string[] colorArray = new string[3];
-            colorArray[0] = "#49E20E"; // available
-            colorArray[1] = "#FF0000"; // injured
-            colorArray[2] = "#FFFF00"; // resting
-
-            //TEMP API FIX
-            //var t = await _teamModel.GetTeam(_sessionModel.TeamId);
+            string[] colorArray = new string[3]
+            {
+                "#49E20E",  // available
+                "#FF0000",  // injured
+                "#FFFF00"   // resting
+            };
 
             if (session != null && session.Users != null)
             {
                 Random r = new Random();
                 foreach (var u in session.Users.Where(p => (RoleTypes)p.RoleId == Data.RoleTypes.Player))
                 {
-                    //var isInjured = u.PlayerInfo?.IsInjured == true;
-                    //var isResting = u.PlayerInfo?.IsResting == true;
-                    //var Color = (bool)u.PlayerInfo?.IsInjured == true ? colorArray[1] : (bool)u.PlayerInfo?.IsResting == true ? colorArray[2] : colorArray[0];
-                    //var PlayerImage = u.PathToPhoto;
-                    //var PlayerName = u.FullName;
-                    //var PlayerTrendNumber = string.Format("{0}%", r.Next(0, 8));
-                    //var PlayerAge = (u.DateofBirth != null) ? (DateTime.UtcNow.Year - ((DateTime)u.DateofBirth).Year).ToString() : "24";
-                    //var PlayerHeight = ConvertCMtoFtInch(u.Height);
-                    //var PlayerJerseyNum = u.PlayerInfo?.JerseyNumber.ToString();
-                    //var PlayerPosition = u.PlayerInfo?.Position.Name;
                     _playerList.Add(new PlayerFitnessViewModel
                     {
-                        //Color = colorArray[r.Next(0, 3)],
                         Color = u.PlayerInfo?.IsInjured == true ? colorArray[1] : u.PlayerInfo?.IsResting == true ? colorArray[2] : colorArray[0],
                         PlayerImage = u.PathToPhoto,
                         PlayerName = u.FullName,

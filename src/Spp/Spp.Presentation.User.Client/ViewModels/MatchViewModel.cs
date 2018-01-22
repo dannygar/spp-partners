@@ -1,18 +1,10 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using System.ComponentModel;
-using System.Collections.ObjectModel;
-using System;
+ *--------------------------------------------------------------------------------------------*/
 using System.Threading.Tasks;
-using GalaSoft.MvvmLight.Ioc;
-using System.Linq;
-using System.Collections.Generic;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Models;
 
-namespace MicrosoftSportsScience.ViewModels
+namespace Spp.Presentation.User.Client.ViewModels
 {
     public class MatchViewModel : NotificationBase
     {

@@ -1,14 +1,14 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿namespace MicrosoftSportsScience.Constants
+ *--------------------------------------------------------------------------------------------*/
+namespace Spp.Presentation.User.Client.Constants
 {
     public class UiConsts
     {
         public const int DefaultCompactPaneLength = 68;
-		public const int TileWidth = 175;
-		
+        public const int TileWidth = 175;
+
         public const string MatchWinTitle = "W";
         public const string MatchLoseTitle = "L";
         public const string MatchDrawTitle1 = "D";

@@ -1,33 +1,21 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using MicrosoftSportsScience.Helpers;
+ *--------------------------------------------------------------------------------------------*/
+using Spp.Presentation.User.Client.Helpers;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Reflection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
-using System.Reflection;
-using static MicrosoftSportsScience.Defines;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace MicrosoftSportsScience.UserControls
+namespace Spp.Presentation.User.Client.UserControls
 {
-    
+
     public sealed partial class WellnessGraphUserControl : UserControl
     {
         private double canvasHeight;
@@ -104,11 +92,11 @@ namespace MicrosoftSportsScience.UserControls
             {
                 Canvas.SetTop(dataPoints[i], canvasHeight - halfEllipseWidth);
                 Canvas.SetLeft(dataPoints[i], (widthIncrement * i) - halfEllipseWidth + (widthIncrement / 2));
-                
+
                 if (i < dataPoints.Count - 1)
                 {
-                    ((Line)dataLines[i]).X1 = (widthIncrement * i)  + (widthIncrement / 2);
-                    ((Line)dataLines[i]).X2 = (widthIncrement * (i + 1))  + (widthIncrement / 2);
+                    ((Line)dataLines[i]).X1 = (widthIncrement * i) + (widthIncrement / 2);
+                    ((Line)dataLines[i]).X2 = (widthIncrement * (i + 1)) + (widthIncrement / 2);
                     ((Line)dataLines[i]).Y1 = EllipseCanvas.ActualHeight;
                     ((Line)dataLines[i]).Y2 = EllipseCanvas.ActualHeight;
                 }
