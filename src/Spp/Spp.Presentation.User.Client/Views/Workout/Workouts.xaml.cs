@@ -1,28 +1,18 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
-using MicrosoftSportsScience.Data;
+ *--------------------------------------------------------------------------------------------*/
+using GalaSoft.MvvmLight.Ioc;
 using MicrosoftSportsScience.Models;
-using MicrosoftSportsScience.ViewModels;
 using MicrosoftSportsScience.UserControls;
+using MicrosoftSportsScience.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using MicrosoftSportsScience.Helpers;
-using System.Threading.Tasks;
 
 namespace MicrosoftSportsScience
 {
@@ -49,7 +39,7 @@ namespace MicrosoftSportsScience
 
             var workout = await workoutModel.GetAthleteWorkout(sessionModel.CurrentUser, sessionModel.CurrentSession);
             if (workout != null) WorkoutViewModel = new AthleteWorkoutViewModel(workout);
-            
+
             this.Bindings.Update();
             await Task.Delay(500);
 
@@ -69,7 +59,7 @@ namespace MicrosoftSportsScience
                 }
             }
 
-            if (exerciseTiles != null && exerciseTiles[activeExerciseIndex] != null)
+            if (exerciseTiles != null && exerciseTiles.Count > 0 && exerciseTiles[activeExerciseIndex] != null)
                 exerciseTiles[activeExerciseIndex].OpenTile();
         }
 
@@ -77,11 +67,11 @@ namespace MicrosoftSportsScience
         {
             exerciseTiles[activeExerciseIndex].RemoveDoneHandler();
             await Task.Delay(1000);
-            if(exerciseTiles.Count > activeExerciseIndex + 1)
+            if (exerciseTiles.Count > activeExerciseIndex + 1)
                 exerciseTiles[activeExerciseIndex + 1].OpenTile();
 
             activeExerciseIndex = activeExerciseIndex + 1;
-           
+
         }
 
 

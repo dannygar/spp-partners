@@ -1,35 +1,23 @@
 /*--------------------------------------------------------------------------------------------- 
  *  Copyright (c) Microsoft Corporation. All rights reserved. 
  *  Licensed under the MIT License. See LICENSE in the project root for license information. 
- *--------------------------------------------------------------------------------------------*/ 
-﻿using GalaSoft.MvvmLight.Ioc;
+ *--------------------------------------------------------------------------------------------*/
+using GalaSoft.MvvmLight.Ioc;
 using Microsoft.WindowsAzure.MobileServices;
+using MicrosoftSportsScience.Data;
+using MicrosoftSportsScience.Helpers;
 using MicrosoftSportsScience.Models;
+using MicrosoftSportsScience.Services;
+using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Data.Xml.Dom;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Spp.Presentation.User.Shared.CognitiveServiceHelpers;
-using MicrosoftSportsScience.Data;
-using MicrosoftSportsScience.Helpers;
-using MicrosoftSportsScience.Services;
-using MicrosoftSportsScience.ViewModels;
-using MicrosoftSportsScience.Views;
 
 namespace MicrosoftSportsScience
 {
@@ -40,7 +28,7 @@ namespace MicrosoftSportsScience
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-             SimpleIoc.Default.Register<RecommendedLoadModel, RecommendedLoadModel>();
+            SimpleIoc.Default.Register<RecommendedLoadModel, RecommendedLoadModel>();
             SimpleIoc.Default.Register<TeamModel, TeamModel>();
             SimpleIoc.Default.Register<AthleteQuestionModel, AthleteQuestionModel>();
             SimpleIoc.Default.Register<AthleteAnswerModel, AthleteAnswerModel>();
@@ -56,18 +44,18 @@ namespace MicrosoftSportsScience
             SimpleIoc.Default.Register<CoachModel, CoachModel>();
             SimpleIoc.Default.Register<ILogService, LocalLogService>();
             SimpleIoc.Default.Register<ICacheService, InMemoryCacheService>();
-#if AAD
+            //#if AAD
             SimpleIoc.Default.Register<IApiAuthService, AzureADv2AuthService>();
             SimpleIoc.Default.Register<IHttpClientService, ApiClientService>();
-#else
-            SimpleIoc.Default.Register<IApiAuthService, FakeApiAuthService>();
-            SimpleIoc.Default.Register<IB2CAuthService, FakeApiAuthService>();
+            //#else
+            //            SimpleIoc.Default.Register<IApiAuthService, FakeApiAuthService>();
+            //            SimpleIoc.Default.Register<IB2CAuthService, FakeApiAuthService>();
 
-            //Comment uncomment below to switch between live data and fake data
-            //SimpleIoc.Default.Register<ITypedDataService, TypedFakeService>();
-            SimpleIoc.Default.Register<ITypedDataService, TypedJsonService>();
+            //            //Comment uncomment below to switch between live data and fake data
+            //            //SimpleIoc.Default.Register<ITypedDataService, TypedFakeService>();
+            //            SimpleIoc.Default.Register<ITypedDataService, TypedJsonService>();
 
-#endif
+            //#endif
         }
 
 
