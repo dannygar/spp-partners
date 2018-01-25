@@ -48,6 +48,39 @@ To build a client app, whether it is a Surface UWP desktop app, mobile app or a 
 During the registration at the portal, make sure you choose both: the Web Platform with the Redirect URL pointing to the SPP API endpoint (e.g. https://sppapi.azurewebsites.net), which you can obtain from the previous step deploying the SPP Azure Resource group, and the Native Application platform to support your native Client UWP app or a new mobile app.
 Make copy of the **Application Id** (it will be used in the further steps).
 
+### Add a new user to the SPP Database
+
+Getting through the hoops of user login to Azure AD will get you only a half way through. You may be authenticated with Active Directory, but you'd still need to get the authorization to access the SPP database. This is done as the multi-factor authentication (MFA) to better protect the SPP resources and to allow adding a layer of authorization. As there may be several different roles of users (e.g. coaches, players, administrators), the need for an additional layer of user authorization is obvious. In SPP it is accomplished via SPP Database user roles and user sessions. To add/authorize a new user to SPP database, you should follow the next steps:
+
+- Go to Azure portal - Active Directory blade and navigate to Users and groups. Click Users at the bottom. Select the user you want to grant access permissions to SPP database and then copy the __Object ID__ value from the Essentials properties of that user. It will be presented in the Guid format.
+
+- Open your SPP SQL Database in any suitable editor of your choice. We personally like SQL Management Studio, which is a free product you can download and install from Microsoft public website.
+
+- Navigate to the User table in your SPP database and open it for adding a new record.
+
+- Add a new line to the existing Users records (if any), and enter all user pertaining information in the associated columns. Make sure that the user's email address matches the one was used to sign this user up in the SPP Client application, and that the isEnabled and isActive fields are set to true.
+
+- Use the copied user's UniqueId or Object ID you've copied in the previous steps to paste in the AADId column. Save your new record and make the copy of the record Id.
+
+- Open the UserTeam table and insert a new record with your User Id, Team Id, and the Start and End dates.
+
+- Open the SessionUser table and then insert a new record with the corresponding Session Id (default: 1), and the User ID.
+
+- In the SQL Query window, execute the following two SQL queries and validate that the result renders the User Id from the first query and the Session Id from the second one by replacing the `{User Object ID}` parameter with your own User Object ID:
+
+```SQL
+SELECT u.[Id]  
+  FROM [dbo].[User] u
+  INNER JOIN UserTeam ut on ut.UserId = u.Id
+  WHERE u.AADId = '{User Object ID}'
+
+SELECT s.[Id]  
+  FROM [dbo].[Session] s
+  INNER JOIN SessionUser su on su.SessionId = s.Id
+  INNER JOIN [dbo].[User]  u on u.Id = su.UserId
+  WHERE u.AADId = '{User Object ID}'
+```
+
 ### Native Client App Configuration Settings
 
 When you launch for the first time your native Surface client App, it will prompt you to enter the App configuration settings on its settings page. The following is the description of each setting you’d need to provide:
