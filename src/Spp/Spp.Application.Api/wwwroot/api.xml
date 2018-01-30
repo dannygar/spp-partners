@@ -742,5 +742,29 @@
             <response code="201">true, if successfull; otherwise - false</response>
             <response code="400">If the object is null</response>
         </member>
+        <member name="T:Spp.Application.Api.Controllers.WellnessController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Spp.Application.Api.Controllers.WellnessController.#ctor(Spp.Data.SppDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Spp.Application.Api.Controllers.WellnessController.Get(System.Int32)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Spp.Application.Api.Controllers.WellnessController.Post(Spp.Application.Core.Models.WellnessDto)">
+            <summary>
+            
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

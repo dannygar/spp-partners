@@ -63,6 +63,7 @@ namespace Spp.Data
         public virtual DbSet<QuestionnaireQuestion> QuestionnaireQuestions { get; set; }
         public virtual DbSet<QuestionnaireResponse> QuestionnaireResponses { get; set; }
         public virtual DbSet<QuestionnaireStatus> QuestionnaireStatus { get; set; }
+        public virtual DbSet<Wellness> RawWellnesses { get; set; }
         public virtual DbSet<Readiness> Readinesses { get; set; }
         public virtual DbSet<Restriction> Restrictions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
@@ -105,6 +106,11 @@ namespace Spp.Data
             modelBuilder.Entity<User>()
                 .Property(e => e.Gender)
                 .HasMaxLength(10);
+
+
+            modelBuilder.Entity<Wellness>()
+                .HasKey(w => new { w.Season_ID, w.Game_ID, w.Player_ID });
+
         }
     }
 }

@@ -1,14 +1,14 @@
 {
-    "DbTenants": {
-        "ActiveTenant": "Spp",
-        "Spp": {
-            "SppDbConnection": "[YOUR DATABASE CONNECTION STRING]"
-        },
-        "LocalDb": {
-            "SppDbConnection": "[YOUR DATABASE CONNECTION STRING]"
-        }
-    },
-    "Benchmark": {
-        "NumberOfRuns": 30
-    }
+    "DbTenants":  {
+                      "ActiveTenant":  "Spp",
+                      "Spp":  {
+                                  "SppDbConnection":  "Server=tcp:spp-sqlserver-4e3qe5hynnyty.database.windows.net,1433;Initial Catalog=spp-dbv2;Persist Security Info=False;User ID=sppadmin;Password=Chongchong750=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+                              },
+                      "LocalDb":  {
+                                      "SppDbConnection":  "[YOUR DATABASE CONNECTION STRING]"
+                                  }
+                  },
+    "Benchmark":  {
+                      "NumberOfRuns":  30
+                  }
 }

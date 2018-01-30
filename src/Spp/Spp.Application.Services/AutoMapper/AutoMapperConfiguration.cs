@@ -23,6 +23,7 @@ namespace Spp.Application.Services.AutoMapper
             cfg.AddProfile<PlayerResponseProfile>();
             cfg.AddProfile<PracticeProfile>();
             cfg.AddProfile<QuestionnaireProfile>();
+            cfg.AddProfile<WellnessProfile>();
             cfg.AddProfile<SessionProfile>();
             cfg.AddProfile<WorkoutProfile>();
             cfg.AddProfile<DrillProfile>();
