@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Benchmark\**" />
+    <EmbeddedResource Remove="Benchmark\**" />
+    <None Remove="Benchmark\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="testsettings.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -27,10 +33,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Spp.Application.Services\Spp.Application.Services.csproj" />
     <ProjectReference Include="..\Spp.Data\Spp.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Benchmark\" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Dapper.FastCrud;
-using Newtonsoft.Json.Linq;
 using Spp.Application.Core.Contracts;
 using Spp.Application.Core.Models;
 using Spp.Application.Services.AutoMapper;
@@ -64,24 +63,8 @@ namespace Spp.Application.Services
         public void RegisterEntities()
         {
             OrmConfiguration.DefaultDialect = SqlDialect.MsSql;
-
-            //Register DB Entities
-            //OrmConfiguration.GetDefaultEntityMapping<User>()
-            //    .SetTableName("User")
-            //    .SetProperty(user => user.Id,
-            //        prop => prop.SetPrimaryKey().SetDatabaseGenerated(DatabaseGeneratedOption.Identity));
-
-            //OrmConfiguration.GetDefaultEntityMapping<UserTeam>()
-            //    .SetTableName("UserTeam")
-            //    .SetProperty(user => user.Id,
-            //        prop => prop.SetPrimaryKey().SetDatabaseGenerated(DatabaseGeneratedOption.Identity));
-
-
-            //Initialize static mapping
             AutoMapperConfiguration.Configure();
         }
-
-        #region CRUD
 
         /// <summary>
         /// 
@@ -94,11 +77,8 @@ namespace Spp.Application.Services
             User user = Mapper.Map<User>(newUserDto);
 
 
-            //Add a new user into Azure AD
-            var userAD = await CreateUserAD(newUserDto);
-
             //Update the AD Id property
-            user.AADId = userAD.objectId;
+            user.AADId = newUserDto.AADId;
 
             //Insert into User table
             await _db.InsertAsync(user);
@@ -256,8 +236,6 @@ namespace Spp.Application.Services
                 }
 
                 //Delete user from AD
-                await DeleteUserAD(user.AADId);
-
                 return user.Id;
             }
 
@@ -273,92 +251,6 @@ namespace Spp.Application.Services
             //Map to the model object
             var user = Mapper.Map<UserDto>(userDb);
             return user;
-        }
-
-
-
-        //public async Task<AppCredentialsDTO> GetToken(AppCredentialsDTO appCredentials)
-        //{
-        //    if (appCredentials == null) return null;
-
-        //    var authority = string.Format(CultureInfo.InvariantCulture, appCredentials.AADInstance,
-        //        appCredentials.Tenant);
-        //    var authContext = new AuthenticationContext(authority, TokenCache.DefaultShared);
-        //    var credentials = new ClientCredential(appCredentials.ClientId, appCredentials.ClientKey);
-        //    var token = await authContext.AcquireTokenAsync(appCredentials.Audience, credentials);
-        //    appCredentials.Token = token?.AccessToken;
-        //    return appCredentials;
-        //}
-
-        #endregion
-
-        private async Task<ADUser> CreateUserAD(UserDto user)
-        {
-            //Obtain B2C Settings
-            var b2cDB = new ADB2CSettings() { Id = 1 };
-            var b2cSettings = await _db.GetAsync(b2cDB);
-
-            //Create a new user object
-            var userObject = new JObject
-            {
-                {"accountEnabled", true},
-                {"creationType", "LocalAccount"},
-                {"displayName", user.FullName},
-                {"passwordProfile", new JObject
-                    {
-                        {"password", "WSXzaq!23"},
-                        {"forceChangePasswordNextLogin", true}
-                    }
-                },
-                {"signInNames", new JArray
-                    {
-                        new JObject
-                        {
-                            {"type", "emailAddress"},
-                            {"value", user.Email.Trim()}
-                        }
-                    }
-                }
-            };
-
-            //Use Microsoft Graph to perform action on Azure AD B2C
-            //var client = new B2CGraphClient(
-            //                    b2cSettings.AadClientId,
-            //                    b2cSettings.AadClientSecret,
-            //                    b2cSettings.AadTenant,
-            //                    b2cSettings.AadGraphResourceId,
-            //                    b2cSettings.AadGraphEndpoint,
-            //                    b2cSettings.AadGraphVersion);
-            //var response = await client.CreateUser(userObject.ToString());
-            //var newUser = JsonConvert.DeserializeObject<ADUser>(response);
-            //
-            //return newUser;
-
-            return null;
-        }
-
-        private async Task DeleteUserAD(string objectId)
-        {
-            try
-            {
-                //Obtain B2C Settings
-                var b2cDB = new ADB2CSettings() { Id = 1 };
-                var b2cSettings = await _db.GetAsync(b2cDB);
-
-                //Use Microsoft Graph to perform action on Azure AD B2C
-                //var client = new B2CGraphClient(
-                //                    b2cSettings.AadClientId,
-                //                    b2cSettings.AadClientSecret,
-                //                    b2cSettings.AadTenant,
-                //                    b2cSettings.AadGraphResourceId,
-                //                    b2cSettings.AadGraphEndpoint,
-                //                    b2cSettings.AadGraphVersion);
-                //await client.DeleteUser(objectId);
-            }
-            catch (Exception)
-            {
-                //Ignore if no AAD user is found
-            }
         }
     }
 }
