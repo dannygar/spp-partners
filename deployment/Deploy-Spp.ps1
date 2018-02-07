@@ -112,18 +112,6 @@ function Show-ParamHint([string]$param) {
 	Write-Host -NoNewLine "[$param]" -ForegroundColor Blue
 	Write-Host " not provided."
 }
-
-function CreateBlobContainer([string]$storageAccountName, [string]$storageContainerName) {
-
-	$storageAccountKey = $(Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName `
-			-Name $storageAccountName).Value[0]
-	$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName `
-		-StorageAccountKey $storageAccountKey
-	
-	# 4. Create a storage container
-	New-AzureStorageContainer -Name $storageContainerName -Context $storageContext | Out-Null
-}
-
 #endregion
 
 #region Environment Setup
