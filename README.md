@@ -98,6 +98,15 @@ When you launch for the first time your native Surface client App, it will promp
 - **Default Session Date**: For the demo client app it is October 12, 2016, but for your own data, it may be a different date.
 Once you’ve satisfied with the entries, save them into your local configuration location by clicking **Save Settings** button.
 
+For the convenience of setting up and running a demo Seahawks client application, please use these demo settings:
+**API Endpoint URL**: https://sppapi-dev-test.azurewebsites.net/api
+**Client Id**: 436b73b7-8f59-45e7-9449-580fb9a5d90d
+**Tenant Id**: 0802107c-ed17-4b41-9f91-96250f0b54d4
+**ML Endpoint URL**: https://ussouthcentral.services.azureml.net/workspaces/320fa3d96f05432184e98eaff316509b/services/8126537b7f1e43d993d968a469907b9f/execute?api-version=2.0&details=true
+**ML Client Key**: 4vCGbQhsWvt1mlm8RzkvDeJ9vEq1Z6I71v4Wm8wA6vv+SDXIEwqj6Zg8vA76O68fFFb14idf4577LqoQQxWlEg==
+**Default Session Date**: October, 12, 2016
+
+
 
 ## Development
 
